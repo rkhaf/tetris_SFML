@@ -1,0 +1,3 @@
+D:/kode/cpp/tetris_SFML/build/CMakeFiles/Tetris.dir
+D:/kode/cpp/tetris_SFML/build/CMakeFiles/edit_cache.dir
+D:/kode/cpp/tetris_SFML/build/CMakeFiles/rebuild_cache.dir
