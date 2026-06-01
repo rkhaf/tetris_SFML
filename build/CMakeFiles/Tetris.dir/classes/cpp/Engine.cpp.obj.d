@@ -309,10 +309,4 @@ CMakeFiles/Tetris.dir/classes/cpp/Engine.cpp.obj: \
  D:/kode/cpp/tetris_SFML/sfml-lib/include/SFML/System/Sleep.hpp \
  D:/kode/cpp/tetris_SFML/sfml-lib/include/SFML/System/TimeoutWithPredicate.hpp \
  D:/kode/cpp/tetris_SFML/sfml-lib/include/SFML/System/Version.hpp \
- D:/kode/cpp/tetris_SFML/classes/headers/Scene.hpp \
- D:/kode/cpp/tetris_SFML/classes/headers/Entity.hpp \
- C:/Program\ Files/mingw64/include/c++/15.2.0/set \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_tree.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_set.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/bits/stl_multiset.h \
- C:/Program\ Files/mingw64/include/c++/15.2.0/iostream
+ D:/kode/cpp/tetris_SFML/classes/headers/Render.hpp

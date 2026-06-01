@@ -152,53 +152,29 @@ classes/cpp/Engine.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/cpp/Engine.cpp.s
 .PHONY : classes/cpp/Engine.cpp.s
 
-classes/cpp/Entity.obj: classes/cpp/Entity.cpp.obj
-.PHONY : classes/cpp/Entity.obj
+classes/cpp/Render.obj: classes/cpp/Render.cpp.obj
+.PHONY : classes/cpp/Render.obj
 
 # target to build an object file
-classes/cpp/Entity.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/cpp/Entity.cpp.obj
-.PHONY : classes/cpp/Entity.cpp.obj
+classes/cpp/Render.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/cpp/Render.cpp.obj
+.PHONY : classes/cpp/Render.cpp.obj
 
-classes/cpp/Entity.i: classes/cpp/Entity.cpp.i
-.PHONY : classes/cpp/Entity.i
-
-# target to preprocess a source file
-classes/cpp/Entity.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/cpp/Entity.cpp.i
-.PHONY : classes/cpp/Entity.cpp.i
-
-classes/cpp/Entity.s: classes/cpp/Entity.cpp.s
-.PHONY : classes/cpp/Entity.s
-
-# target to generate assembly for a file
-classes/cpp/Entity.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/cpp/Entity.cpp.s
-.PHONY : classes/cpp/Entity.cpp.s
-
-classes/cpp/Scene.obj: classes/cpp/Scene.cpp.obj
-.PHONY : classes/cpp/Scene.obj
-
-# target to build an object file
-classes/cpp/Scene.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/cpp/Scene.cpp.obj
-.PHONY : classes/cpp/Scene.cpp.obj
-
-classes/cpp/Scene.i: classes/cpp/Scene.cpp.i
-.PHONY : classes/cpp/Scene.i
+classes/cpp/Render.i: classes/cpp/Render.cpp.i
+.PHONY : classes/cpp/Render.i
 
 # target to preprocess a source file
-classes/cpp/Scene.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/cpp/Scene.cpp.i
-.PHONY : classes/cpp/Scene.cpp.i
+classes/cpp/Render.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/cpp/Render.cpp.i
+.PHONY : classes/cpp/Render.cpp.i
 
-classes/cpp/Scene.s: classes/cpp/Scene.cpp.s
-.PHONY : classes/cpp/Scene.s
+classes/cpp/Render.s: classes/cpp/Render.cpp.s
+.PHONY : classes/cpp/Render.s
 
 # target to generate assembly for a file
-classes/cpp/Scene.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/cpp/Scene.cpp.s
-.PHONY : classes/cpp/Scene.cpp.s
+classes/cpp/Render.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/cpp/Render.cpp.s
+.PHONY : classes/cpp/Render.cpp.s
 
 classes/main.obj: classes/main.cpp.obj
 .PHONY : classes/main.obj
@@ -236,12 +212,9 @@ help:
 	@echo ... classes/cpp/Engine.obj
 	@echo ... classes/cpp/Engine.i
 	@echo ... classes/cpp/Engine.s
-	@echo ... classes/cpp/Entity.obj
-	@echo ... classes/cpp/Entity.i
-	@echo ... classes/cpp/Entity.s
-	@echo ... classes/cpp/Scene.obj
-	@echo ... classes/cpp/Scene.i
-	@echo ... classes/cpp/Scene.s
+	@echo ... classes/cpp/Render.obj
+	@echo ... classes/cpp/Render.i
+	@echo ... classes/cpp/Render.s
 	@echo ... classes/main.obj
 	@echo ... classes/main.i
 	@echo ... classes/main.s

@@ -9,8 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/kode/cpp/tetris_SFML/classes/cpp/Engine.cpp" "CMakeFiles/Tetris.dir/classes/cpp/Engine.cpp.obj" "gcc" "CMakeFiles/Tetris.dir/classes/cpp/Engine.cpp.obj.d"
-  "D:/kode/cpp/tetris_SFML/classes/cpp/Entity.cpp" "CMakeFiles/Tetris.dir/classes/cpp/Entity.cpp.obj" "gcc" "CMakeFiles/Tetris.dir/classes/cpp/Entity.cpp.obj.d"
-  "D:/kode/cpp/tetris_SFML/classes/cpp/Scene.cpp" "CMakeFiles/Tetris.dir/classes/cpp/Scene.cpp.obj" "gcc" "CMakeFiles/Tetris.dir/classes/cpp/Scene.cpp.obj.d"
+  "D:/kode/cpp/tetris_SFML/classes/cpp/Render.cpp" "CMakeFiles/Tetris.dir/classes/cpp/Render.cpp.obj" "gcc" "CMakeFiles/Tetris.dir/classes/cpp/Render.cpp.obj.d"
   "D:/kode/cpp/tetris_SFML/classes/main.cpp" "CMakeFiles/Tetris.dir/classes/main.cpp.obj" "gcc" "CMakeFiles/Tetris.dir/classes/main.cpp.obj.d"
   )
 

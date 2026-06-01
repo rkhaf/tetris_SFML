@@ -1,5 +1,6 @@
-CMakeFiles/Tetris.dir/classes/main.cpp.obj: \
- D:\kode\cpp\tetris_SFML\classes\main.cpp \
+CMakeFiles/Tetris.dir/classes/cpp/Render.cpp.obj: \
+ D:\kode\cpp\tetris_SFML\classes\cpp\Render.cpp \
+ D:/kode/cpp/tetris_SFML/classes/headers/Render.hpp \
  D:/kode/cpp/tetris_SFML/sfml-lib/include/SFML/Graphics.hpp \
  D:/kode/cpp/tetris_SFML/sfml-lib/include/SFML/Graphics/BlendMode.hpp \
  D:/kode/cpp/tetris_SFML/sfml-lib/include/SFML/Graphics/Export.hpp \
@@ -308,5 +309,4 @@ CMakeFiles/Tetris.dir/classes/main.cpp.obj: \
  D:/kode/cpp/tetris_SFML/sfml-lib/include/SFML/System/Sleep.hpp \
  D:/kode/cpp/tetris_SFML/sfml-lib/include/SFML/System/TimeoutWithPredicate.hpp \
  D:/kode/cpp/tetris_SFML/sfml-lib/include/SFML/System/Version.hpp \
- D:\kode\cpp\tetris_SFML\classes\headers/Engine.hpp \
- D:\kode\cpp\tetris_SFML\classes\headers/Render.hpp
+ C:/Program\ Files/mingw64/include/c++/15.2.0/iostream

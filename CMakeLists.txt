@@ -12,7 +12,7 @@ set(SFML_DIR "${CMAKE_CURRENT_SOURCE_DIR}/sfml-lib/lib/cmake/SFML")
 find_package(SFML 3 COMPONENTS Graphics Window System REQUIRED)
 
 # Tentukan file cpp kamu
-add_executable(${PROJECT_NAME} classes/main.cpp classes/cpp/Engine.cpp classes/headers/Engine.hpp classes/cpp/Scene.cpp classes/headers/Scene.hpp classes/cpp/Entity.cpp classes/headers/Entity.hpp)
+add_executable(${PROJECT_NAME} classes/main.cpp classes/cpp/Engine.cpp classes/headers/Engine.hpp classes/cpp/Render.cpp classes/headers/Render.hpp)
 
 # Hubungkan project dengan SFML
 target_link_libraries(${PROJECT_NAME} PRIVATE SFML::Graphics SFML::Window SFML::System)
