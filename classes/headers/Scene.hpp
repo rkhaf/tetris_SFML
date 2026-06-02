@@ -1,14 +1,16 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 class Scene{
-    private:
+    protected:
         std::vector<sf::Drawable*> m_allKomponen;
+    
     public:
-        Scene();
-        virtual ~Scene();
+        Scene(){};
+        virtual ~Scene(){};
         
         virtual void createKomponen();
-        virtual void getKomponen();
+        virtual std::vector<sf::Drawable*> getKomponen();
 
 };

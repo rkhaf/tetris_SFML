@@ -176,6 +176,54 @@ classes/cpp/Render.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/cpp/Render.cpp.s
 .PHONY : classes/cpp/Render.cpp.s
 
+classes/cpp/Scene.obj: classes/cpp/Scene.cpp.obj
+.PHONY : classes/cpp/Scene.obj
+
+# target to build an object file
+classes/cpp/Scene.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/cpp/Scene.cpp.obj
+.PHONY : classes/cpp/Scene.cpp.obj
+
+classes/cpp/Scene.i: classes/cpp/Scene.cpp.i
+.PHONY : classes/cpp/Scene.i
+
+# target to preprocess a source file
+classes/cpp/Scene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/cpp/Scene.cpp.i
+.PHONY : classes/cpp/Scene.cpp.i
+
+classes/cpp/Scene.s: classes/cpp/Scene.cpp.s
+.PHONY : classes/cpp/Scene.s
+
+# target to generate assembly for a file
+classes/cpp/Scene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/cpp/Scene.cpp.s
+.PHONY : classes/cpp/Scene.cpp.s
+
+classes/cpp/scenes/startScene.obj: classes/cpp/scenes/startScene.cpp.obj
+.PHONY : classes/cpp/scenes/startScene.obj
+
+# target to build an object file
+classes/cpp/scenes/startScene.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/cpp/scenes/startScene.cpp.obj
+.PHONY : classes/cpp/scenes/startScene.cpp.obj
+
+classes/cpp/scenes/startScene.i: classes/cpp/scenes/startScene.cpp.i
+.PHONY : classes/cpp/scenes/startScene.i
+
+# target to preprocess a source file
+classes/cpp/scenes/startScene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/cpp/scenes/startScene.cpp.i
+.PHONY : classes/cpp/scenes/startScene.cpp.i
+
+classes/cpp/scenes/startScene.s: classes/cpp/scenes/startScene.cpp.s
+.PHONY : classes/cpp/scenes/startScene.s
+
+# target to generate assembly for a file
+classes/cpp/scenes/startScene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/cpp/scenes/startScene.cpp.s
+.PHONY : classes/cpp/scenes/startScene.cpp.s
+
 classes/main.obj: classes/main.cpp.obj
 .PHONY : classes/main.obj
 
@@ -215,6 +263,12 @@ help:
 	@echo ... classes/cpp/Render.obj
 	@echo ... classes/cpp/Render.i
 	@echo ... classes/cpp/Render.s
+	@echo ... classes/cpp/Scene.obj
+	@echo ... classes/cpp/Scene.i
+	@echo ... classes/cpp/Scene.s
+	@echo ... classes/cpp/scenes/startScene.obj
+	@echo ... classes/cpp/scenes/startScene.i
+	@echo ... classes/cpp/scenes/startScene.s
 	@echo ... classes/main.obj
 	@echo ... classes/main.i
 	@echo ... classes/main.s
