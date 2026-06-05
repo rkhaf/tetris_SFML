@@ -17,6 +17,7 @@ startScene::~startScene(){
 void startScene::createKomponen(){
 
 }
+
 std::vector<sf::Drawable*> startScene::getKomponen(){
     return m_allKomponen;
 }

@@ -12,6 +12,7 @@ class Engine{
         
         public:
         std::vector<Scene*> m_kumpulanScene;
+        // std::vector<Scene> m_kumpulanScene
         ~Engine();
         Engine(sf::Vector2i windowSize, sf::Vector2i arenaSize);
         void run(); 
