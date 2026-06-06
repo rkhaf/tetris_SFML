@@ -8,15 +8,18 @@ class Render;
 
 class Engine{
     private:
-        sf::Vector2i m_windowSize;
+        sf::Vector2u m_windowSize;
         sf::Vector2i m_arenaSize;
         Render* m_render=nullptr;
+        uint8_t limitFramerate=60;
         
     public:
         SceneManager* m_sceneManager=nullptr;
+        sf::RenderWindow m_window;
         sf::Font m_font;
 
         ~Engine();
-        Engine(sf::Vector2i windowSize, sf::Vector2i arenaSize);
-        void run(); 
+        Engine(sf::Vector2u windowSize, sf::Vector2u arenaSize);
+        void start();
+        void gameloop();
 };

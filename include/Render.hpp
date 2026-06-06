@@ -15,12 +15,12 @@ class Render{
     std::vector<std::unique_ptr<sf::Drawable>> m_komponenScene;
     
     public:
-        sf::RenderWindow m_window;
+        // sf::RenderWindow m_window;
         ~Render();
         // std::vector<Scene*> m_currentScene;
         // Render(sf::Vector2u windowSize, int limitFramerate, Engine* engine);
-        Render(sf::Vector2u windowSize, int limitFramerate, SceneManager* sceneManager, Engine* engine);
-        void visualize(std::vector<sf::Drawable> komponenDrawable);
+        Render(Engine* engine);
+        void visualize();
         void start();
-        void init();
+        // void init();
 };

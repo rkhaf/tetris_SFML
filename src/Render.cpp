@@ -2,22 +2,20 @@
 #include <iostream>
 #include "../include/Engine.hpp"
 
-Render::Render(sf::Vector2u windowSize, int limitFramerate, SceneManager* sceneManager, Engine* engine)
+Render::Render(Engine* engine)
     :
     m_engine(engine)
     // m_sceneManager(sceneManager)
     {
-    m_window.create(sf::VideoMode(windowSize),"mainPanel");
-    m_window.clear(sf::Color::Black);
-    m_window.setFramerateLimit(limitFramerate);
 }
 
-void Render::init(){
-
+void Render::start(){
+    
     for(const auto& scene : m_engine->m_sceneManager->m_currentScene){
         std::cout<<"test"<<std::endl;
         if (scene != nullptr) {
-            std::cout<<"kumpulanRectSize: "<<scene->m_kumpulanRect.size()<<std::endl;
+            // std::cout<<"kumpulanRectSize: "<<scene->m_kumpulanRect.size()<<std::endl;
+
             if(scene->m_kumpulanRect.size()>0){
                 for(const auto& komponen : scene->m_kumpulanRect){
 
@@ -48,37 +46,19 @@ void Render::init(){
         }else{
             std::cout<<"scenenya null"<<std::endl;
         }
+
     }
 }
 
-void Render::start(){
-    // std::cout<<"size array scene: "<<m_engine->m_kumpulanScene.size()<<std::endl;
-    while (m_window.isOpen()) {
-        m_window.clear(sf::Color::Black);
 
+void Render::visualize(){
+    if(m_komponenScene.size()>0){
         for(const auto& komponen : m_komponenScene){
             m_window.draw(*komponen);
             // std::cout<<"found"<<std::endl;
         }
-
-        //nnti masuk ke modul input
-        while (const std::optional event = m_window.pollEvent()) {
-            if (event->is<sf::Event::Closed>()) {
-                m_window.close();
-            }
-
-            if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>()) {
-                if (keyPressed->code == sf::Keyboard::Key::Space) {
-                }
-                if (keyPressed->code == sf::Keyboard::Key::Escape) {
-                    m_window.close();
-                }
-            }
-        }
-        m_window.display();
+    }else{
+        std::cout<<"komponenScene kosong"<<std::endl;
     }
-}
-
-void Render::visualize(std::vector<sf::Drawable> komponenDrawable){
 
 }
