@@ -1,5 +1,5 @@
 #include <SFML/Graphics.hpp>
-#include "headers/Engine.hpp"
+#include "../include/Engine.hpp"
 
 int main() {
     Engine engine(sf::Vector2i(800, 600), {13, 21});

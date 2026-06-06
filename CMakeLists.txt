@@ -16,11 +16,11 @@ set(SFML_DIR "${CMAKE_CURRENT_SOURCE_DIR}/sfml-lib/lib/cmake/SFML")
 find_package(SFML 3 COMPONENTS Graphics Window System REQUIRED)
 
 # Tentukan file cpp kamu
-add_executable(${PROJECT_NAME} classes/main.cpp 
-classes/cpp/Engine.cpp classes/headers/Engine.hpp 
-classes/cpp/Render.cpp classes/headers/Render.hpp 
-classes/cpp/SceneManager.cpp classes/headers/SceneManager.hpp 
-classes/headers/structData.hpp)
+add_executable(${PROJECT_NAME} src/main.cpp 
+src/Engine.cpp include/Engine.hpp 
+src/Render.cpp include/Render.hpp 
+src/SceneManager.cpp include/SceneManager.hpp 
+include/structData.hpp)
 
 # Otomatis copy DLL SFML ke folder output executable
 # add_custom_command(TARGET Tetris POST_BUILD

@@ -128,101 +128,101 @@ Tetris/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/build
 .PHONY : Tetris/fast
 
-classes/cpp/Engine.obj: classes/cpp/Engine.cpp.obj
-.PHONY : classes/cpp/Engine.obj
+src/Engine.obj: src/Engine.cpp.obj
+.PHONY : src/Engine.obj
 
 # target to build an object file
-classes/cpp/Engine.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/cpp/Engine.cpp.obj
-.PHONY : classes/cpp/Engine.cpp.obj
+src/Engine.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/src/Engine.cpp.obj
+.PHONY : src/Engine.cpp.obj
 
-classes/cpp/Engine.i: classes/cpp/Engine.cpp.i
-.PHONY : classes/cpp/Engine.i
+src/Engine.i: src/Engine.cpp.i
+.PHONY : src/Engine.i
 
 # target to preprocess a source file
-classes/cpp/Engine.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/cpp/Engine.cpp.i
-.PHONY : classes/cpp/Engine.cpp.i
+src/Engine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/src/Engine.cpp.i
+.PHONY : src/Engine.cpp.i
 
-classes/cpp/Engine.s: classes/cpp/Engine.cpp.s
-.PHONY : classes/cpp/Engine.s
+src/Engine.s: src/Engine.cpp.s
+.PHONY : src/Engine.s
 
 # target to generate assembly for a file
-classes/cpp/Engine.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/cpp/Engine.cpp.s
-.PHONY : classes/cpp/Engine.cpp.s
+src/Engine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/src/Engine.cpp.s
+.PHONY : src/Engine.cpp.s
 
-classes/cpp/Render.obj: classes/cpp/Render.cpp.obj
-.PHONY : classes/cpp/Render.obj
+src/Render.obj: src/Render.cpp.obj
+.PHONY : src/Render.obj
 
 # target to build an object file
-classes/cpp/Render.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/cpp/Render.cpp.obj
-.PHONY : classes/cpp/Render.cpp.obj
+src/Render.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/src/Render.cpp.obj
+.PHONY : src/Render.cpp.obj
 
-classes/cpp/Render.i: classes/cpp/Render.cpp.i
-.PHONY : classes/cpp/Render.i
+src/Render.i: src/Render.cpp.i
+.PHONY : src/Render.i
 
 # target to preprocess a source file
-classes/cpp/Render.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/cpp/Render.cpp.i
-.PHONY : classes/cpp/Render.cpp.i
+src/Render.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/src/Render.cpp.i
+.PHONY : src/Render.cpp.i
 
-classes/cpp/Render.s: classes/cpp/Render.cpp.s
-.PHONY : classes/cpp/Render.s
+src/Render.s: src/Render.cpp.s
+.PHONY : src/Render.s
 
 # target to generate assembly for a file
-classes/cpp/Render.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/cpp/Render.cpp.s
-.PHONY : classes/cpp/Render.cpp.s
+src/Render.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/src/Render.cpp.s
+.PHONY : src/Render.cpp.s
 
-classes/cpp/SceneManager.obj: classes/cpp/SceneManager.cpp.obj
-.PHONY : classes/cpp/SceneManager.obj
+src/SceneManager.obj: src/SceneManager.cpp.obj
+.PHONY : src/SceneManager.obj
 
 # target to build an object file
-classes/cpp/SceneManager.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/cpp/SceneManager.cpp.obj
-.PHONY : classes/cpp/SceneManager.cpp.obj
+src/SceneManager.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/src/SceneManager.cpp.obj
+.PHONY : src/SceneManager.cpp.obj
 
-classes/cpp/SceneManager.i: classes/cpp/SceneManager.cpp.i
-.PHONY : classes/cpp/SceneManager.i
+src/SceneManager.i: src/SceneManager.cpp.i
+.PHONY : src/SceneManager.i
 
 # target to preprocess a source file
-classes/cpp/SceneManager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/cpp/SceneManager.cpp.i
-.PHONY : classes/cpp/SceneManager.cpp.i
+src/SceneManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/src/SceneManager.cpp.i
+.PHONY : src/SceneManager.cpp.i
 
-classes/cpp/SceneManager.s: classes/cpp/SceneManager.cpp.s
-.PHONY : classes/cpp/SceneManager.s
+src/SceneManager.s: src/SceneManager.cpp.s
+.PHONY : src/SceneManager.s
 
 # target to generate assembly for a file
-classes/cpp/SceneManager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/cpp/SceneManager.cpp.s
-.PHONY : classes/cpp/SceneManager.cpp.s
+src/SceneManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/src/SceneManager.cpp.s
+.PHONY : src/SceneManager.cpp.s
 
-classes/main.obj: classes/main.cpp.obj
-.PHONY : classes/main.obj
+src/main.obj: src/main.cpp.obj
+.PHONY : src/main.obj
 
 # target to build an object file
-classes/main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/main.cpp.obj
-.PHONY : classes/main.cpp.obj
+src/main.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/src/main.cpp.obj
+.PHONY : src/main.cpp.obj
 
-classes/main.i: classes/main.cpp.i
-.PHONY : classes/main.i
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
 
 # target to preprocess a source file
-classes/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/main.cpp.i
-.PHONY : classes/main.cpp.i
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
 
-classes/main.s: classes/main.cpp.s
-.PHONY : classes/main.s
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
 
 # target to generate assembly for a file
-classes/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/classes/main.cpp.s
-.PHONY : classes/main.cpp.s
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tetris.dir\build.make CMakeFiles/Tetris.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 # Help Target
 help:
@@ -233,18 +233,18 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Tetris
-	@echo ... classes/cpp/Engine.obj
-	@echo ... classes/cpp/Engine.i
-	@echo ... classes/cpp/Engine.s
-	@echo ... classes/cpp/Render.obj
-	@echo ... classes/cpp/Render.i
-	@echo ... classes/cpp/Render.s
-	@echo ... classes/cpp/SceneManager.obj
-	@echo ... classes/cpp/SceneManager.i
-	@echo ... classes/cpp/SceneManager.s
-	@echo ... classes/main.obj
-	@echo ... classes/main.i
-	@echo ... classes/main.s
+	@echo ... src/Engine.obj
+	@echo ... src/Engine.i
+	@echo ... src/Engine.s
+	@echo ... src/Render.obj
+	@echo ... src/Render.i
+	@echo ... src/Render.s
+	@echo ... src/SceneManager.obj
+	@echo ... src/SceneManager.i
+	@echo ... src/SceneManager.s
+	@echo ... src/main.obj
+	@echo ... src/main.i
+	@echo ... src/main.s
 .PHONY : help
 
 

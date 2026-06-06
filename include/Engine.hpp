@@ -12,7 +12,7 @@ class Engine{
         sf::Vector2i m_arenaSize;
         Render* m_render=nullptr;
         
-        public:
+    public:
         SceneManager* m_sceneManager=nullptr;
         sf::Font m_font;
 

@@ -1,6 +1,6 @@
-#include "../headers/SceneManager.hpp"
+#include "../include/SceneManager.hpp"
 #include <iostream>
-#include "../headers/Render.hpp"
+#include "../include/Render.hpp"
 
 SceneManager::SceneManager(){
     // changeScene(m_defaultScene);

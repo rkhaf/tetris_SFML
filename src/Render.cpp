@@ -1,6 +1,6 @@
-#include "../headers/Render.hpp"
+#include "../include/Render.hpp"
 #include <iostream>
-#include "../headers/Engine.hpp"
+#include "../include/Engine.hpp"
 
 Render::Render(sf::Vector2u windowSize, int limitFramerate, SceneManager* sceneManager, Engine* engine)
     :

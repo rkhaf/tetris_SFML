@@ -1,26 +1,26 @@
 [
 {
   "directory": "D:/kode/cpp/tetris_SFML/build",
-  "command": "C:\\PROGRA~1\\mingw64\\bin\\G__~1.EXE  @CMakeFiles/Tetris.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Tetris.dir\\classes\\main.cpp.obj -c D:\\kode\\cpp\\tetris_SFML\\classes\\main.cpp",
-  "file": "D:/kode/cpp/tetris_SFML/classes/main.cpp",
-  "output": "CMakeFiles/Tetris.dir/classes/main.cpp.obj"
+  "command": "C:\\PROGRA~1\\mingw64\\bin\\G__~1.EXE  @CMakeFiles/Tetris.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Tetris.dir\\src\\main.cpp.obj -c D:\\kode\\cpp\\tetris_SFML\\src\\main.cpp",
+  "file": "D:/kode/cpp/tetris_SFML/src/main.cpp",
+  "output": "CMakeFiles/Tetris.dir/src/main.cpp.obj"
 },
 {
   "directory": "D:/kode/cpp/tetris_SFML/build",
-  "command": "C:\\PROGRA~1\\mingw64\\bin\\G__~1.EXE  @CMakeFiles/Tetris.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Tetris.dir\\classes\\cpp\\Engine.cpp.obj -c D:\\kode\\cpp\\tetris_SFML\\classes\\cpp\\Engine.cpp",
-  "file": "D:/kode/cpp/tetris_SFML/classes/cpp/Engine.cpp",
-  "output": "CMakeFiles/Tetris.dir/classes/cpp/Engine.cpp.obj"
+  "command": "C:\\PROGRA~1\\mingw64\\bin\\G__~1.EXE  @CMakeFiles/Tetris.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Tetris.dir\\src\\Engine.cpp.obj -c D:\\kode\\cpp\\tetris_SFML\\src\\Engine.cpp",
+  "file": "D:/kode/cpp/tetris_SFML/src/Engine.cpp",
+  "output": "CMakeFiles/Tetris.dir/src/Engine.cpp.obj"
 },
 {
   "directory": "D:/kode/cpp/tetris_SFML/build",
-  "command": "C:\\PROGRA~1\\mingw64\\bin\\G__~1.EXE  @CMakeFiles/Tetris.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Tetris.dir\\classes\\cpp\\Render.cpp.obj -c D:\\kode\\cpp\\tetris_SFML\\classes\\cpp\\Render.cpp",
-  "file": "D:/kode/cpp/tetris_SFML/classes/cpp/Render.cpp",
-  "output": "CMakeFiles/Tetris.dir/classes/cpp/Render.cpp.obj"
+  "command": "C:\\PROGRA~1\\mingw64\\bin\\G__~1.EXE  @CMakeFiles/Tetris.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Tetris.dir\\src\\Render.cpp.obj -c D:\\kode\\cpp\\tetris_SFML\\src\\Render.cpp",
+  "file": "D:/kode/cpp/tetris_SFML/src/Render.cpp",
+  "output": "CMakeFiles/Tetris.dir/src/Render.cpp.obj"
 },
 {
   "directory": "D:/kode/cpp/tetris_SFML/build",
-  "command": "C:\\PROGRA~1\\mingw64\\bin\\G__~1.EXE  @CMakeFiles/Tetris.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Tetris.dir\\classes\\cpp\\SceneManager.cpp.obj -c D:\\kode\\cpp\\tetris_SFML\\classes\\cpp\\SceneManager.cpp",
-  "file": "D:/kode/cpp/tetris_SFML/classes/cpp/SceneManager.cpp",
-  "output": "CMakeFiles/Tetris.dir/classes/cpp/SceneManager.cpp.obj"
+  "command": "C:\\PROGRA~1\\mingw64\\bin\\G__~1.EXE  @CMakeFiles/Tetris.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Tetris.dir\\src\\SceneManager.cpp.obj -c D:\\kode\\cpp\\tetris_SFML\\src\\SceneManager.cpp",
+  "file": "D:/kode/cpp/tetris_SFML/src/SceneManager.cpp",
+  "output": "CMakeFiles/Tetris.dir/src/SceneManager.cpp.obj"
 }
 ]
