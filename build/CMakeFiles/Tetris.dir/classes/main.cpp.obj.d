@@ -309,6 +309,5 @@ CMakeFiles/Tetris.dir/classes/main.cpp.obj: \
  D:/kode/cpp/library/sfml-lib/include/SFML/System/TimeoutWithPredicate.hpp \
  D:/kode/cpp/library/sfml-lib/include/SFML/System/Version.hpp \
  D:\kode\cpp\tetris_SFML\classes\headers/Engine.hpp \
- D:\kode\cpp\tetris_SFML\classes\headers/scenes/startScene.hpp \
- D:/kode/cpp/tetris_SFML/classes/headers/Scene.hpp \
- C:/Program\ Files/mingw64/include/c++/15.2.0/iostream
+ D:\kode\cpp\tetris_SFML\classes\headers/SceneManager.hpp \
+ D:\kode\cpp\tetris_SFML\classes\headers/structData.hpp

@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.14)
 project(Tetris)
 
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Debug CACHE STRING "Choose the type of build." FORCE)
+endif()
+
 # Set standar C++ ke C++17 atau C++20 (Wajib untuk SFML 3)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -15,8 +19,8 @@ find_package(SFML 3 COMPONENTS Graphics Window System REQUIRED)
 add_executable(${PROJECT_NAME} classes/main.cpp 
 classes/cpp/Engine.cpp classes/headers/Engine.hpp 
 classes/cpp/Render.cpp classes/headers/Render.hpp 
-classes/cpp/Scene.cpp classes/headers/Scene.hpp 
-classes/cpp/scenes/startScene.cpp classes/headers/scenes/startScene.hpp)
+classes/cpp/SceneManager.cpp classes/headers/SceneManager.hpp 
+classes/headers/structData.hpp)
 
 # Otomatis copy DLL SFML ke folder output executable
 # add_custom_command(TARGET Tetris POST_BUILD

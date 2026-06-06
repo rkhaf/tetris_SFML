@@ -10,8 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/kode/cpp/tetris_SFML/classes/cpp/Engine.cpp" "CMakeFiles/Tetris.dir/classes/cpp/Engine.cpp.obj" "gcc" "CMakeFiles/Tetris.dir/classes/cpp/Engine.cpp.obj.d"
   "D:/kode/cpp/tetris_SFML/classes/cpp/Render.cpp" "CMakeFiles/Tetris.dir/classes/cpp/Render.cpp.obj" "gcc" "CMakeFiles/Tetris.dir/classes/cpp/Render.cpp.obj.d"
-  "D:/kode/cpp/tetris_SFML/classes/cpp/Scene.cpp" "CMakeFiles/Tetris.dir/classes/cpp/Scene.cpp.obj" "gcc" "CMakeFiles/Tetris.dir/classes/cpp/Scene.cpp.obj.d"
-  "D:/kode/cpp/tetris_SFML/classes/cpp/scenes/startScene.cpp" "CMakeFiles/Tetris.dir/classes/cpp/scenes/startScene.cpp.obj" "gcc" "CMakeFiles/Tetris.dir/classes/cpp/scenes/startScene.cpp.obj.d"
+  "D:/kode/cpp/tetris_SFML/classes/cpp/SceneManager.cpp" "CMakeFiles/Tetris.dir/classes/cpp/SceneManager.cpp.obj" "gcc" "CMakeFiles/Tetris.dir/classes/cpp/SceneManager.cpp.obj.d"
   "D:/kode/cpp/tetris_SFML/classes/main.cpp" "CMakeFiles/Tetris.dir/classes/main.cpp.obj" "gcc" "CMakeFiles/Tetris.dir/classes/main.cpp.obj.d"
   )
 

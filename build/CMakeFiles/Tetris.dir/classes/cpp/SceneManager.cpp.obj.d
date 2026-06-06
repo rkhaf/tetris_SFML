@@ -1,6 +1,6 @@
-CMakeFiles/Tetris.dir/classes/cpp/Scene.cpp.obj: \
- D:\kode\cpp\tetris_SFML\classes\cpp\Scene.cpp \
- D:/kode/cpp/tetris_SFML/classes/headers/Scene.hpp \
+CMakeFiles/Tetris.dir/classes/cpp/SceneManager.cpp.obj: \
+ D:\kode\cpp\tetris_SFML\classes\cpp\SceneManager.cpp \
+ D:/kode/cpp/tetris_SFML/classes/headers/SceneManager.hpp \
  D:/kode/cpp/library/sfml-lib/include/SFML/Graphics.hpp \
  D:/kode/cpp/library/sfml-lib/include/SFML/Graphics/BlendMode.hpp \
  D:/kode/cpp/library/sfml-lib/include/SFML/Graphics/Export.hpp \
@@ -309,4 +309,7 @@ CMakeFiles/Tetris.dir/classes/cpp/Scene.cpp.obj: \
  D:/kode/cpp/library/sfml-lib/include/SFML/System/Sleep.hpp \
  D:/kode/cpp/library/sfml-lib/include/SFML/System/TimeoutWithPredicate.hpp \
  D:/kode/cpp/library/sfml-lib/include/SFML/System/Version.hpp \
- C:/Program\ Files/mingw64/include/c++/15.2.0/iostream
+ D:/kode/cpp/tetris_SFML/classes/headers/structData.hpp \
+ C:/Program\ Files/mingw64/include/c++/15.2.0/iostream \
+ D:/kode/cpp/tetris_SFML/classes/headers/Render.hpp \
+ D:/kode/cpp/tetris_SFML/classes/headers/Engine.hpp
