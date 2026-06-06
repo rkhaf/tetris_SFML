@@ -10,11 +10,12 @@ Engine::Engine(sf::Vector2u windowSize, sf::Vector2u arenaSize)
     m_windowSize(windowSize),
     m_arenaSize(arenaSize),
     m_sceneManager(new SceneManager(&m_window)),
-    m_render(new Render(this))
+    m_render(new Render(this, &m_sceneManager->m_currentScene))
 {
     m_window.create(sf::VideoMode(m_windowSize),"mainPanel");
     m_window.clear(sf::Color::Black);
     m_window.setFramerateLimit(limitFramerate);
+
 
     if(!m_font.openFromFile("assets/ds_digital/DS-DIGI.TTF")){
         std::cout<<"gagal"<<std::endl;
@@ -28,6 +29,7 @@ Engine::~Engine(){
 void Engine::start(){
     // std::cout<<"ready"<<std::endl;
     m_sceneManager->changeScene(SceneName::startScene);
+    
     m_render->start();
     // m_sceneManager->m_window=&m_render->m_window;
     // m_sceneManager->m_render=m_render;

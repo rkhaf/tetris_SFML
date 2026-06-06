@@ -2,16 +2,18 @@
 #include <iostream>
 #include "../include/Engine.hpp"
 
-Render::Render(Engine* engine)
+Render::Render(Engine* engine, std::vector<sceneStruct*>* currentScenePointer, sf::RenderWindow* window)
     :
-    m_engine(engine)
+    m_engine(engine),
+    m_currentScenePointer(currentScenePointer),
+    m_window(window)
     // m_sceneManager(sceneManager)
     {
 }
 
 void Render::start(){
     
-    for(const auto& scene : m_engine->m_sceneManager->m_currentScene){
+    for(const auto& scene : *m_currentScenePointer){
         std::cout<<"test"<<std::endl;
         if (scene != nullptr) {
             // std::cout<<"kumpulanRectSize: "<<scene->m_kumpulanRect.size()<<std::endl;
@@ -54,7 +56,8 @@ void Render::start(){
 void Render::visualize(){
     if(m_komponenScene.size()>0){
         for(const auto& komponen : m_komponenScene){
-            m_window.draw(*komponen);
+            // m_window.draw(*komponen);
+            m_window->draw(*komponen);
             // std::cout<<"found"<<std::endl;
         }
     }else{
