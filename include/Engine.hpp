@@ -3,11 +3,11 @@
 // #include "scenes/startScene.hpp"
 #include "SceneManager.hpp"
 #include "structData.hpp"
+#include "InputHandler.hpp"
 
 class Render;
 
 class Engine{
-    
     public:
     SceneManager* m_sceneManager=nullptr;
     sf::RenderWindow m_window;
@@ -17,10 +17,11 @@ class Engine{
     Engine(sf::Vector2u windowSize, sf::Vector2u arenaSize);
     void start();
     void gameloop();
-    
+
     private:
         sf::Vector2u m_windowSize;
         sf::Vector2i m_arenaSize;
         Render* m_render=nullptr;
+        InputHandler* m_inputHandler;
         uint8_t limitFramerate=60;
 };

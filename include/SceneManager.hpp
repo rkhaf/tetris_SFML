@@ -19,7 +19,9 @@ class SceneManager{
         std::vector<sceneStruct*> m_currentScene;
         // Render* m_render=nullptr;
     
-    void changeScene(SceneName targetScene);
-    SceneManager(sf::RenderWindow* window);
+        SceneManager(sf::RenderWindow* window);
+
+        void changeScene(SceneName targetScene);
+        void generateStartScene();
 
 };

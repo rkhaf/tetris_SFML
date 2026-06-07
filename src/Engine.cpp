@@ -9,9 +9,7 @@ Engine::Engine(sf::Vector2u windowSize, sf::Vector2u arenaSize)
     : 
     m_windowSize(windowSize),
     m_arenaSize(arenaSize),
-
-
-
+    m_inputHandler(new InputHandler()),
     m_sceneManager(new SceneManager(&m_window)),
     m_render(new Render(this, m_sceneManager->m_currentScene, &m_window))
 {
@@ -37,26 +35,15 @@ void Engine::start(){
     m_sceneManager->changeScene(SceneName::startScene);
     
     m_render->start();
-    // m_sceneManager->m_window=&m_render->m_window;
-    // m_sceneManager->m_render=m_render;
-
     gameloop();
-    // render->visualize();
-    // std::cout<<"engine, memory sceneManager: "<<&m_sceneManager<<std::endl;
-    // m_render->init();
-    // render->m_currentScene.push_back();
-    // render->visualize();
 }
 
 void Engine::gameloop(){
     while (m_window.isOpen()) {
         m_window.clear(sf::Color::Black);
 
-        //ngedraw komponen, hrusnya modul render
-        // for(const auto& komponen : m_komponenScene){
-        //     m_window.draw(*komponen);
-        //     // std::cout<<"found"<<std::endl;
-        // }
+        //ngedraw komponen
+
         m_render->visualize();
 
         //nnti masuk ke modul input
@@ -66,11 +53,13 @@ void Engine::gameloop(){
             }
 
             if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>()) {
-                if (keyPressed->code == sf::Keyboard::Key::Space) {
-                }
-                if (keyPressed->code == sf::Keyboard::Key::Escape) {
-                    m_window.close();
-                }
+                m_inputHandler->handle(keyPressed->code);
+
+                // if (keyPressed->code == sf::Keyboard::Key::Space) {
+                // }
+                // if (keyPressed->code == sf::Keyboard::Key::Escape) {
+                //     m_window.close();
+                // }
             }
         }
         m_window.display();

@@ -20,7 +20,8 @@ add_executable(${PROJECT_NAME} src/main.cpp
 src/Engine.cpp include/Engine.hpp 
 src/Render.cpp include/Render.hpp 
 src/SceneManager.cpp include/SceneManager.hpp 
-include/structData.hpp)
+include/structData.hpp
+src/InputHandler.cpp include/InputHandler.hpp)
 
 # Otomatis copy DLL SFML ke folder output executable
 # add_custom_command(TARGET Tetris POST_BUILD
