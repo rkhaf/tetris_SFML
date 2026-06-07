@@ -7,6 +7,10 @@ SceneManager::SceneManager(sf::RenderWindow* window)
     m_window(window)
 {
     // changeScene(m_defaultScene);
+    std::cout<<&m_currentScene<<std::endl;
+
+    
+    
 }
 
 void SceneManager::changeScene(SceneName targetScene){

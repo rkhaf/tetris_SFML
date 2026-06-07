@@ -9,8 +9,11 @@ Engine::Engine(sf::Vector2u windowSize, sf::Vector2u arenaSize)
     : 
     m_windowSize(windowSize),
     m_arenaSize(arenaSize),
+
+
+
     m_sceneManager(new SceneManager(&m_window)),
-    m_render(new Render(this, &m_sceneManager->m_currentScene))
+    m_render(new Render(this, m_sceneManager->m_currentScene, &m_window))
 {
     m_window.create(sf::VideoMode(m_windowSize),"mainPanel");
     m_window.clear(sf::Color::Black);
@@ -28,6 +31,9 @@ Engine::~Engine(){
 
 void Engine::start(){
     // std::cout<<"ready"<<std::endl;
+
+    
+
     m_sceneManager->changeScene(SceneName::startScene);
     
     m_render->start();
