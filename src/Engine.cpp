@@ -7,11 +7,11 @@ class Render;
 
 Engine::Engine(sf::Vector2u windowSize, sf::Vector2u arenaSize)
     : 
-    m_windowSize(windowSize),
-    m_arenaSize(arenaSize),
+    m_windowSize(std::move(windowSize)),
+    m_arenaSize(std::move(arenaSize)),
     m_inputHandler(new InputHandler()),
     m_sceneManager(new SceneManager(&m_window)),
-    m_render(new Render(this, m_sceneManager->m_currentScene, &m_window))
+    m_render(new Render(&m_font, m_sceneManager->m_currentScene, &m_window))
 {
     m_window.create(sf::VideoMode(m_windowSize),"mainPanel");
     m_window.clear(sf::Color::Black);
@@ -35,6 +35,7 @@ void Engine::start(){
     m_sceneManager->changeScene(SceneName::startScene);
     
     m_render->start();
+    m_inputHandler->setTombolPointer(m_render->getTombolContainerPointer());
     gameloop();
 }
 

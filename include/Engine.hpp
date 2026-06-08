@@ -22,6 +22,6 @@ class Engine{
         sf::Vector2u m_windowSize;
         sf::Vector2i m_arenaSize;
         Render* m_render=nullptr;
-        InputHandler* m_inputHandler;
+        InputHandler* m_inputHandler=nullptr;
         uint8_t limitFramerate=60;
 };

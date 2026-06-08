@@ -21,6 +21,7 @@ src/Engine.cpp include/Engine.hpp
 src/Render.cpp include/Render.hpp 
 src/SceneManager.cpp include/SceneManager.hpp 
 include/structData.hpp
+src/komponent/TombolContainer.cpp include/komponent/TombolContainer.hpp 
 src/InputHandler.cpp include/InputHandler.hpp)
 
 # Otomatis copy DLL SFML ke folder output executable

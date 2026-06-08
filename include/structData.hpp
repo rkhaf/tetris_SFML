@@ -39,24 +39,13 @@ struct rectStruct{
 
 struct tombolStruct{
     sf::Vector2f m_posisiTombol;
-
     sf::Vector2f m_sizeBg;
-    float m_outlineThicknessBg;
-    sf::Color m_warnaTeks;
-    uint8_t m_sizeKarakterTeks;
-    sf::Color m_warnaFillBg;
-    sf::Color m_warnaOutlineBg;
     std::string m_teks;
 
-    tombolStruct(sf::Vector2f posisiTombol, sf::Vector2f sizeBg, float outlineThicknessBg, sf::Color warnaTeks, uint8_t sizeKarakterTeks, sf::Color warnaFillBg, sf::Color warnaOutlineBg, std::string teks)
+    tombolStruct(sf::Vector2f posisiTombol, sf::Vector2f sizeBg, std::string teks)
     :
     m_posisiTombol(posisiTombol),
     m_sizeBg(sizeBg),
-    m_outlineThicknessBg(outlineThicknessBg),
-    m_warnaTeks(warnaTeks),
-    m_sizeKarakterTeks(sizeKarakterTeks),
-    m_warnaFillBg(warnaFillBg),
-    m_warnaOutlineBg(warnaOutlineBg),
     m_teks(teks)
     {};
 
