@@ -17,6 +17,8 @@ Engine::Engine(sf::Vector2u windowSize, sf::Vector2u arenaSize)
     m_window.clear(sf::Color::Black);
     m_window.setFramerateLimit(limitFramerate);
 
+    m_sceneManager->start();
+
 
     if(!m_font.openFromFile("assets/ds_digital/DS-DIGI.TTF")){
         std::cout<<"gagal"<<std::endl;
@@ -36,6 +38,8 @@ void Engine::start(){
     
     m_render->start();
     m_inputHandler->setTombolPointer(m_render->getTombolContainerPointer());
+    m_render->m_TEST_inputHandler=m_inputHandler;
+    m_render->TESTKEYBINDS();
     gameloop();
 }
 

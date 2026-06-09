@@ -12,16 +12,19 @@ TombolContainer::~TombolContainer(){
 }
 
 void TombolContainer::click(){
-    std::cout<<"selected: "<<m_currentHovered<<std::endl;
+    // std::cout<<"selected: "<<m_currentHovered<<std::endl;
+    if(m_kumpulanLambda.size()>0){
+        m_kumpulanLambda[m_currentHovered]();
+    }
 }
 
 void TombolContainer::geser(char key){
 
-    if(key=='d'){
+    if(key=='a'){
         if(m_currentHovered>0){
             m_currentHovered--;
         }
-    }else if(key=='a'){
+    }else if(key=='d'){
         if(m_currentHovered<getSize()-1){
             m_currentHovered++;
         }
@@ -29,7 +32,7 @@ void TombolContainer::geser(char key){
     updateVisual();
 }
 
-void TombolContainer::generate(sf::Vector2f posisiTombol, sf::Vector2f sizeTombol, const std::string& teks){
+void TombolContainer::generate(sf::Vector2f posisiTombol, sf::Vector2f sizeTombol, const std::string& teks, std::function<void()> action){
     if(sizeTombol.x>=sizeTombol.y*2){m_characterSize=sizeTombol.y;}
     else{m_characterSize=sizeTombol.x/2;}
 
@@ -45,6 +48,7 @@ void TombolContainer::generate(sf::Vector2f posisiTombol, sf::Vector2f sizeTombo
     
     tempRect->setFillColor(m_buttonBg);
     tempRect->setPosition(posisiTombol);
+    tempRect->setOutlineThickness(m_bgOutlineThickness);
     // tempText->setCharacterSize(m_characterSize);
 
     // tempText->setCharacterSize(64);
@@ -57,6 +61,8 @@ void TombolContainer::generate(sf::Vector2f posisiTombol, sf::Vector2f sizeTombo
 
     m_kumpulanTeks.push_back(std::move(tempText));
     m_kumpulanBg.push_back(std::move(tempRect));
+    m_kumpulanLambda.push_back(std::move(action));
+
     // m_kumpulanBg.push_back(std::move(boundsVisual));
 
     // std::cout<<"ukuran kumpulanTeks: "<<m_kumpulanTeks.size()<<std::endl;
@@ -76,9 +82,11 @@ void TombolContainer::updateVisual(){
     if(getSize()<0){throw;}
     else{
         for(int i=0 ; i<getSize() ; i++){
-            m_kumpulanBg[i]->setFillColor(sf::Color::Black);
+            // m_kumpulanBg[i]->setFillColor(sf::Color::Black);
+            m_kumpulanBg[i]->setOutlineColor(sf::Color::Black);
         }
-        m_kumpulanBg[m_currentHovered]->setFillColor(sf::Color::Green);
+        // m_kumpulanBg[m_currentHovered]->setFillColor(sf::Color::Green);
+        m_kumpulanBg[m_currentHovered]->setOutlineColor(sf::Color::White);
     }
 }
 

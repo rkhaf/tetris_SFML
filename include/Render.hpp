@@ -5,6 +5,7 @@
 // #include <iostream>
 #include "Engine.hpp"
 #include "komponent/TombolContainer.hpp"
+#include "InputHandler.hpp"
 
 class Engine;
 
@@ -17,12 +18,15 @@ class Render{
         std::unique_ptr<TombolContainer> m_tombolContainer = nullptr;
 
         sf::RenderWindow* m_window = nullptr;
-    
-    public:
+        
+        public:
+        InputHandler* m_TEST_inputHandler = nullptr;
         ~Render();
         Render(sf::Font* font, std::vector<sceneStruct*>& currentScenePointer, sf::RenderWindow* window);
         void visualize();
         void start();
+        void TESTKEYBINDS();
+
         TombolContainer& getTombolContainerPointer();
         // void init();
 };

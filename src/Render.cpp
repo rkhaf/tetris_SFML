@@ -14,6 +14,19 @@ Render::Render(sf::Font* font, std::vector<sceneStruct*>& currentScenePointer, s
     // std::cout<<&m_currentScenePointer<<std::endl;
 }
 
+void Render::TESTKEYBINDS(){
+    for(sceneStruct* scene : m_currentScenePointer){
+        if (scene != nullptr) {
+            if(scene->m_keybinds.size()>0){
+                if(m_TEST_inputHandler!=nullptr){
+                    m_TEST_inputHandler->assign(scene->m_keybinds);
+                }else{throw;}
+
+            }
+        }
+    }
+}
+
 void Render::start(){
     // std::cout<<m_currentScenePointer<<std::endl;
 
@@ -49,15 +62,21 @@ void Render::start(){
             //ngeiterasi komponen tombol
             if(scene->m_kumpulanTombol.size()>0){
 
-                // if(m_tombolContainer==nullptr){
-                //     m_tombolContainer = std::make_unique<TombolContainer>(m_font);
-                // }
-
                 for(const auto& komponen : scene->m_kumpulanTombol){
                     // std::cout<<komponen.second.m_teks<<std::endl;
-                    m_tombolContainer->generate(komponen.second.m_posisiTombol, komponen.second.m_sizeBg, komponen.second.m_teks);
+                    m_tombolContainer->generate(komponen.second.m_posisiTombol, komponen.second.m_sizeBg, komponen.second.m_teks, komponen.second.m_action); 
+                    // if(m_TEST_inputHandler!=nullptr){
+                    //     m_TEST_inputHandler->assign()
+                    // }
                 }
             }
+
+            // if(scene->m_keybinds.size()>0){
+            //     if(m_TEST_inputHandler!=nullptr){
+            //         m_TEST_inputHandler->assign(scene->m_keybinds);
+            //     }else{throw;}
+
+            // }
         }else{
             std::cout<<"scenenya null"<<std::endl;
         }

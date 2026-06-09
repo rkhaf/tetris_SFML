@@ -1,8 +1,17 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <functional>
 
 enum class SceneName : uint8_t{
     startScene = 0
+};
+
+enum class Kontrol : uint8_t{
+    a = 0,
+    d = 1,
+    s = 2,
+    space = 3,
+    esc = 4
 };
 
 struct textStruct{
@@ -41,12 +50,14 @@ struct tombolStruct{
     sf::Vector2f m_posisiTombol;
     sf::Vector2f m_sizeBg;
     std::string m_teks;
+    std::function<void()> m_action = nullptr;
 
-    tombolStruct(sf::Vector2f posisiTombol, sf::Vector2f sizeBg, std::string teks)
+    tombolStruct(sf::Vector2f posisiTombol, sf::Vector2f sizeBg, std::string teks, std::function<void()> action)
     :
     m_posisiTombol(posisiTombol),
     m_sizeBg(sizeBg),
-    m_teks(teks)
+    m_teks(teks),
+    m_action(std::move(action))
     {};
 
 };
@@ -56,6 +67,7 @@ struct sceneStruct{
     std::unordered_map<std::string, textStruct> m_kumpulanTeks;
     std::unordered_map<std::string, rectStruct> m_kumpulanRect;
     std::unordered_map<std::string, tombolStruct> m_kumpulanTombol;
+    std::unordered_map<Kontrol, std::function<void()>> m_keybinds;
 
     sceneStruct(SceneName namaScene) : m_namaScene(namaScene) {};
 };

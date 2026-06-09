@@ -8,6 +8,10 @@ SceneManager::SceneManager(sf::RenderWindow* window)
 {
 }
 
+void SceneManager::start(){
+    windowCenter = sf::Vector2f(m_window->getSize().x / 2, m_window->getSize().y / 2);
+}
+
 void SceneManager::changeScene(SceneName targetScene){
 //CEK POINTER
 
@@ -25,8 +29,7 @@ if(m_window!=nullptr){
 void SceneManager::generateStartScene(){
     sceneStruct* startScene = new sceneStruct(SceneName::startScene);
 
-
-    
+    //create komponen
     startScene->m_kumpulanRect.try_emplace("mainPanel", 
         sf::Vector2f{m_window->getSize().x - (m_margin * 2), m_window->getSize().y - (m_margin * 2)}, 
         sf::Vector2f{m_margin, m_margin}, 
@@ -37,21 +40,35 @@ void SceneManager::generateStartScene(){
     startScene->m_kumpulanTeks.try_emplace("title", 
         sf::Vector2f{static_cast<float>(m_window->getSize().x / 3.5), 0.0f}, 
         "Tetris", 
-        sf::Color::White, 128
+        sf::Color::White,
+        150
     );
-    // startScene->m_kumpulanTeks.try_emplace("Main", sf::Vector2f{static_cast<float>(m_window->getSize().x / 2.3), static_cast<float>(startScene->m_kumpulanTeks.at("title").m_sizeKarakter)}, "Main", sf::Color::White, 64);
 
-    startScene->m_kumpulanTombol.try_emplace("play", 
-        sf::Vector2f{static_cast<float>(m_window->getSize().x / 2), static_cast<float>(m_window->getSize().y / 2)}, 
-        sf::Vector2f{(256.0f * 2), (128.0f * 0.5)},
-        "Main"
+    //create tombol
+    startScene->m_kumpulanTombol.try_emplace("exit", 
+        sf::Vector2f{static_cast<float>(windowCenter.x), static_cast<float>(windowCenter.y + ((buttonStartSize.y + buttonGap) * 2))}, 
+        sf::Vector2f{buttonStartSize},
+        "Keluar",
+        [this]() { std::cout<<"keluar"<<std::endl; }
     );
 
     startScene->m_kumpulanTombol.try_emplace("settings", 
-        sf::Vector2f{static_cast<float>(m_window->getSize().x / 2), static_cast<float>((m_window->getSize().y / 2)+(128.0f + 12.0f))}, 
-        sf::Vector2f{(256.0f * 2), (128.0f * 0.5)},
-        "Pengaturan"
+        sf::Vector2f{static_cast<float>(windowCenter.x), static_cast<float>(windowCenter.y + ((buttonStartSize.y + buttonGap) * 1))}, 
+        sf::Vector2f{buttonStartSize},
+        "Pengaturan",
+        [this]() { std::cout<<"masuk ke setings"<<std::endl; }
     );
+
+    startScene->m_kumpulanTombol.try_emplace("play", 
+        sf::Vector2f{static_cast<float>(m_window->getSize().x / 2), static_cast<float>(m_window->getSize().y / 2)}, 
+        sf::Vector2f{buttonStartSize},
+        "Main",
+        [this]() { std::cout<<"ayo main yuk"<<std::endl; }
+    );
+
+    //setting keybinds
+    startScene->m_keybinds[Kontrol::a] = [this](){std::cout<<"woilah"<<std::endl;};
+
 
     m_currentScene.clear();
     m_currentScene.push_back(startScene);

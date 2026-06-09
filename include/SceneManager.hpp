@@ -12,6 +12,9 @@ class SceneManager{
         SceneName m_defaultScene=SceneName::startScene;
         float m_margin=12.0f;
         sf::RenderWindow* m_window=nullptr;
+        sf::Vector2f buttonStartSize = sf::Vector2f((256.0f * 2), (128.0f * 0.5));
+        float buttonGap = 18.0f;
+        sf::Vector2f windowCenter;
 
         // sceneStruct* 
         
@@ -23,5 +26,6 @@ class SceneManager{
 
         void changeScene(SceneName targetScene);
         void generateStartScene();
+        void start();
 
 };
