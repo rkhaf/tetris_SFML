@@ -36,7 +36,7 @@ void Engine::start(){
 
     m_sceneManager->changeScene(SceneName::startScene);
     
-    m_render->start();
+    m_render->setup();
     m_inputHandler->setTombolPointer(m_render->getTombolContainerPointer());
     m_render->m_TEST_inputHandler=m_inputHandler;
     m_render->TESTKEYBINDS();

@@ -67,7 +67,22 @@ void SceneManager::generateStartScene(){
     );
 
     //setting keybinds
-    startScene->m_keybinds[Kontrol::a] = [this](){std::cout<<"woilah"<<std::endl;};
+    // startScene->m_keybinds[Kontrol::a] = [startScene](){std::cout<<startScene->m_kumpulanRect.size();};
+
+    // startScene->m_keybinds[Kontrol::a] = [startScene](){startScene->m_kumpulanTombol.find("play")->second.m_action;};
+    // startScene->m_keybinds[Kontrol::a] = [startScene](){std::cout<<"woi jmbyt";};
+
+    startScene->m_keybinds[Kontrol::a] = [startScene]() {
+        auto it = startScene->m_kumpulanTombol.find("play");
+        // Pastikan tombolnya beneran ketemu dulu di memori!
+        if (it != startScene->m_kumpulanTombol.end()) {
+            if (it->second.m_action) { // Pastikan fungsinya ada
+                it->second.m_action(); // Baru eksekusi!
+            }
+        }
+    };
+
+    // auto test = startScene->m_kumpulanTombol[Kontrol::a].m_action;
 
 
     m_currentScene.clear();

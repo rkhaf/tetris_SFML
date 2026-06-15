@@ -26,7 +26,7 @@ void InputHandler::assign(std::unordered_map<Kontrol, std::function<void()>>& ke
     //     m_signaling[nama] = lambda;
     // }
     m_signaling = keybinds;
-    std::cout<<"asd"<<std::endl;
+    // std::cout<<"asd"<<std::endl;
 }
 
 void InputHandler::handle(const sf::Keyboard::Key kunci){

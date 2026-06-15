@@ -24,7 +24,7 @@ class Render{
         ~Render();
         Render(sf::Font* font, std::vector<sceneStruct*>& currentScenePointer, sf::RenderWindow* window);
         void visualize();
-        void start();
+        void setup();
         void TESTKEYBINDS();
 
         TombolContainer& getTombolContainerPointer();

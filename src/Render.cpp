@@ -15,21 +15,24 @@ Render::Render(sf::Font* font, std::vector<sceneStruct*>& currentScenePointer, s
 }
 
 void Render::TESTKEYBINDS(){
-    for(sceneStruct* scene : m_currentScenePointer){
-        if (scene != nullptr) {
-            if(scene->m_keybinds.size()>0){
-                if(m_TEST_inputHandler!=nullptr){
-                    m_TEST_inputHandler->assign(scene->m_keybinds);
-                }else{throw;}
+    if(m_currentScenePointer.size()>0){
 
+        for(sceneStruct* scene : m_currentScenePointer){
+            if (scene != nullptr) {
+                if(scene->m_keybinds.size()>0){
+                    if(m_TEST_inputHandler!=nullptr){
+                        m_TEST_inputHandler->assign(scene->m_keybinds);
+                    }
+    
+                }
             }
         }
     }
 }
 
-void Render::start(){
-    // std::cout<<m_currentScenePointer<<std::endl;
 
+
+void Render::setup(){
     for(sceneStruct* scene : m_currentScenePointer){
         if (scene != nullptr) {
 
@@ -100,6 +103,7 @@ void Render::visualize(){
             m_window->draw(*komponen);
         }
     }
+    TESTKEYBINDS();
 }
 
 TombolContainer& Render::getTombolContainerPointer(){
