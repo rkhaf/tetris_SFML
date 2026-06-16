@@ -18,13 +18,13 @@ void TombolContainer::click(){
     }
 }
 
-void TombolContainer::geser(char key){
+void TombolContainer::geser(Kontrol key){
 
-    if(key=='a'){
+    if(key==Kontrol::kiri){
         if(m_currentHovered>0){
             m_currentHovered--;
         }
-    }else if(key=='d'){
+    }else if(key==Kontrol::kanan){
         if(m_currentHovered<getSize()-1){
             m_currentHovered++;
         }

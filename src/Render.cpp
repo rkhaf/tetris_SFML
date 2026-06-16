@@ -1,39 +1,48 @@
 #include "../include/Render.hpp"
 #include <iostream>
-#include "../include/Engine.hpp"
+// #include "../include/Engine.hpp"
+#include "../include/komponent/TombolContainer.hpp"
 
-Render::Render(sf::Font* font, std::vector<sceneStruct*>& currentScenePointer, sf::RenderWindow* window)
-    :
-    m_currentScenePointer(currentScenePointer),
-    m_font(font),
-    m_tombolContainer(std::make_unique<TombolContainer>(*m_font)),
-    m_window(window)
-    // m_sceneManager(sceneManager)
-
+Render::Render(sf::Font* font)
+: m_font(font)
 {
-    // std::cout<<&m_currentScenePointer<<std::endl;
+    m_tombolContainer = std::make_unique<TombolContainer>(*m_font);
+
 }
 
-void Render::TESTKEYBINDS(){
-    if(m_currentScenePointer.size()>0){
+Render::~Render() = default;
 
-        for(sceneStruct* scene : m_currentScenePointer){
-            if (scene != nullptr) {
-                if(scene->m_keybinds.size()>0){
-                    if(m_TEST_inputHandler!=nullptr){
-                        m_TEST_inputHandler->assign(scene->m_keybinds);
-                    }
+// void Render::TESTKEYBINDS(){
+//     if(m_currentScenePointer->size()>0){
+
+//         for(sceneStruct* scene : *m_currentScenePointer){
+//             if (scene != nullptr) {
+//                 if(scene->m_keybinds.size()>0){
+//                     if(m_TEST_inputHandler!=nullptr){
+//                         // m_TEST_inputHandler->assign(scene->m_keybinds);
+//                     }
     
-                }
-            }
-        }
-    }
-}
+//                 }
+//             }
+//         }
+//     }
+// }
 
+void Render::init(std::vector<sceneStruct*>& currentScenePointer, sf::RenderWindow* window){
+    // m_currentScenePointer(currentScenePointer),
+    // m_font(font),
+    // m_tombolContainer(std::make_unique<TombolContainer>(*m_font)),
+    // m_window(window)
+
+    m_currentScenePointer = &currentScenePointer;
+    // m_tombolContainer = std::make_unique<TombolContainer>(*m_font);
+    m_window = window;
+    setup();
+}
 
 
 void Render::setup(){
-    for(sceneStruct* scene : m_currentScenePointer){
+    for(sceneStruct* scene : *m_currentScenePointer){
         if (scene != nullptr) {
 
             //ngeiterasi komponen rect
@@ -87,6 +96,7 @@ void Render::setup(){
     }
 }
 
+//ngdraw komponen komponen Drawable
 void Render::visualize(){
     if(m_komponenScene.size()>0){
         for(const auto& komponen : m_komponenScene){
@@ -103,12 +113,12 @@ void Render::visualize(){
             m_window->draw(*komponen);
         }
     }
-    TESTKEYBINDS();
+    // TESTKEYBINDS();
 }
 
-TombolContainer& Render::getTombolContainerPointer(){
+std::unique_ptr<TombolContainer>* Render::getTombolContainerPointer(){
     if(m_tombolContainer!=nullptr){
-        return *m_tombolContainer;
+        return &m_tombolContainer;
     }else{
         throw;
     }

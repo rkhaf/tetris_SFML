@@ -1,15 +1,16 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "komponent/TombolContainer.hpp"
+// #include "komponent/TombolContainer.hpp"
 #include "structData.hpp"
 #include <map>
 
+class TombolContainer;
 
 class InputHandler{
     private:
         TombolContainer* m_tombolContainerPointer = nullptr;
 
-        std::unordered_map<Kontrol, std::function<void()>> m_signaling;
+        std::unordered_map<Kontrol, std::vector<std::function<void()>>>* m_signaling;
         
 
     public:
@@ -18,6 +19,6 @@ class InputHandler{
         ~InputHandler();
 
         void handle(sf::Keyboard::Key kunci);
-        void setTombolPointer(TombolContainer& m_tombolContainer);
-        void assign(std::unordered_map<Kontrol, std::function<void()>>& keybinds);
+        // void setTombolPointer(TombolContainer& m_tombolContainer);
+        void init(std::unordered_map<Kontrol, std::vector<std::function<void()>>>* keybinds);
 };

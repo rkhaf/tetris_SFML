@@ -1,11 +1,13 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 // #include "scenes/startScene.hpp"
-#include "SceneManager.hpp"
+// #include "SceneManager.hpp"
 #include "structData.hpp"
-#include "InputHandler.hpp"
+// #include "InputHandler.hpp"
 
 class Render;
+class SceneManager;
+class InputHandler;
 
 class Engine{
     public:
@@ -15,7 +17,7 @@ class Engine{
     
     ~Engine();
     Engine(sf::Vector2u windowSize, sf::Vector2u arenaSize);
-    void start();
+    void init();
     void gameloop();
 
     private:

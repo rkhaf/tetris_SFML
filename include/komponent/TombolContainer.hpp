@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <functional>
+#include "../structData.hpp"
 
 
 class TombolContainer{
@@ -23,7 +24,7 @@ class TombolContainer{
         ~TombolContainer();
 
         void click();
-        void geser(char key);
+        void geser(Kontrol key);
         void generate(sf::Vector2f posisiTombol, sf::Vector2f sizeTombol, const std::string& teks, std::function<void()> action);
         int getSize();
         void updateVisual();

@@ -5,7 +5,7 @@
 #include "structData.hpp"
 // #include "Render.hpp"
 
-// class Render;
+class TombolContainer;
 
 class SceneManager{
     private:
@@ -15,17 +15,20 @@ class SceneManager{
         sf::Vector2f buttonStartSize = sf::Vector2f((256.0f * 2), (128.0f * 0.5));
         float buttonGap = 18.0f;
         sf::Vector2f windowCenter;
+        std::unique_ptr<TombolContainer>* m_tombolContainer=nullptr;  
 
         // sceneStruct* 
+        void generateStartScene();
         
     public:
         std::vector<sceneStruct*> m_currentScene;
         // Render* m_render=nullptr;
     
-        SceneManager(sf::RenderWindow* window);
+        SceneManager();
 
         void changeScene(SceneName targetScene);
-        void generateStartScene();
-        void start();
+        // void init(sf::RenderWindow* window, TombolContainer* tombolContainer);
+        void init(sf::RenderWindow* window, std::unique_ptr<TombolContainer>* tombolContainerPtr);
+        std::unordered_map<Kontrol, std::vector<std::function<void()>>>* getCurrentKeybinds();
 
 };
