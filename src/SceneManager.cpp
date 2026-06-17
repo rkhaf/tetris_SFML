@@ -18,18 +18,34 @@ void SceneManager::init(sf::RenderWindow* window, std::unique_ptr<TombolContaine
 
 //ngeclear seluruh scene, nambahin yg baru
 void SceneManager::changeScene(SceneName targetScene){
-//CEK POINTER
-
-if(m_window!=nullptr){
-    m_currentScene.clear();
-    switch (targetScene){
-        case SceneName::startScene:
-            generateStartScene();
-            break;
+    //CEK POINTER
+    if(m_window!=nullptr){
+        m_currentScene.clear();
+        switch (targetScene){
+            case SceneName::startScene:
+                generateStartScene();
+                break;
+        }
+    }else{
+        std::cout<<"windownya kosong"<<std::endl;
     }
-}else{
-    std::cout<<"windownya kosong"<<std::endl;
 }
+
+void SceneManager::addScene(SceneName targetScene){
+    if(m_window!=nullptr){
+        switch (targetScene){
+            case SceneName::startScene:
+                generateStartScene();
+                break;
+
+            case SceneName::exitConfScene:
+                generateExitConfirmationPanel();
+                break;
+        }
+    }else{
+        std::cout<<"windownya kosong"<<std::endl;
+    }
+    
 }
 
 void SceneManager::generateStartScene(){
@@ -56,7 +72,8 @@ void SceneManager::generateStartScene(){
         sf::Vector2f{static_cast<float>(windowCenter.x), static_cast<float>(windowCenter.y + ((buttonStartSize.y + buttonGap) * 2))}, 
         sf::Vector2f{buttonStartSize},
         "Keluar",
-        [this]() { std::cout<<"keluar"<<std::endl; }
+        // [this]() { std::cout<<"keluar"<<std::endl; }
+        [this]() { addScene(SceneName::exitConfScene);}
     );
 
     startScene->m_kumpulanTombol.try_emplace("settings", 
@@ -75,26 +92,27 @@ void SceneManager::generateStartScene(){
     );
 
     //setting keybinds
-    // startScene->m_keybinds[Kontrol::kiri] = [startScene]() {
-    //     auto it = startScene->m_kumpulanTombol.find("play");
-    //     // Pastikan tombolnya beneran ketemu dulu di memori!
-    //     if (it != startScene->m_kumpulanTombol.end()) {
-    //         if (it->second.m_action) { // Pastikan fungsinya ada
-    //             it->second.m_action(); // Baru eksekusi!
-    //         }
-    //     }
-    // };
-
-
-    //setting keybinds
     startScene->m_keybinds[Kontrol::kiri].push_back([this](){m_tombolContainer->get()->geser(Kontrol::kiri);});
     startScene->m_keybinds[Kontrol::kanan].push_back([this](){m_tombolContainer->get()->geser(Kontrol::kanan);});
     startScene->m_keybinds[Kontrol::drop].push_back([this](){m_tombolContainer->get()->click();});
 
-    // auto test = startScene->m_kumpulanTombol[Kontrol::a].m_action;
-
     m_currentScene.push_back(startScene);
     getCurrentKeybinds();
+}
+
+void SceneManager::generateExitConfirmationPanel(){
+    sceneStruct* exitConfPanel = new sceneStruct(SceneName::exitConfScene);
+
+    exitConfPanel->m_kumpulanRect.try_emplace("exitPanel", 
+        // sf::Vector2f{(m_window->getSize().x + 12.0f) / 2.0f, m_window->getSize().y / 2.0f}, 
+        sf::Vector2f{m_window->getSize().x - (m_margin * 8), m_window->getSize().y - (m_margin * 8)},
+        sf::Vector2f{m_margin * 4, m_margin * 4}, 
+        1.0f, sf::Color::Blue, 
+        sf::Color::White
+    );
+
+    m_currentScene.push_back(exitConfPanel);
+    std::cout << "yea" << m_currentScene.size() << std::endl;
 }
 
 //buat ngambil keybinds yang berlaku di scene yg lagi difokusin

@@ -19,6 +19,7 @@ class SceneManager{
 
         // sceneStruct* 
         void generateStartScene();
+        void generateExitConfirmationPanel();
         
     public:
         std::vector<sceneStruct*> m_currentScene;
@@ -27,6 +28,7 @@ class SceneManager{
         SceneManager();
 
         void changeScene(SceneName targetScene);
+        void addScene(SceneName targetScene);
         // void init(sf::RenderWindow* window, TombolContainer* tombolContainer);
         void init(sf::RenderWindow* window, std::unique_ptr<TombolContainer>* tombolContainerPtr);
         std::unordered_map<Kontrol, std::vector<std::function<void()>>>* getCurrentKeybinds();

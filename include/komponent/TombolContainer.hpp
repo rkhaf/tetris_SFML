@@ -28,6 +28,7 @@ class TombolContainer{
         void generate(sf::Vector2f posisiTombol, sf::Vector2f sizeTombol, const std::string& teks, std::function<void()> action);
         int getSize();
         void updateVisual();
+        void resetContainer();
         std::vector<sf::Text*>& getKumpulanTeks();
         std::vector<sf::RectangleShape*>& getKumpulanBg();
 };

@@ -42,10 +42,12 @@ void Render::init(std::vector<sceneStruct*>& currentScenePointer, sf::RenderWind
 
 
 void Render::setup(){
+    m_currentSceneSize = m_currentScenePointer->size();
     for(sceneStruct* scene : *m_currentScenePointer){
         if (scene != nullptr) {
 
             //ngeiterasi komponen rect
+
             if(scene->m_kumpulanRect.size()>0){
                 for(const auto& komponen : scene->m_kumpulanRect){
 
@@ -82,6 +84,9 @@ void Render::setup(){
                     // }
                 }
             }
+            // else{
+            //     m_tombolContainer->resetContainer();
+            // }
 
             // if(scene->m_keybinds.size()>0){
             //     if(m_TEST_inputHandler!=nullptr){
@@ -94,10 +99,14 @@ void Render::setup(){
         }
 
     }
+    std::cout << "tset" << std::endl;
 }
 
 //ngdraw komponen komponen Drawable
 void Render::visualize(){
+    if(m_currentScenePointer->size()!=m_currentSceneSize){
+        setup();
+    }
     if(m_komponenScene.size()>0){
         for(const auto& komponen : m_komponenScene){
             m_window->draw(*komponen);

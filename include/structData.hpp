@@ -3,7 +3,8 @@
 #include <functional>
 
 enum class SceneName : uint8_t{
-    startScene = 0
+    startScene = 0,
+    exitConfScene = 1
 };
 
 enum class Kontrol : uint8_t{

@@ -96,3 +96,11 @@ std::vector<sf::Text*>& TombolContainer::getKumpulanTeks(){
 std::vector<sf::RectangleShape*>& TombolContainer::getKumpulanBg(){
     return m_kumpulanBg;
 }
+
+void TombolContainer::resetContainer(){
+    for(int i=0 ; i<getSize() ; i++){
+        delete m_kumpulanBg[i];
+        delete m_kumpulanTeks[i];
+        m_kumpulanLambda.clear();
+    }
+}

@@ -18,8 +18,10 @@ class Render{
     
         sf::Font* m_font;
         std::unique_ptr<TombolContainer> m_tombolContainer;
+        // std::vector<std::unique_ptr<TombolContainer>> m_tombolContainer;
 
         sf::RenderWindow* m_window = nullptr;
+        int m_currentSceneSize = 0;
         
     public:
         // InputHandler* m_TEST_inputHandler = nullptr;
