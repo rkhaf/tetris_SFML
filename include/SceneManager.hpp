@@ -15,11 +15,16 @@ class SceneManager{
         sf::Vector2f buttonStartSize = sf::Vector2f((256.0f * 2), (128.0f * 0.5));
         float buttonGap = 18.0f;
         sf::Vector2f windowCenter;
-        std::unique_ptr<TombolContainer>* m_tombolContainer=nullptr;  
+        std::unordered_map<SceneName, std::unique_ptr<TombolContainer>>* m_tombolContainer=nullptr;  
+        sf::Font* m_font;
+        std::unordered_map<Kontrol, std::vector<std::function<void()>>>* m_currentKeybinds = nullptr;
+
 
         // sceneStruct* 
+        void updateCurrentBindings();
         void generateStartScene();
         void generateExitConfirmationPanel();
+
         
     public:
         std::vector<sceneStruct*> m_currentScene;
@@ -29,8 +34,10 @@ class SceneManager{
 
         void changeScene(SceneName targetScene);
         void addScene(SceneName targetScene);
+        // void updateBindings();
         // void init(sf::RenderWindow* window, TombolContainer* tombolContainer);
-        void init(sf::RenderWindow* window, std::unique_ptr<TombolContainer>* tombolContainerPtr);
-        std::unordered_map<Kontrol, std::vector<std::function<void()>>>* getCurrentKeybinds();
+        void init(sf::Font* font, sf::RenderWindow* window, std::unordered_map<SceneName, std::unique_ptr<TombolContainer>>* tombolContainerPtr);
+        // std::unordered_map<Kontrol, std::vector<std::function<void()>>>* getCurrentKeybinds();
+        sceneStruct* getCurrentKeybinds();
 
 };

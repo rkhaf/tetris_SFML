@@ -37,10 +37,12 @@ void Engine::init(){
     std::cout<<"ready"<<std::endl;
 
     // m_sceneManager->init(&m_window, (*m_render).getTombolContainerPointer());
-    m_sceneManager->init(&m_window, m_render->getTombolContainerPointer());
+    m_sceneManager->init(&m_font,&m_window, m_render->getTombolContainerPointer());
     m_render->init(m_sceneManager->m_currentScene, &m_window);
-    m_inputHandler->init(m_sceneManager->getCurrentKeybinds());
+    // m_inputHandler->init(m_sceneManager->getCurrentKeybinds());
+    m_inputHandler->init(&(m_sceneManager->getCurrentKeybinds()->m_keybinds));
 
+    std::cout << "ad" << std::endl;
     // m_sceneManager->changeScene(SceneName::startScene);
     
     // m_render->setup();
@@ -79,5 +81,5 @@ void Engine::gameloop(){
         }
         m_window.display();
     }
-
+    std::cout << "ad" << std::endl;
 }

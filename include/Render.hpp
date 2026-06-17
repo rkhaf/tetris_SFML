@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <map>
 // #include "Scene.hpp"
 // #include "SceneManager.hpp"
 // #include <iostream>
@@ -14,11 +15,14 @@ class TombolContainer;
 class Render{
     private:
         std::vector<sceneStruct*>* m_currentScenePointer;
-        std::vector<std::unique_ptr<sf::Drawable>> m_komponenScene;
+        // std::vector<std::unique_ptr<sf::Drawable>> m_komponenScene;
+        std::map<SceneName, std::vector<std::unique_ptr<sf::Drawable>>> m_komponenScene;
+        
     
         sf::Font* m_font;
-        std::unique_ptr<TombolContainer> m_tombolContainer;
+        // std::unique_ptr<TombolContainer> m_tombolContainer;
         // std::vector<std::unique_ptr<TombolContainer>> m_tombolContainer;
+        std::unordered_map<SceneName, std::unique_ptr<TombolContainer>> m_tombolContainer;
 
         sf::RenderWindow* m_window = nullptr;
         int m_currentSceneSize = 0;
@@ -33,6 +37,6 @@ class Render{
         void init(std::vector<sceneStruct*>& currentScenePointer, sf::RenderWindow* window);
 
         // TombolContainer& getTombolContainerPointer();
-        std::unique_ptr<TombolContainer>* getTombolContainerPointer();
+        std::unordered_map<SceneName, std::unique_ptr<TombolContainer>>* getTombolContainerPointer();
         // void init();
 };

@@ -53,4 +53,5 @@ void InputHandler::handle(const sf::Keyboard::Key kunci){
             }
         }
     }
+    // std::cout << m_signaling->size() << std::endl;
 }

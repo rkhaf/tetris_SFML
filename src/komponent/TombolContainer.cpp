@@ -19,7 +19,7 @@ void TombolContainer::click(){
 }
 
 void TombolContainer::geser(Kontrol key){
-
+    std::cout << this << "curr hovered: "<< m_currentHovered << std::endl;
     if(key==Kontrol::kiri){
         if(m_currentHovered>0){
             m_currentHovered--;
@@ -104,3 +104,7 @@ void TombolContainer::resetContainer(){
         m_kumpulanLambda.clear();
     }
 }
+
+// void TombolContainer::drawToWindow(){
+
+// }
