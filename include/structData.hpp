@@ -2,6 +2,18 @@
 #include <SFML/Graphics.hpp>
 #include <functional>
 
+namespace globalColors {
+    // const sf::Color NeonCyan(0x00f3ffFF);
+    const sf::Color panelFill(0x242434FF);
+    const sf::Color panelFill2(0x33334DFF);
+    const sf::Color panelOutline(0x3d3d5cFF);
+    const sf::Color buttonHovered(0x9200D9FF);
+    const sf::Color fontColor(0xffffffff);
+    const sf::Color darkenBg85(0x000000D9);
+    const sf::Color darkenBg70(0x000000BF);
+    const sf::Color darkenBg25(0x00000040);
+}
+
 enum class SceneName : uint8_t{
     startScene = 0,
     exitConfScene = 1
@@ -16,7 +28,6 @@ enum class Kontrol : uint8_t{
 };
 
 struct textStruct{
-    sf::Keyboard::Key test = sf::Keyboard::Key::A;
     std::string m_teks;
     sf::Vector2f m_posisi;
     sf::Color m_warna;
@@ -69,7 +80,6 @@ struct sceneStruct{
     std::unordered_map<std::string, textStruct> m_kumpulanTeks;
     std::unordered_map<std::string, rectStruct> m_kumpulanRect;
     std::unordered_map<std::string, tombolStruct> m_kumpulanTombol;
-    // std::unordered_map<Kontrol, std::function<void()>> m_keybinds;
     std::unordered_map<Kontrol, std::vector<std::function<void()>>> m_keybinds;
 
     sceneStruct(SceneName namaScene) : m_namaScene(namaScene) {};

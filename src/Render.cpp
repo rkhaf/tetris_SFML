@@ -6,52 +6,33 @@
 Render::Render(sf::Font* font)
 : m_font(font)
 {
-    // m_tombolContainer = std::make_unique<TombolContainer>(*m_font);
-
 }
 
-Render::~Render() = default;
-
-// void Render::TESTKEYBINDS(){
-//     if(m_currentScenePointer->size()>0){
-
-//         for(sceneStruct* scene : *m_currentScenePointer){
-//             if (scene != nullptr) {
-//                 if(scene->m_keybinds.size()>0){
-//                     if(m_TEST_inputHandler!=nullptr){
-//                         // m_TEST_inputHandler->assign(scene->m_keybinds);
-//                     }
-    
-//                 }
-//             }
-//         }
-//     }
-// }
+// Render::~Render() = default;
 
 void Render::init(std::vector<sceneStruct*>& currentScenePointer, sf::RenderWindow* window){
-    // m_currentScenePointer(currentScenePointer),
-    // m_font(font),
-    // m_tombolContainer(std::make_unique<TombolContainer>(*m_font)),
-    // m_window(window)
-
     m_currentScenePointer = &currentScenePointer;
-    // m_tombolContainer = std::make_unique<TombolContainer>(*m_font);
     m_window = window;
     setup();
 }
 
 
 void Render::setup(){
+    // std::cout << "[Render : " << this << "] : setup dimulai" << std::endl;
     m_currentSceneSize = m_currentScenePointer->size();
+    if(!m_komponenScene.empty()){
+
+        m_komponenScene.clear();
+        m_tombolContainer.clear();
+
+    }
     for(sceneStruct* scene : *m_currentScenePointer){
         if (scene != nullptr) {
-            // m_komponenScene.find(scene->m_namaScene)
             if(m_komponenScene.find(scene->m_namaScene)==m_komponenScene.end()){
                 m_komponenScene[scene->m_namaScene].reserve(scene->m_kumpulanRect.size() + scene->m_kumpulanTeks.size());
             }
 
             //ngeiterasi komponen rect
-
             if(scene->m_kumpulanRect.size()>0){
                 for(const auto& komponen : scene->m_kumpulanRect){
 
@@ -81,37 +62,29 @@ void Render::setup(){
 
             //ngeiterasi komponen tombol
             if(scene->m_kumpulanTombol.size()>0){
-                
+                if(m_tombolContainer[scene->m_namaScene]==nullptr){
+                    m_tombolContainer[scene->m_namaScene]=std::make_unique<TombolContainer>(*m_font);
+                }
                 for(const auto& komponen : scene->m_kumpulanTombol){
                     // std::cout<<komponen.second.m_teks<<std::endl;
                     
-                    if(m_tombolContainer[scene->m_namaScene]==nullptr){
-                        m_tombolContainer[scene->m_namaScene]=std::make_unique<TombolContainer>(*m_font);
-                    }
                     m_tombolContainer.find(scene->m_namaScene)->second->generate(komponen.second.m_posisiTombol, komponen.second.m_sizeBg, komponen.second.m_teks, komponen.second.m_action);
                     // m_tombolContainer.push_back(std::make_unique<TombolContainer>(*m_font));
                     // m_tombolContainer->generate(komponen.second.m_posisiTombol, komponen.second.m_sizeBg, komponen.second.m_teks, komponen.second.m_action); 
                     // if(m_TEST_inputHandler!=nullptr){
                     //     m_TEST_inputHandler->assign()
                     // }
+                    // std::cout << "[Render : " << this << "] : btn brhsil digenerate." << std::endl;
+                    // std::cout << "asd" << std::endl;
                 }
             }
-            // else{
-            //     m_tombolContainer->resetContainer();
-            // }
-
-            // if(scene->m_keybinds.size()>0){
-            //     if(m_TEST_inputHandler!=nullptr){
-            //         m_TEST_inputHandler->assign(scene->m_keybinds);
-            //     }else{throw;}
-
-            // }
-        }else{
-            std::cout<<"scenenya null"<<std::endl;
         }
+        // else{
+        //     std::cout<<"scenenya null"<<std::endl;
+        // }
 
     }
-    // std::cout << "tset" << std::endl;
+    // std::cout << "[Render : " << this << "] : setup selesai" << std::endl;
 }
 
 //ngdraw komponen komponen Drawable
@@ -120,8 +93,6 @@ void Render::visualize(){
         setup();
     }
 
-    // auto test = m_tombolContainer.find(SceneName::startScene)->second.get();
-    // std::cout << "asd" << std::endl;
     if(m_komponenScene.size()>0){ //ngecek apkh komponen udh dimapping
         for(const auto& [nama, vektor] : m_komponenScene){
             for(const auto& uniqptr : vektor){
@@ -140,6 +111,8 @@ void Render::visualize(){
 
             // ]
         }
+    }else{
+        // std::cout << "[RENDER] : fals" << std::endl;
     }
 
     // if(m_komponenScene.size()>0){
@@ -180,3 +153,7 @@ std::unordered_map<SceneName, std::unique_ptr<TombolContainer>>* Render::getTomb
     //     throw;
     // }
 }
+
+// void Render::test(){
+//     std::cout << "asd" << std::endl;
+// }

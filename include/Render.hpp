@@ -14,26 +14,22 @@ class TombolContainer;
 
 class Render{
     private:
-        std::vector<sceneStruct*>* m_currentScenePointer;
+        std::vector<sceneStruct*>* m_currentScenePointer = nullptr;
         // std::vector<std::unique_ptr<sf::Drawable>> m_komponenScene;
         std::map<SceneName, std::vector<std::unique_ptr<sf::Drawable>>> m_komponenScene;
         
     
-        sf::Font* m_font;
-        // std::unique_ptr<TombolContainer> m_tombolContainer;
-        // std::vector<std::unique_ptr<TombolContainer>> m_tombolContainer;
+        sf::Font* m_font = nullptr;
         std::unordered_map<SceneName, std::unique_ptr<TombolContainer>> m_tombolContainer;
 
         sf::RenderWindow* m_window = nullptr;
         int m_currentSceneSize = 0;
         
     public:
-        // InputHandler* m_TEST_inputHandler = nullptr;
-        ~Render();
+        // ~Render();
         Render(sf::Font* font);
         void visualize();
         void setup();
-        void TESTKEYBINDS();
         void init(std::vector<sceneStruct*>& currentScenePointer, sf::RenderWindow* window);
 
         // TombolContainer& getTombolContainerPointer();

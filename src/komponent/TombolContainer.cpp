@@ -5,21 +5,20 @@ TombolContainer::TombolContainer(sf::Font& font)
 m_font(&font)
 {
     // *m_font = font;
-}
-
-TombolContainer::~TombolContainer(){
-    
+    // std::cout << "[TombolContainer : " << this << "] : unit dibuat" << std::endl;
 }
 
 void TombolContainer::click(){
     // std::cout<<"selected: "<<m_currentHovered<<std::endl;
+    // std::cout << "[TombolContainer : " << this << "] : clicked" << std::endl;
     if(m_kumpulanLambda.size()>0){
         m_kumpulanLambda[m_currentHovered]();
     }
 }
 
 void TombolContainer::geser(Kontrol key){
-    std::cout << this << "curr hovered: "<< m_currentHovered << std::endl;
+    // std::cout << "[TombolContainer : " << this << "] : geser" << std::endl;
+    // std::cout << this << "curr hovered: "<< m_currentHovered << std::endl;
     if(key==Kontrol::kiri){
         if(m_currentHovered>0){
             m_currentHovered--;
@@ -33,11 +32,15 @@ void TombolContainer::geser(Kontrol key){
 }
 
 void TombolContainer::generate(sf::Vector2f posisiTombol, sf::Vector2f sizeTombol, const std::string& teks, std::function<void()> action){
+    // std::cout << "[TombolContainer : " << this << "] : generated" << std::endl;
     if(sizeTombol.x>=sizeTombol.y*2){m_characterSize=sizeTombol.y;}
     else{m_characterSize=sizeTombol.x/2;}
 
-    sf::Text* tempText = new sf::Text(*m_font, teks, m_characterSize);
-    sf::RectangleShape* tempRect = new sf::RectangleShape(sizeTombol);
+    // sf::Text* tempText = new sf::Text(*m_font, teks, m_characterSize);
+    auto tempText = std::make_unique<sf::Text>(*m_font, teks, m_characterSize);
+
+    // sf::RectangleShape* tempRect = new sf::RectangleShape(sizeTombol);
+    auto tempRect = std::make_unique<sf::RectangleShape>(sizeTombol);
 
     sf::FloatRect boundTempText = tempText->getLocalBounds();
 
@@ -71,7 +74,7 @@ void TombolContainer::generate(sf::Vector2f posisiTombol, sf::Vector2f sizeTombo
 
 int TombolContainer::getSize(){
     if(m_kumpulanBg.size()!=m_kumpulanTeks.size()){
-        std::cout<<"[TombolContainer] jumlah element bg sma teks gasama, cb cek lagi"<<std::endl;
+        // std::cout<<"[TombolContainer] jumlah element bg sma teks gasama, cb cek lagi"<<std::endl;
         return -1;
     }
     return m_kumpulanBg.size();
@@ -82,25 +85,26 @@ void TombolContainer::updateVisual(){
     if(getSize()<0){throw;}
     else{
         for(int i=0 ; i<getSize() ; i++){
-            // m_kumpulanBg[i]->setFillColor(sf::Color::Black);
-            m_kumpulanBg[i]->setOutlineColor(sf::Color::Black);
+            m_kumpulanBg[i]->setFillColor(globalColors::panelFill2);
+            m_kumpulanBg[i]->setOutlineColor(globalColors::panelOutline);
         }
-        // m_kumpulanBg[m_currentHovered]->setFillColor(sf::Color::Green);
-        m_kumpulanBg[m_currentHovered]->setOutlineColor(sf::Color::White);
+        m_kumpulanBg[m_currentHovered]->setOutlineColor(globalColors::panelOutline);
+        m_kumpulanBg[m_currentHovered]->setFillColor(globalColors::buttonHovered);
     }
+    // std::cout << "[TombolContainer] : " << m_currentHovered << std::endl;
 }
 
-std::vector<sf::Text*>& TombolContainer::getKumpulanTeks(){
+std::vector<std::unique_ptr<sf::Text>>& TombolContainer::getKumpulanTeks(){
     return m_kumpulanTeks;
 }
-std::vector<sf::RectangleShape*>& TombolContainer::getKumpulanBg(){
+std::vector<std::unique_ptr<sf::RectangleShape>>& TombolContainer::getKumpulanBg(){
     return m_kumpulanBg;
 }
 
 void TombolContainer::resetContainer(){
     for(int i=0 ; i<getSize() ; i++){
-        delete m_kumpulanBg[i];
-        delete m_kumpulanTeks[i];
+        // delete m_kumpulanBg[i];
+        // delete m_kumpulanTeks[i];
         m_kumpulanLambda.clear();
     }
 }

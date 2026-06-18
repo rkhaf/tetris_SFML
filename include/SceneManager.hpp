@@ -16,28 +16,28 @@ class SceneManager{
         float buttonGap = 18.0f;
         sf::Vector2f windowCenter;
         std::unordered_map<SceneName, std::unique_ptr<TombolContainer>>* m_tombolContainer=nullptr;  
-        sf::Font* m_font;
+        sf::Font* m_font = nullptr;
         std::unordered_map<Kontrol, std::vector<std::function<void()>>>* m_currentKeybinds = nullptr;
 
-
-        // sceneStruct* 
-        void updateCurrentBindings();
         void generateStartScene();
         void generateExitConfirmationPanel();
+
+        void createRect(sceneStruct* const sceneStruct,std::string nama, const rectStruct& config);
+        void createText(sceneStruct* const sceneStruct,std::string nama, const textStruct& config);
+        void createBtn(sceneStruct* const sceneStruct,std::string nama, const tombolStruct& config);
+        void createBinds(sceneStruct* const sceneStruct, std::vector<std::pair<Kontrol, std::function<void()>>> vecPasangan);
 
         
     public:
         std::vector<sceneStruct*> m_currentScene;
-        // Render* m_render=nullptr;
     
         SceneManager();
 
         void changeScene(SceneName targetScene);
         void addScene(SceneName targetScene);
-        // void updateBindings();
-        // void init(sf::RenderWindow* window, TombolContainer* tombolContainer);
+        void popScene();
         void init(sf::Font* font, sf::RenderWindow* window, std::unordered_map<SceneName, std::unique_ptr<TombolContainer>>* tombolContainerPtr);
-        // std::unordered_map<Kontrol, std::vector<std::function<void()>>>* getCurrentKeybinds();
         sceneStruct* getCurrentKeybinds();
+        std::vector<sceneStruct*>* getCurrentScene();
 
 };
