@@ -187,6 +187,7 @@ void SceneManager::generateExitConfirmationPanel(){
         {Kontrol::kanan, [this](){m_audioPlayer.playSound(audioBoard::SFX_clickSound);}},
 
         {Kontrol::drop, [this](){m_tombolContainer->find(SceneName::exitConfScene)->second->click();}},
+        {Kontrol::drop, [this](){m_audioPlayer.playSound(audioBoard::SFX_confirm);}},
 
         {Kontrol::exit, [this](){this->popScene();}},
         {Kontrol::exit, [this](){m_audioPlayer.playSound(audioBoard::SFX_back);}},

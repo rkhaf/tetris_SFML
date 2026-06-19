@@ -100,33 +100,31 @@ AudioPlayer::AudioPlayer(){
     };
 
     m_kumpulanLagu[audioBoard::BGM_menuMusic] = {
-        // --- SCREENSHOT 1 (Bar 1 - 4) ---
-        { note::G4,  base * 4 },
-        { note::Gs4, base * 2 }, // G#4
-        { note::A4,  base * 8 },
-        { note::Gs4, base * 8 }, // G#4
-        { note::A4,  base * 4 },
-        { note::As4, base * 4 }, // A#4
-        { note::B4,  base * 4 },
-        { note::C5,  base * 4 },
-        { note::A4,  base * 12 },
-        { note::Gs4, base * 2 }, // G#4
-        { note::A4,  base * 4 },
-        { note::As4, base * 4 }, // A#4
-
-        // --- SCREENSHOT 2 (Bar 4 akhir - 7) ---
-        { note::C5,  base * 4 },
-        { note::D5,  base * 4 },
-        { note::E5,  base * 12 },
-        { note::C5,  base * 2 },
-        { note::B4,  base * 4 },
-        { note::D5,  base * 4 },
-        { note::C5,  base * 4 },
-        { note::B4,  base * 4 },
-        { note::A4,  base * 12 },
-        { note::B4,  base * 4 },
-        { note::D5,  base * 4 },
-        { note::C5,  base * 4 }
+// --- SCREENSHOT 1 (Bar 1 - Bar 3 Akhir) ---
+    { note::G4,   base * 2 },
+    { note::Gs4, base * 2 },
+    { note::A4,   base * 4 },
+    { note::Gs4, base * 4 },
+    { note::A4,   base * 2 },  
+    { note::As4, base * 2 },  
+    { note::B4,   base * 2 },  
+    { note::C5,   base * 2 },  
+    { note::A4,   base * 6 },
+    { note::Gs4, base * 2 },
+    { note::A4, base * 2 },
+    { note::As4, base * 2 },
+    { note::C5, base * 2 },
+    { note::D5, base * 2 },
+    { note::E5, base * 6 },
+    { note::C5, base * 2 },
+    { note::B4, base * 2 },
+    { note::D5, base * 2 },
+    { note::C5, base * 2 },
+    { note::B4, base * 2 },
+    { note::A4, base * 6 },
+    { note::B4, base * 2 },
+    { note::D5, base * 2 },
+    { note::C5, base * 2 }
     };
     bakeSound();
 }
