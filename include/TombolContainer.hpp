@@ -2,13 +2,14 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <functional>
+#include "structData.hpp"
 
 
 class TombolContainer{
     private:
         int m_currentHovered = 0;
-        std::vector<sf::Text*> m_kumpulanTeks;
-        std::vector<sf::RectangleShape*> m_kumpulanBg;
+        std::vector<std::unique_ptr<sf::Text>> m_kumpulanTeks;
+        std::vector<std::unique_ptr<sf::RectangleShape>> m_kumpulanBg;
         sf::Font* m_font;
         std::vector<std::function<void()>> m_kumpulanLambda;
 
@@ -20,13 +21,14 @@ class TombolContainer{
 
     public:
         TombolContainer(sf::Font& font);
-        ~TombolContainer();
+        // ~TombolContainer();
 
         void click();
-        void geser(char key);
+        void geser(Kontrol key);
         void generate(sf::Vector2f posisiTombol, sf::Vector2f sizeTombol, const std::string& teks, std::function<void()> action);
         int getSize();
         void updateVisual();
-        std::vector<sf::Text*>& getKumpulanTeks();
-        std::vector<sf::RectangleShape*>& getKumpulanBg();
+        void resetContainer();
+        std::vector<std::unique_ptr<sf::Text>>& getKumpulanTeks();
+        std::vector<std::unique_ptr<sf::RectangleShape>>& getKumpulanBg();
 };
