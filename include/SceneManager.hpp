@@ -3,12 +3,14 @@
 // #include <iostream>
 // #include "Scene.hpp"
 #include "structData.hpp"
+#include "AudioPlayer.hpp"
 // #include "Render.hpp"
 
 class TombolContainer;
 
 class SceneManager{
     private:
+        AudioPlayer m_audioPlayer;
         SceneName m_defaultScene=SceneName::startScene;
         float m_margin=12.0f;
         sf::RenderWindow* m_window=nullptr;

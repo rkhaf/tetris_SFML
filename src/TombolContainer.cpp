@@ -1,4 +1,4 @@
-#include "../../include/komponent/TombolContainer.hpp"
+#include "../include/TombolContainer.hpp"
 
 TombolContainer::TombolContainer(sf::Font& font)
 :
@@ -22,10 +22,14 @@ void TombolContainer::geser(Kontrol key){
     if(key==Kontrol::kiri){
         if(m_currentHovered>0){
             m_currentHovered--;
+        }else{
+            m_currentHovered=getSize()-1;
         }
     }else if(key==Kontrol::kanan){
         if(m_currentHovered<getSize()-1){
             m_currentHovered++;
+        }else{
+            m_currentHovered=0;
         }
     }
     updateVisual();

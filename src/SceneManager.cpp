@@ -1,8 +1,9 @@
 #include "../include/SceneManager.hpp"
-#include "../include/komponent/TombolContainer.hpp"
+#include "../include/TombolContainer.hpp"
 #include <iostream>
 
 SceneManager::SceneManager(){
+    
 }
 
 void SceneManager::init(sf::Font* font, sf::RenderWindow* window, std::unordered_map<SceneName, std::unique_ptr<TombolContainer>>* tombolContainerPtr){
@@ -11,6 +12,7 @@ void SceneManager::init(sf::Font* font, sf::RenderWindow* window, std::unordered
     windowCenter = sf::Vector2f(m_window->getSize().x / 2, m_window->getSize().y / 2);
     m_tombolContainer=tombolContainerPtr;
     changeScene(SceneName::startScene);
+    m_audioPlayer.playMusic(audioBoard::BGM_menuMusic);
 }
 
 
@@ -113,9 +115,18 @@ void SceneManager::generateStartScene(){
     //setting keybinds
     createBinds(startScene, {
         {Kontrol::kiri, [this](){m_tombolContainer->find(SceneName::startScene)->second->geser(Kontrol::kiri);}},
+        {Kontrol::kiri, [this](){m_audioPlayer.playSound(audioBoard::SFX_clickSound);}},
+
         {Kontrol::kanan, [this](){m_tombolContainer->find(SceneName::startScene)->second->geser(Kontrol::kanan);}},
+        {Kontrol::kanan, [this](){m_audioPlayer.playSound(audioBoard::SFX_clickSound);}},
+
         {Kontrol::drop, [this](){m_tombolContainer->find(SceneName::startScene)->second->click();}},
-        {Kontrol::exit, [this](){this->addScene(SceneName::exitConfScene);}}
+        {Kontrol::drop, [this](){m_audioPlayer.playSound(audioBoard::SFX_confirm);}},
+
+        {Kontrol::exit, [this](){this->addScene(SceneName::exitConfScene);}},
+        {Kontrol::exit, [this](){m_audioPlayer.playSound(audioBoard::SFX_back);}},
+        // {Kontrol::exit, [this](){m_audioPlayer.playMusic(audioBoard::BGM_mainMusic);}},
+
     });
 
     m_currentScene.push_back(startScene);
@@ -170,9 +181,15 @@ void SceneManager::generateExitConfirmationPanel(){
 
     createBinds(exitConfPanel, {
         {Kontrol::kiri, [this](){m_tombolContainer->find(SceneName::exitConfScene)->second->geser(Kontrol::kanan);}},
+        {Kontrol::kiri, [this](){m_audioPlayer.playSound(audioBoard::SFX_clickSound);}},
+
         {Kontrol::kanan, [this](){m_tombolContainer->find(SceneName::exitConfScene)->second->geser(Kontrol::kiri);}},
+        {Kontrol::kanan, [this](){m_audioPlayer.playSound(audioBoard::SFX_clickSound);}},
+
         {Kontrol::drop, [this](){m_tombolContainer->find(SceneName::exitConfScene)->second->click();}},
-        {Kontrol::exit, [this](){this->popScene();}}
+
+        {Kontrol::exit, [this](){this->popScene();}},
+        {Kontrol::exit, [this](){m_audioPlayer.playSound(audioBoard::SFX_back);}},
     });
 
     m_currentScene.push_back(exitConfPanel);

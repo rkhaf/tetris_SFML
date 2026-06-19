@@ -1,5 +1,5 @@
 #include "../include/InputHandler.hpp"
-#include "../include/komponent/TombolContainer.hpp"
+#include "../include/TombolContainer.hpp"
 #include <iostream>
 
 InputHandler::InputHandler(){

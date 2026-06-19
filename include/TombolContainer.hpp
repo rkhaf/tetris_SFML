@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <functional>
-#include "../structData.hpp"
+#include "structData.hpp"
 
 
 class TombolContainer{

@@ -13,7 +13,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(SFML_DIR "${CMAKE_CURRENT_SOURCE_DIR}/sfml-lib/lib/cmake/SFML")
 
 # Cari library SFML yang diinstall vcpkg
-find_package(SFML 3 COMPONENTS Graphics Window System REQUIRED)
+find_package(SFML 3.0 COMPONENTS Graphics Window System Audio REQUIRED)
 
 # Tentukan file cpp kamu
 add_executable(${PROJECT_NAME} src/main.cpp 
@@ -21,7 +21,8 @@ src/Engine.cpp include/Engine.hpp
 src/Render.cpp include/Render.hpp 
 src/SceneManager.cpp include/SceneManager.hpp 
 include/structData.hpp
-src/komponent/TombolContainer.cpp include/komponent/TombolContainer.hpp 
+src/TombolContainer.cpp include/TombolContainer.hpp 
+src/AudioPlayer.cpp include/AudioPlayer.hpp 
 src/InputHandler.cpp include/InputHandler.hpp)
 
 # Otomatis copy DLL SFML ke folder output executable
@@ -33,4 +34,4 @@ src/InputHandler.cpp include/InputHandler.hpp)
 # )
 
 # Hubungkan project dengan SFML
-target_link_libraries(${PROJECT_NAME} PRIVATE SFML::Graphics SFML::Window SFML::System)
+target_link_libraries(${PROJECT_NAME} PRIVATE SFML::Graphics SFML::Window SFML::Audio SFML::System)

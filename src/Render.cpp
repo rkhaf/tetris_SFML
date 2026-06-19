@@ -1,7 +1,7 @@
 #include "../include/Render.hpp"
 #include <iostream>
 // #include "../include/Engine.hpp"
-#include "../include/komponent/TombolContainer.hpp"
+#include "../include/TombolContainer.hpp"
 
 Render::Render(sf::Font* font)
 : m_font(font)
