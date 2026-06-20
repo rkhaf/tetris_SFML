@@ -11,7 +11,8 @@ void SceneManager::init(sf::Font* font, sf::RenderWindow* window, std::unordered
     m_font = font;
     windowCenter = sf::Vector2f(m_window->getSize().x / 2, m_window->getSize().y / 2);
     m_tombolContainer=tombolContainerPtr;
-    changeScene(SceneName::startScene);
+    // changeScene(SceneName::startScene);
+    addScene(SceneName::startScene);
     m_audioPlayer.playMusic(audioBoard::BGM_menuMusic);
 }
 
@@ -39,11 +40,14 @@ void SceneManager::addScene(SceneName targetScene){
     if(m_window!=nullptr){
         switch (targetScene){
             case SceneName::startScene:
-                generateStartScene();
+                m_currentScene.push_back(generateStartScene());
+                // generateStartScene();
+                std::cout << "asd" << std::endl;
                 break;
 
             case SceneName::exitConfScene:
-                generateExitConfirmationPanel();
+                m_currentScene.push_back(generateExitConfirmationPanel());
+                // generateExitConfirmationPanel();
                 break;
         }
     }
@@ -59,7 +63,7 @@ void SceneManager::popScene(){
 
 //###########################################[GENERATE SCENE]#########################################
 
-void SceneManager::generateStartScene(){
+sceneStruct* SceneManager::generateStartScene(){
     sceneStruct* startScene = new sceneStruct(SceneName::startScene);
 
     //create panel
@@ -124,10 +128,11 @@ void SceneManager::generateStartScene(){
 
     });
 
-    m_currentScene.push_back(startScene);
-    getCurrentKeybinds();
+    // m_currentScene.push_back(startScene);
+    return startScene;
+    // getCurrentKeybinds();
 }
-void SceneManager::generateExitConfirmationPanel(){
+sceneStruct* SceneManager::generateExitConfirmationPanel(){
     // std::cout << "[SceneManager : " << this << "] : proses generate" << std::endl;
     sceneStruct* exitConfPanel = new sceneStruct(SceneName::exitConfScene);
 
@@ -188,7 +193,8 @@ void SceneManager::generateExitConfirmationPanel(){
         {Kontrol::exit, [this](){m_audioPlayer.playSound(audioBoard::SFX_back);}},
     });
 
-    m_currentScene.push_back(exitConfPanel);
+    // m_currentScene.push_back(exitConfPanel);
+    return exitConfPanel;
     // std::cout << "[SceneManager : " << this << "] : selesai generate scene" << std::endl;
 }
 

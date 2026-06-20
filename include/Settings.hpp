@@ -8,7 +8,7 @@
 namespace Settings{
     namespace Internal{
         inline float AUDIO_VOLUME_SFX = 100.0f;
-        inline float AUDIO_VOLUME_BGM = 10.0f;
+        inline float AUDIO_VOLUME_BGM = 100.0f;
     }
 
     inline float getAudioVolumeSFX(){return Internal::AUDIO_VOLUME_SFX;}

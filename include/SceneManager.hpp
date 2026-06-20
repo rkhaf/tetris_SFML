@@ -21,8 +21,8 @@ class SceneManager{
         sf::Font* m_font = nullptr;
         std::unordered_map<Kontrol, std::vector<std::function<void()>>>* m_currentKeybinds = nullptr;
 
-        void generateStartScene();
-        void generateExitConfirmationPanel();
+        sceneStruct* generateStartScene();
+        sceneStruct* generateExitConfirmationPanel();
 
         void createRect(sceneStruct* const sceneStruct,std::string nama, const rectStruct& config);
         void createText(sceneStruct* const sceneStruct,std::string nama, const textStruct& config);
