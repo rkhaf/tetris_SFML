@@ -1,48 +1,6 @@
 #include "../include/AudioPlayer.hpp"
 #include <iostream>
 
-/*
-base = 0.107f
-e5 : base*4
-b4 : base*2
-c5 : base*2
-d5 : base*4
-c5 : base*2
-b4 : base*2
-a4 : base*6
-c5 : base*2
-e5 : base*4
-d5 : base*2
-c5 : base*2
-b4 : base*6
-c5 : base*2
-d5 : base*4
-e5 : base*4
-c5 : base*4
-a4 : base*4
-a4 : base*4
-a4 : base*6
-d5 : base*4
-f5 : base*2
-a5 : base*4
-g5 : base*2
-f5 : base*2
-e5 : base*6
-f5 : base*2
-e5 : base*4
-d5 : base*2
-c5 : base*2
-b4 : base*6
-c5 : base*2
-d5 : base*2
-d5 : base*2
-c5 : base*2
-b4 : base*2
-a4 : base*12
-a4 : base*2
-c5 : base*2
-*/
-
 AudioPlayer::AudioPlayer(){
     m_kumpulanLagu[audioBoard::SFX_clickSound] = {
         {note::E5, 0.1f},
@@ -153,12 +111,15 @@ void AudioPlayer::bakeSound(){
     }
     m_speaker_SFX.emplace(m_kumpulanLaguJadi.find(audioBoard::SFX_clickSound)->second);
     m_speaker_BGM.emplace(m_kumpulanLaguJadi.find(audioBoard::SFX_clickSound)->second);
+    
+    m_speaker_BGM->setVolume(Settings::getAudioVolumeBGM());
+    m_speaker_SFX->setVolume(Settings::getAudioVolumeSFX());
 }
 
 sf::SoundBuffer AudioPlayer::converter(const std::vector<std::pair<structNote, float>>& rentetanNot) {
     std::vector<int16_t> totalSamples;
     
-    // Gunakan global_t agar gelombang sinus menyambung terus dari not ke not tanpa patah
+    //mke global biar gelombang sinus nyambung terus
     double global_t = 0.0; 
     double dt = 1.0 / 44100.0; // Durasi per satu sampel waktu
 
@@ -166,14 +127,14 @@ sf::SoundBuffer AudioPlayer::converter(const std::vector<std::pair<structNote, f
         structNote currentNote = notePair.first;
         float duration = notePair.second;
 
-        // Hitung berapa sampel yang dibutuhkan untuk durasi not ini
+        //ngitung sample bwt durasi not
         size_t noteSamplesCount = static_cast<size_t>(sampleRate * duration);
 
         for (size_t i = 0; i < noteSamplesCount; ++i) {
             int16_t sampleValue = 0;
 
-            if (currentNote.frekuensi > 0.0) { // Kalau bukan not diam (Rest Note)
-                // Matematika sinus murni menggunakan waktu global
+            if (currentNote.frekuensi > 0.0) {
+                //idk
                 double getaranSinus = std::sin(2.0 * 3.141592653589793 * currentNote.frekuensi * global_t);
 
                 double gelombangSinus = std::sin(2.0 * M_PI * currentNote.frekuensi * global_t);
@@ -184,31 +145,26 @@ sf::SoundBuffer AudioPlayer::converter(const std::vector<std::pair<structNote, f
                 sampleValue = static_cast<int16_t>(5000.0 * suaraFinal);
             }
 
-            // --- TAKTIK STEREO (Interleaving) ---
-            // Push 2 kali berturut-turut untuk channel Kiri dan Kanan
+            // push2 kali buat kanan kiri
             totalSamples.push_back(sampleValue); // Kiri
             totalSamples.push_back(sampleValue); // Kanan
 
-            // Waktu berjalan terus ke depan
+            // nmbh waktu
             global_t += dt;
         }
     }
 
     sf::SoundBuffer matengBuffer;
 
-    // SOLUSI TERSANGKA 1: Bikin map channel static agar memorinya stabil di RAM
+    // ngemapping channel static biar stabil di RAM
     static const std::vector<sf::SoundChannel> defaultChannelMap = {
         sf::SoundChannel::FrontLeft,
         sf::SoundChannel::FrontRight
     };
 
-    // Tembak dengan parameter map channel yang sudah didefinisikan secara legal
+    //ngeget mke parameter map channel
     if (!matengBuffer.loadFromSamples(totalSamples.data(), totalSamples.size(), 2, sampleRate, defaultChannelMap)) {
         std::cout << "Fiks gagal di level internal SFML gann" << std::endl;
-    } else {
-        std::cout << "--- DEBUG ISI AUDIO (SUCCESS) ---" << std::endl;
-        std::cout << "Ukuran vector (Stereo): " << totalSamples.size() << " samples." << std::endl;
-        std::cout << "---------------------------------" << std::endl;
     }
 
     return matengBuffer;

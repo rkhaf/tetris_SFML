@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <optional>
+#include "Settings.hpp"
 
 struct structNote{
     char name[4];

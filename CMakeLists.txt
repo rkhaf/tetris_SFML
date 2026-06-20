@@ -21,6 +21,7 @@ src/Engine.cpp include/Engine.hpp
 src/Render.cpp include/Render.hpp 
 src/SceneManager.cpp include/SceneManager.hpp 
 include/structData.hpp
+include/Settings.hpp
 src/TombolContainer.cpp include/TombolContainer.hpp 
 src/AudioPlayer.cpp include/AudioPlayer.hpp 
 src/InputHandler.cpp include/InputHandler.hpp)

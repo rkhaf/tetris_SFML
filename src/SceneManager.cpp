@@ -43,15 +43,10 @@ void SceneManager::addScene(SceneName targetScene){
                 break;
 
             case SceneName::exitConfScene:
-                // std::cout << "[SceneManager : " << this << "] : addScene exitConfScene" << std::endl;
                 generateExitConfirmationPanel();
                 break;
         }
     }
-    // else{
-    //     std::cout<<"windownya kosong"<<std::endl;
-    // }
-    // updateCurrentBindings();
 }
 
 void SceneManager::popScene(){
