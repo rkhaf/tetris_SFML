@@ -15,7 +15,7 @@ Proyek ini dirancang menggunakan prinsip **Object-Oriented Design (OOD)** dengan
 
 Berikut adalah blueprint **Class Diagram** dari sistem arsitektur game ini:
 
-![Class Diagram Tetris](./docs/diagram-arsitektur.png)
+![Class Diagram Tetris](./docs/tetris.jpg)
 
 ### Architectural Overview:
 1. **Engine:** Jantung utama aplikasi yang mengatur *game loop*, inisialisasi window SFML, serta mengoordinasikan modul `Render` dan `SceneManager`.
