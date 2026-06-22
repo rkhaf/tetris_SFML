@@ -1,27 +1,25 @@
 # TETRIS - SFML Game
 
-A classic Tetris game built from scratch using C++ and the SFML (Simple and Fast Multimedia Library) framework, featuring a clean object-oriented architecture.
+Tetris yg gwh bikin dari 0 dgn fitur alokasi memory, optimasi cpu, efisiensi ram.
 
-## 🚀 Features
-* **Classic Gameplay:** Complete line clears, score tracking, and random block generation.
-* **Scene Management:** Smooth transitions between screens (Main Menu, Gameplay, Pause, Game Over).
-* **Robust Core:** Optimized rendering loop and modular engine design.
+## 🚀 Fitur bwt gamer
+* **(PLAN) Kustom Tetromino:** bisa kustom bentuk tetromino & ngesave datanya ke hardisk user
+* **(WIP) Collision Realtime:** tetromino yg digerakin player bisa ngedetect & mencegah bentrokan terhadap arah pergeseran tetromino
+* **(WIP) Skoring:** ngetrack skor tertinggi utk tiap game
+* **(WIP) BGM & SFX:** ada musik dikit2 biar gk bosen bgt wkwk
+
+## 🚀 Fitur bwt dev
+* **Modularitas:** pembagian kerja program dibagi jdi beberapa modul
+* **Scene berbasis stack:** penggunaan scene berbasis stack, scene yang paling diatas punya prioritas kontrol & render yg lebih superior daripada scene dibawahnya
+* **Aman Leak (harusnya):** beberapa variabel dipakein smart pointer, walaupun ada beberapa yg masih make raw pointer tpi udh ditesting aman gk ada bocor memory 
 
 ---
 
 ## 🛠️ System Architecture
 
-Proyek ini dirancang menggunakan prinsip **Object-Oriented Design (OOD)** dengan pemisahan tanggung jawab (*Separation of Concerns*) yang jelas antara modul logika, rendering, dan manajemen data.
-
-Berikut adalah blueprint **Class Diagram** dari sistem arsitektur game ini:
+Kurng lebih diagramny gini:
 
 ![Class Diagram Tetris](./docs/tetris.jpg)
-
-### Architectural Overview:
-1. **Engine:** Jantung utama aplikasi yang mengatur *game loop*, inisialisasi window SFML, serta mengoordinasikan modul `Render` dan `SceneManager`.
-2. **SceneManager:** Mengelola siklus hidup (*lifecycle*) dari `sceneStruct`. Bertanggung jawab membuat (*create*) dan menghancurkan (*destroy*) data scene secara dinamis (Komposisi).
-3. **Render:** Modul khusus yang menangani penggambaran semua komponen visual ke layar menggunakan pointer referensi dari `Engine` dan data komponen aktif.
-4. **Data Entities (`sceneStruct`, `rectStruct`, `textStruct`):** Struktur data pasif yang digunakan untuk menyimpan informasi koordinat, teks, dan komponen visual SFML secara terstruktur.
 
 ---
 
