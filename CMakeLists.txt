@@ -6,7 +6,7 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 # Set standar C++ ke C++17 atau C++20 (Wajib untuk SFML 3)
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Beritahu CMake lokasi file konfigurasi SFML di dalam folder sfml-lib

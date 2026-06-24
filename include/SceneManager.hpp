@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <concepts>
 // #include <iostream>
 // #include "Scene.hpp"
 #include "structData.hpp"
@@ -7,6 +8,7 @@
 // #include "Render.hpp"
 
 class TombolContainer;
+// class SceneParent;
 
 class SceneManager{
     private:
@@ -20,6 +22,9 @@ class SceneManager{
         std::unordered_map<SceneName, std::unique_ptr<TombolContainer>>* m_tombolContainer=nullptr;  
         sf::Font* m_font = nullptr;
         std::unordered_map<Kontrol, std::vector<std::function<void()>>>* m_currentKeybinds = nullptr;
+
+        sceneDataStruct m_structDataScene;
+
 
         sceneStruct* generateStartScene();
         sceneStruct* generateExitConfirmationPanel();
@@ -36,6 +41,7 @@ class SceneManager{
         SceneManager();
 
         void changeScene(SceneName targetScene);
+        template <typename T>
         void addScene(SceneName targetScene);
         void popScene();
         void init(sf::Font* font, sf::RenderWindow* window, std::unordered_map<SceneName, std::unique_ptr<TombolContainer>>* tombolContainerPtr);

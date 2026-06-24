@@ -2,6 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include <functional>
 
+class SceneManager;
+
 namespace globalColors {
     // const sf::Color NeonCyan(0x00f3ffFF);
     const sf::Color panelFill(0x242434FF);
@@ -83,4 +85,32 @@ struct sceneStruct{
     std::unordered_map<Kontrol, std::vector<std::function<void()>>> m_keybinds;
 
     sceneStruct(SceneName namaScene) : m_namaScene(namaScene) {};
+};
+
+struct sceneDataStruct{
+    // AudioPlayer* m_audioPlayer = nullptr;
+    // sceneStruct m_scene;
+    // sf::RenderWindow* m_window = nullptr;
+    // float m_margin = 0;
+    // float m_buttonGap = 0;
+    // sf::Font* m_font = nullptr;
+    // sf::Vector2f m_windowCenter;
+    // std::unordered_map<SceneName, std::unique_ptr<TombolContainer>>* m_tombolContainer;
+
+    // sceneDataStruct(AudioPlayer* audioPlayer, sceneStruct scene, sf::RenderWindow* window, float margin, float buttonGap, sf::Font* font, sf::Vector2f windowCenter, std::unordered_map<SceneName, std::unique_ptr<TombolContainer>>* tombolContainer)
+    // :
+    // m_audioPlayer(audioPlayer),
+    // m_scene(scene),
+    // m_window(window),
+    // m_margin(margin),
+    // m_buttonGap(buttonGap),
+    // m_font(font),
+    // m_windowCenter(windowCenter),
+    // m_tombolContainer(tombolContainer)
+
+    SceneManager* m_sceneManager = nullptr;
+    sceneDataStruct(SceneManager* sceneManager)
+    :
+    m_sceneManager(sceneManager)
+    {}
 };
