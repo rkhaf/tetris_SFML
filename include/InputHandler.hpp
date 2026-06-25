@@ -11,7 +11,7 @@ class InputHandler{
         // TombolContainer* m_tombolContainerPointer = nullptr;
 
         std::unordered_map<Kontrol, std::vector<std::function<void()>>>* m_signaling = nullptr;
-        std::vector<sceneStruct*>* m_currentScenes = nullptr;
+        std::vector<sceneStruct>* m_currentScenes = nullptr;
         
 
     public:
@@ -20,5 +20,5 @@ class InputHandler{
 
         void handle(sf::Keyboard::Key kunci);
         // void setTombolPointer(TombolContainer& m_tombolContainer);
-        void init(std::vector<sceneStruct*>* getCurrentScene);
+        void init(std::vector<sceneStruct>* getCurrentScene);
 };

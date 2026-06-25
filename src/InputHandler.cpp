@@ -8,14 +8,15 @@ InputHandler::InputHandler(){
 // InputHandler::~InputHandler(){
 
 // }
-void InputHandler::init(std::vector<sceneStruct*>* currentScene){
+void InputHandler::init(std::vector<sceneStruct>* currentScene){
     m_currentScenes = currentScene;
 }
 
 void InputHandler::handle(const sf::Keyboard::Key kunci){
     if(m_currentScenes!=nullptr){ ///ngecek apkh ptrnya valid
         if(!m_currentScenes->empty()){ //ngecek apkh ada isinya
-            m_signaling = &((*m_currentScenes->back()).m_keybinds);
+            m_signaling = &(m_currentScenes->back()).m_keybinds;
+            // m_currentScenes->back().m_keybinds
         }
     }
 

@@ -15,16 +15,28 @@ set(SFML_DIR "${CMAKE_CURRENT_SOURCE_DIR}/sfml-lib/lib/cmake/SFML")
 # Cari library SFML yang diinstall vcpkg
 find_package(SFML 3.0 COMPONENTS Graphics Window System Audio REQUIRED)
 
+#ngescan folder
+file(GLOB_RECURSE ALL_SOURCES 
+    "src/*.cpp"
+    "src//*.cpp" 
+    "include/*.hpp"
+    "include//*.hpp"
+)
+
 # Tentukan file cpp kamu
-add_executable(${PROJECT_NAME} src/main.cpp 
-src/Engine.cpp include/Engine.hpp 
-src/Render.cpp include/Render.hpp 
-src/SceneManager.cpp include/SceneManager.hpp 
-include/structData.hpp
-include/Settings.hpp
-src/TombolContainer.cpp include/TombolContainer.hpp 
-src/AudioPlayer.cpp include/AudioPlayer.hpp 
-src/InputHandler.cpp include/InputHandler.hpp)
+add_executable(Tetris ${ALL_SOURCES})
+
+# add_executable(${PROJECT_NAME} src/main.cpp 
+# src/Engine.cpp include/Engine.hpp 
+# src/Render.cpp include/Render.hpp 
+# src/SceneManager.cpp include/SceneManager.hpp 
+# include/structData.hpp
+# include/Settings.hpp
+# include/scenes/StartScene.hpp
+# src/SceneParent.cpp include/SceneParent.hpp
+# src/TombolContainer.cpp include/TombolContainer.hpp 
+# src/AudioPlayer.cpp include/AudioPlayer.hpp 
+# src/InputHandler.cpp include/InputHandler.hpp)
 
 # Otomatis copy DLL SFML ke folder output executable
 # add_custom_command(TARGET Tetris POST_BUILD

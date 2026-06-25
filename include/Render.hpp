@@ -14,7 +14,7 @@ class TombolContainer;
 
 class Render{
     private:
-        std::vector<sceneStruct*>* m_currentScenePointer = nullptr;
+        std::vector<sceneStruct>* m_currentScenePointer = nullptr;
         // std::vector<std::unique_ptr<sf::Drawable>> m_komponenScene;
         std::map<SceneName, std::vector<std::unique_ptr<sf::Drawable>>> m_komponenScene;
         
@@ -30,7 +30,7 @@ class Render{
         Render(sf::Font* font);
         void visualize();
         void setup();
-        void init(std::vector<sceneStruct*>& currentScenePointer, sf::RenderWindow* window);
+        void init(std::vector<sceneStruct>& currentScenePointer, sf::RenderWindow* window);
 
         // TombolContainer& getTombolContainerPointer();
         std::unordered_map<SceneName, std::unique_ptr<TombolContainer>>* getTombolContainerPointer();

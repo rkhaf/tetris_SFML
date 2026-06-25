@@ -10,7 +10,7 @@ Render::Render(sf::Font* font)
 
 // Render::~Render() = default;
 
-void Render::init(std::vector<sceneStruct*>& currentScenePointer, sf::RenderWindow* window){
+void Render::init(std::vector<sceneStruct>& currentScenePointer, sf::RenderWindow* window){
     m_currentScenePointer = &currentScenePointer;
     m_window = window;
     setup();
@@ -26,15 +26,17 @@ void Render::setup(){
         m_tombolContainer.clear();
 
     }
-    for(sceneStruct* scene : *m_currentScenePointer){
-        if (scene != nullptr) {
-            if(m_komponenScene.find(scene->m_namaScene)==m_komponenScene.end()){
-                m_komponenScene[scene->m_namaScene].reserve(scene->m_kumpulanRect.size() + scene->m_kumpulanTeks.size());
+    for(sceneStruct& scene : *m_currentScenePointer){
+        // if (scene != nullptr) {
+        
+            if(m_komponenScene.find(scene.m_namaScene)==m_komponenScene.end()){
+                m_komponenScene[scene.m_namaScene].reserve(scene.m_kumpulanRect.size() + scene.m_kumpulanTeks.size());
             }
 
             //ngeiterasi komponen rect
-            if(scene->m_kumpulanRect.size()>0){
-                for(const auto& komponen : scene->m_kumpulanRect){
+            if(scene.m_kumpulanRect.size()>0){
+                for(const auto& komponen : scene.m_kumpulanRect){
+                    std::cout << "asd" << std::endl;
 
                     auto temp = std::make_unique<sf::RectangleShape>(sf::Vector2f(komponen.second.m_size));
 
@@ -44,31 +46,31 @@ void Render::setup(){
                     temp->setPosition(komponen.second.m_posisi);
                     
                     // m_komponenScene.push_back(std::move(temp));
-                    m_komponenScene.find(scene->m_namaScene)->second.push_back(std::move(temp));
+                    m_komponenScene.find(scene.m_namaScene)->second.push_back(std::move(temp));
                 }
             }
 
             //ngeiterasi komponen teks
-            if(scene->m_kumpulanTeks.size()>0){
-                for(const auto& komponen : scene->m_kumpulanTeks){
+            if(scene.m_kumpulanTeks.size()>0){
+                for(const auto& komponen : scene.m_kumpulanTeks){
                     auto temp = std::make_unique<sf::Text>(*m_font, komponen.second.m_teks, komponen.second.m_sizeKarakter);
 
                     temp->setPosition(komponen.second.m_posisi);
                     
                     // m_komponenScene.push_back(std::move(temp));
-                    m_komponenScene.find(scene->m_namaScene)->second.push_back(std::move(temp));
+                    m_komponenScene.find(scene.m_namaScene)->second.push_back(std::move(temp));
                 }
             }
 
             //ngeiterasi komponen tombol
-            if(scene->m_kumpulanTombol.size()>0){
-                if(m_tombolContainer[scene->m_namaScene]==nullptr){
-                    m_tombolContainer[scene->m_namaScene]=std::make_unique<TombolContainer>(*m_font);
+            if(scene.m_kumpulanTombol.size()>0){
+                if(m_tombolContainer[scene.m_namaScene]==nullptr){
+                    m_tombolContainer[scene.m_namaScene]=std::make_unique<TombolContainer>(*m_font);
                 }
-                for(const auto& komponen : scene->m_kumpulanTombol){
+                for(const auto& komponen : scene.m_kumpulanTombol){
                     // std::cout<<komponen.second.m_teks<<std::endl;
                     
-                    m_tombolContainer.find(scene->m_namaScene)->second->generate(komponen.second.m_posisiTombol, komponen.second.m_sizeBg, komponen.second.m_teks, komponen.second.m_action);
+                    m_tombolContainer.find(scene.m_namaScene)->second->generate(komponen.second.m_posisiTombol, komponen.second.m_sizeBg, komponen.second.m_teks, komponen.second.m_action);
                     // m_tombolContainer.push_back(std::make_unique<TombolContainer>(*m_font));
                     // m_tombolContainer->generate(komponen.second.m_posisiTombol, komponen.second.m_sizeBg, komponen.second.m_teks, komponen.second.m_action); 
                     // if(m_TEST_inputHandler!=nullptr){
@@ -78,7 +80,7 @@ void Render::setup(){
                     // std::cout << "asd" << std::endl;
                 }
             }
-        }
+        // }
         // else{
         //     std::cout<<"scenenya null"<<std::endl;
         // }

@@ -2,6 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include <functional>
 
+class SceneManager;
+
 namespace globalColors {
     // const sf::Color NeonCyan(0x00f3ffFF);
     const sf::Color panelFill(0x242434FF);
@@ -83,4 +85,14 @@ struct sceneStruct{
     std::unordered_map<Kontrol, std::vector<std::function<void()>>> m_keybinds;
 
     sceneStruct(SceneName namaScene) : m_namaScene(namaScene) {};
+};
+
+struct sceneDataStruct{
+    SceneManager* m_sceneManagerReference;
+    sf::RenderWindow* m_window = nullptr;
+
+    sceneDataStruct(SceneManager* sceneManager)
+    :
+    m_sceneManagerReference(sceneManager)
+    {}
 };
