@@ -13,7 +13,6 @@ SceneParent::~SceneParent(){
 }
 
 sceneStruct SceneParent::getSceneStruct(){
-    std::cout << "TEST" << std::endl;
     return std::move(m_sceneStruct);
 }
 

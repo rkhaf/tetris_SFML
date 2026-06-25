@@ -4,21 +4,15 @@ TombolContainer::TombolContainer(sf::Font& font)
 :
 m_font(&font)
 {
-    // *m_font = font;
-    // std::cout << "[TombolContainer : " << this << "] : unit dibuat" << std::endl;
 }
 
 void TombolContainer::click(){
-    // std::cout<<"selected: "<<m_currentHovered<<std::endl;
-    // std::cout << "[TombolContainer : " << this << "] : clicked" << std::endl;
     if(m_kumpulanLambda.size()>0){
         m_kumpulanLambda[m_currentHovered]();
     }
 }
 
 void TombolContainer::geser(Kontrol key){
-    // std::cout << "[TombolContainer : " << this << "] : geser" << std::endl;
-    // std::cout << this << "curr hovered: "<< m_currentHovered << std::endl;
     if(key==Kontrol::kiri){
         if(m_currentHovered>0){
             m_currentHovered--;
@@ -36,7 +30,6 @@ void TombolContainer::geser(Kontrol key){
 }
 
 void TombolContainer::generate(sf::Vector2f posisiTombol, sf::Vector2f sizeTombol, const std::string& teks, std::function<void()> action){
-    // std::cout << "[TombolContainer : " << this << "] : generated" << std::endl;
     if(sizeTombol.x>=sizeTombol.y*2){m_characterSize=sizeTombol.y;}
     else{m_characterSize=sizeTombol.x/2;}
 
@@ -70,22 +63,17 @@ void TombolContainer::generate(sf::Vector2f posisiTombol, sf::Vector2f sizeTombo
     m_kumpulanBg.push_back(std::move(tempRect));
     m_kumpulanLambda.push_back(std::move(action));
 
-    // m_kumpulanBg.push_back(std::move(boundsVisual));
-
-    // std::cout<<"ukuran kumpulanTeks: "<<m_kumpulanTeks.size()<<std::endl;
     updateVisual();
 }
 
 int TombolContainer::getSize(){
     if(m_kumpulanBg.size()!=m_kumpulanTeks.size()){
-        // std::cout<<"[TombolContainer] jumlah element bg sma teks gasama, cb cek lagi"<<std::endl;
         return -1;
     }
     return m_kumpulanBg.size();
 }
 
 void TombolContainer::updateVisual(){
-    // std::cout<<"selected: "<<m_currentHovered<<std::endl;
     if(getSize()<0){throw;}
     else{
         for(int i=0 ; i<getSize() ; i++){
@@ -95,7 +83,6 @@ void TombolContainer::updateVisual(){
         m_kumpulanBg[m_currentHovered]->setOutlineColor(globalColors::panelOutline);
         m_kumpulanBg[m_currentHovered]->setFillColor(globalColors::buttonHovered);
     }
-    // std::cout << "[TombolContainer] : " << m_currentHovered << std::endl;
 }
 
 std::vector<std::unique_ptr<sf::Text>>& TombolContainer::getKumpulanTeks(){

@@ -18,7 +18,6 @@ void Render::init(std::vector<sceneStruct>& currentScenePointer, sf::RenderWindo
 
 
 void Render::setup(){
-    // std::cout << "[Render : " << this << "] : setup dimulai" << std::endl;
     m_currentSceneSize = m_currentScenePointer->size();
     if(!m_komponenScene.empty()){
 
@@ -36,7 +35,6 @@ void Render::setup(){
             //ngeiterasi komponen rect
             if(scene.m_kumpulanRect.size()>0){
                 for(const auto& komponen : scene.m_kumpulanRect){
-                    std::cout << "asd" << std::endl;
 
                     auto temp = std::make_unique<sf::RectangleShape>(sf::Vector2f(komponen.second.m_size));
 
@@ -68,25 +66,13 @@ void Render::setup(){
                     m_tombolContainer[scene.m_namaScene]=std::make_unique<TombolContainer>(*m_font);
                 }
                 for(const auto& komponen : scene.m_kumpulanTombol){
-                    // std::cout<<komponen.second.m_teks<<std::endl;
                     
                     m_tombolContainer.find(scene.m_namaScene)->second->generate(komponen.second.m_posisiTombol, komponen.second.m_sizeBg, komponen.second.m_teks, komponen.second.m_action);
-                    // m_tombolContainer.push_back(std::make_unique<TombolContainer>(*m_font));
-                    // m_tombolContainer->generate(komponen.second.m_posisiTombol, komponen.second.m_sizeBg, komponen.second.m_teks, komponen.second.m_action); 
-                    // if(m_TEST_inputHandler!=nullptr){
-                    //     m_TEST_inputHandler->assign()
-                    // }
-                    // std::cout << "[Render : " << this << "] : btn brhsil digenerate." << std::endl;
-                    // std::cout << "asd" << std::endl;
                 }
             }
-        // }
-        // else{
-        //     std::cout<<"scenenya null"<<std::endl;
-        // }
+
 
     }
-    // std::cout << "[Render : " << this << "] : setup selesai" << std::endl;
 }
 
 //ngdraw komponen komponen Drawable
@@ -109,53 +95,12 @@ void Render::visualize(){
                     m_window->draw(*uniqptr);
                 }
             }
-            // for(const auto& uniqptr : m_komponenScene.find(nama))[
-
-            // ]
         }
-    }else{
-        // std::cout << "[RENDER] : fals" << std::endl;
     }
 
-    // if(m_komponenScene.size()>0){
-    //     for(const auto& komponen : m_komponenScene){
-    //         m_window->draw(*komponen);
-    //     }
-    // }
-    // if(m_tombolContainer.size()>0){
-    //     for(const auto& [nama, uniqptr] : m_tombolContainer){
-    //         for(const auto& komponen : uniqptr->getKumpulanBg()){
-    //             m_window->draw(*komponen);
-    //         }
-    //         for(const auto& komponen : uniqptr->getKumpulanTeks()){
-    //             m_window->draw(*komponen);
-    //         }
-    //     }
-    // }
-
-    // std::cout << "asd" << std::endl;
 }
 
 std::unordered_map<SceneName, std::unique_ptr<TombolContainer>>* Render::getTombolContainerPointer(){
-    // if(m_tombolContainer.)
     return &m_tombolContainer;
-
-
-    // if(!m_tombolContainer.empty()){
-    //     if(m_tombolContainer.find(namaScene)!=m_tombolContainer.end()){
-    //         if(m_tombolContainer.find(namaScene)->second!=nullptr){
-    //             return &m_tombolContainer.find(namaScene)->second;
-    //         }
-    //     }
-    // }
-    // return nullptr;
-    // if(m_tombolContainer!=nullptr){
-    //     return &m_tombolContainer;
-    // }else{
-    //     throw;
-    // }
 }
 
-// void Render::test(){
-//     std::cout << "asd" << std::endl;
-// }

@@ -87,12 +87,12 @@ struct sceneStruct{
     sceneStruct(SceneName namaScene) : m_namaScene(namaScene) {};
 };
 
-struct sceneDataStruct{
-    SceneManager* m_sceneManagerReference;
-    sf::RenderWindow* m_window = nullptr;
+// struct sceneDataStruct{
+//     SceneManager* m_sceneManagerReference;
+//     sf::RenderWindow* m_window = nullptr;
 
-    sceneDataStruct(SceneManager* sceneManager)
-    :
-    m_sceneManagerReference(sceneManager)
-    {}
-};
+//     sceneDataStruct(SceneManager* sceneManager)
+//     :
+//     m_sceneManagerReference(sceneManager)
+//     {}
+// };

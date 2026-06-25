@@ -9,7 +9,6 @@
 void ExitConfirmationScene::init(){
     //create panel
     SceneManager* localManager = this->m_sceneManagerReference;
-    std::cout << "ExitConfirmationScene::init()1" << std::endl;
     createRect("exitPanel", rectStruct(
         sf::Vector2f{m_sceneManagerReference->getRenderWindow()->getSize().x - (UISettings::getMargin() * 8), m_sceneManagerReference->getRenderWindow()->getSize().y - (UISettings::getMargin() * 8)},
         sf::Vector2f{UISettings::getMargin() * 4, UISettings::getMargin() * 4}, 
@@ -17,7 +16,6 @@ void ExitConfirmationScene::init(){
         globalColors::panelFill, 
         globalColors::panelOutline
     ));
-    std::cout << "ExitConfirmationScene::init()1.1" << std::endl;
     createRect("bg", rectStruct(
         sf::Vector2f{m_sceneManagerReference->getRenderWindow()->getSize().x - (UISettings::getMargin() * 2), m_sceneManagerReference->getRenderWindow()->getSize().y - (UISettings::getMargin() * 2)}, 
         sf::Vector2f{UISettings::getMargin(), UISettings::getMargin()}, 
@@ -26,7 +24,6 @@ void ExitConfirmationScene::init(){
         globalColors::panelOutline
     ));
 
-    std::cout << "ExitConfirmationScene::init()2" << std::endl;
     float exitPanelPosY = m_sceneStruct.m_kumpulanRect.find("exitPanel")->second.m_posisi.y;
 
     createText("title", textStruct(
@@ -36,13 +33,11 @@ void ExitConfirmationScene::init(){
         48
     ));
 
-    std::cout << "ExitConfirmationScene::init()3" << std::endl;
     //create tombol
     createBtn("yes", tombolStruct(
         sf::Vector2f{m_sceneManagerReference->getRenderWindow()->getSize().x / 2.0f, m_sceneManagerReference->getRenderWindow()->getSize().y / 2.0f + ((UISettings::getButtonSizeBig().y + UISettings::getButtonGap()) * 2)}, 
         sf::Vector2f{UISettings::getButtonSizeBig()},
         "iya",
-        // [this]() { std::cout<<"keluar"<<std::endl; }
         [localManager]() {localManager->getRenderWindow()->close();}
     ));
 
@@ -55,7 +50,6 @@ void ExitConfirmationScene::init(){
         [localManager]() {localManager->popScene();}
     ));
 
-    std::cout << "ExitConfirmationScene::init()4" << std::endl;
     // SceneManager* localManager = this->m_sceneManagerReference;
     createBinds({
         {Kontrol::kiri, [localManager](){localManager->getTombolContainerUMap()->find(SceneName::exitConfScene)->second->geser(Kontrol::kanan);}},
@@ -70,7 +64,6 @@ void ExitConfirmationScene::init(){
         {Kontrol::exit, [localManager](){localManager->popScene();}},
         {Kontrol::exit, [localManager](){localManager->getAudioPlayer().playSound(audioBoard::SFX_back);}},
     });
-    std::cout << "ExitConfirmationScene::init()5" << std::endl;
 
 }
 
