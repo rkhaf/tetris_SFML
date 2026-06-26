@@ -8,6 +8,7 @@
 
 #include "scenes/StartScene.hpp"
 #include "scenes/ExitConfirmationScene.hpp"
+#include "scenes/SettingsUI.hpp"
 // #include "Render.hpp"
 
 class TombolContainer;
@@ -25,9 +26,11 @@ class SceneManager{
         std::unordered_map<Kontrol, std::vector<std::function<void()>>>* m_currentKeybinds = nullptr;
         std::unordered_map<SceneName, std::function<sceneStruct()>> m_sceneFactoryUMap;
 
+        
         // sceneDataStruct m_sceneDataStruct;
         
-    public:
+        public:
+        std::vector<std::function<void()>> m_syncSceneSignal;
         std::vector<sceneStruct> m_currentScene;
     
         SceneManager();
@@ -36,6 +39,7 @@ class SceneManager{
         void addScene(SceneName targetScene);
         void popScene();
         void registerScenes();
+        void sendSyncSignal();
         sf::Font* getFont();
         AudioPlayer& getAudioPlayer();
         sf::RenderWindow* getRenderWindow();

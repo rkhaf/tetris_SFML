@@ -50,13 +50,12 @@ void ExitConfirmationScene::init(){
         [localManager]() {localManager->popScene();}
     ));
 
-    // SceneManager* localManager = this->m_sceneManagerReference;
     createBinds({
-        {Kontrol::kiri, [localManager](){localManager->getTombolContainerUMap()->find(SceneName::exitConfScene)->second->geser(Kontrol::kanan);}},
-        {Kontrol::kiri, [localManager](){localManager->getAudioPlayer().playSound(audioBoard::SFX_clickSound);}},
+        {Kontrol::atas, [localManager](){localManager->getTombolContainerUMap()->find(SceneName::exitConfScene)->second->geser(Kontrol::kanan);}},
+        {Kontrol::atas, [localManager](){localManager->getAudioPlayer().playSound(audioBoard::SFX_clickSound);}},
 
-        {Kontrol::kanan, [localManager](){localManager->getTombolContainerUMap()->find(SceneName::exitConfScene)->second->geser(Kontrol::kiri);}},
-        {Kontrol::kanan, [localManager](){localManager->getAudioPlayer().playSound(audioBoard::SFX_clickSound);}},
+        {Kontrol::bawah, [localManager](){localManager->getTombolContainerUMap()->find(SceneName::exitConfScene)->second->geser(Kontrol::kiri);}},
+        {Kontrol::bawah, [localManager](){localManager->getAudioPlayer().playSound(audioBoard::SFX_clickSound);}},
 
         {Kontrol::drop, [localManager](){localManager->getTombolContainerUMap()->find(SceneName::exitConfScene)->second->click();}},
         {Kontrol::drop, [localManager](){localManager->getAudioPlayer().playSound(audioBoard::SFX_confirm);}},

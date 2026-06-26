@@ -71,15 +71,15 @@ void Render::setup(){
                 }
             }
 
-
+// std::cout << "TEST" << std::endl;
     }
 }
 
 //ngdraw komponen komponen Drawable
 void Render::visualize(){
-    if(m_currentScenePointer->size()!=m_currentSceneSize){
-        setup();
-    }
+    // if(m_currentScenePointer->size()!=m_currentSceneSize){
+    //     setup();
+    // }
 
     if(m_komponenScene.size()>0){ //ngecek apkh komponen udh dimapping
         for(const auto& [nama, vektor] : m_komponenScene){

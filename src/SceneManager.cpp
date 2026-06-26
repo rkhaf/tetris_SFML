@@ -32,58 +32,53 @@ void SceneManager::registerScenes(){
         scene.init();
         return scene.getSceneStruct();
     };
+
+    m_sceneFactoryUMap[SceneName::SettingsUI] = [this]() {
+        SettingsUI scene(SceneName::SettingsUI, this);
+        scene.init();
+        return scene.getSceneStruct();
+    };
+}
+
+void SceneManager::sendSyncSignal(){
+    std::cout << "SIGNAL FIRED" << std::endl;
+    for(const auto& lambda : m_syncSceneSignal){
+        lambda();
+    }
 }
 
 
 //ngeclear seluruh scene, nambahin yg baru
 void SceneManager::changeScene(SceneName targetScene){
-    //CEK POINTER
-    if(m_window!=nullptr){
+    if (m_window == nullptr) return;
+    auto it = m_sceneFactoryUMap.find(targetScene);
+    
+    if (it != m_sceneFactoryUMap.end()) {
         m_currentScene.clear();
-        switch (targetScene){
-            case SceneName::startScene:
-                // generateStartScene();
-                break;
-        }
+        m_currentScene.push_back(it->second()); 
     }
+    // std::cout << "TEST" << std::endl;
+    sendSyncSignal();
 }
 
 
 //numpuk scene diatas
 void SceneManager::addScene(SceneName targetScene){
-if (m_window == nullptr) return;
 
+    if (m_window == nullptr) return;
     auto it = m_sceneFactoryUMap.find(targetScene);
     
     if (it != m_sceneFactoryUMap.end()) {
         m_currentScene.push_back(it->second()); 
     }
-
-
-
-    // if(m_window!=nullptr){
-    //     switch (targetScene){
-    //         case SceneName::startScene:{
-    //             StartScene newStartScene(SceneName::startScene, this);
-    //             newStartScene.init();
-    //             m_currentScene.push_back(newStartScene.getSceneStruct());
-    //             break;
-    //         }
-
-    //         case SceneName::exitConfScene:{
-    //             ExitConfirmationScene newExitConfScene(SceneName::exitConfScene, this);
-    //             newExitConfScene.init();
-    //             m_currentScene.push_back(newExitConfScene.getSceneStruct());
-    //             break;
-    //         }
-    //     }
-    // }
+    sendSyncSignal();
 }
 
 void SceneManager::popScene(){
     if(!m_currentScene.empty()){
         m_currentScene.pop_back();
     }
+    sendSyncSignal();
 }
 
 //buat ngambil keybinds yang berlaku di scene yg lagi difokusin

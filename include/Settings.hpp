@@ -26,9 +26,11 @@ namespace UISettings{
         inline float buttonGap = 18.0f;
         inline float m_margin=12.0f;
         inline sf::Vector2f buttonSizeBig = sf::Vector2f((256.0f * 2), (128.0f * 0.5));
+        inline sf::Vector2f buttonSizeSmall = sf::Vector2f((256.0f * 1.0f), (128.0f * 0.25f));
     }
     
     inline float getButtonGap(){return Internal::buttonGap;};
     inline float getMargin(){return Internal::m_margin;};
     inline sf::Vector2f getButtonSizeBig(){return Internal::buttonSizeBig;};
+    inline sf::Vector2f getButtonSizeSmall(){return Internal::buttonSizeSmall;};
 }

@@ -18,12 +18,14 @@ namespace globalColors {
 
 enum class SceneName : uint8_t{
     startScene = 0,
-    exitConfScene = 1
+    SettingsUI = 1,
+    exitConfScene = 2
 };
 
 enum class Kontrol : uint8_t{
     kiri = static_cast<int>(sf::Keyboard::Key::A),
     kanan = static_cast<int>(sf::Keyboard::Key::D),
+    atas = static_cast<int>(sf::Keyboard::Key::W),
     bawah = static_cast<int>(sf::Keyboard::Key::S),
     drop = static_cast<int>(sf::Keyboard::Key::Space),
     exit = static_cast<int>(sf::Keyboard::Key::Escape)

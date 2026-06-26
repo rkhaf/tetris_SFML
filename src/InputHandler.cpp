@@ -20,12 +20,19 @@ void InputHandler::handle(const sf::Keyboard::Key kunci){
         }
     }
 
+    
+    // std::vector<std::function<void ()>> std::pair<const Kontrol, std::vector<std::function<void ()>>>* safecopyLambda = m_signaling->find(static_cast<Kontrol>(kunci))->second;
+
     if(m_signaling!=nullptr){//cek validasi m_signaling
         if(m_signaling->find(static_cast<Kontrol>(kunci)) != m_signaling->end()){ //ngecek apkh Kontrol::kunci udh kedaftar
             if(m_signaling->find(static_cast<Kontrol>(kunci))->second.size()>0){ //ngecek apkh size dri vektor tsb lebih dri 1
-                for(const std::function<void()>& lambda : m_signaling->find(static_cast<Kontrol>(kunci))->second){ //iterasi vektor
-                    if(lambda!=nullptr){ //validasi lambda
+                auto safecopyy = m_signaling->find(static_cast<Kontrol>(kunci))->second;
+                for(const std::function<void()>& lambda : safecopyy){ //iterasi vektor
+                // for(const std::function<void()>& lambda : m_signaling->find(static_cast<Kontrol>(kunci))->second){ //iterasi vektor
+                    if(lambda!=NULL){ //validasi lambda
+                        // std::cout << "TEST" << std::endl;
                         lambda(); //manggil lambda
+                        // return;
                     }
                 }
             }

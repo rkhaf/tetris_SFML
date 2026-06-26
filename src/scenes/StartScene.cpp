@@ -43,7 +43,8 @@ void StartScene::init(){
                 sf::Vector2f{static_cast<float>(m_sceneManagerReference->getRenderWindow()->getSize().x / 2.0f), static_cast<float>(m_sceneManagerReference->getRenderWindow()->getSize().y / 2.0f + ((UISettings::getButtonSizeBig().y + UISettings::getButtonGap()) * 1))}, 
                 sf::Vector2f{UISettings::getButtonSizeBig()},
                 "Pengaturan",
-                [localManager]() { std::cout<<"masuk ke setings"<<std::endl; }
+                [localManager]() { localManager->changeScene(SceneName::SettingsUI); }
+                // [localManager]() { std::cout<<"masuk ke setings"<<std::endl; }
             });
 
             createBtn("play", {
@@ -63,12 +64,12 @@ void StartScene::init(){
             //setting keybinds
             
             createBinds({
-                {Kontrol::kiri, [localManager](){localManager->getTombolContainerUMap()->find(SceneName::startScene)->second->geser(Kontrol::kiri);}},
+                {Kontrol::atas, [localManager](){localManager->getTombolContainerUMap()->find(SceneName::startScene)->second->geser(Kontrol::kiri);}},
                 // {Kontrol::kiri, [this](){m_audioPlayer.playSound(audioBoard::SFX_clickSound);}},
-                {Kontrol::kiri, [localManager](){localManager->getAudioPlayer().playSound(audioBoard::SFX_clickSound);}},
+                {Kontrol::atas, [localManager](){localManager->getAudioPlayer().playSound(audioBoard::SFX_clickSound);}},
 
-                {Kontrol::kanan, [localManager](){localManager->getTombolContainerUMap()->find(SceneName::startScene)->second->geser(Kontrol::kanan);}},
-                {Kontrol::kanan, [localManager](){localManager->getAudioPlayer().playSound(audioBoard::SFX_clickSound);}},
+                {Kontrol::bawah, [localManager](){localManager->getTombolContainerUMap()->find(SceneName::startScene)->second->geser(Kontrol::kanan);}},
+                {Kontrol::bawah, [localManager](){localManager->getAudioPlayer().playSound(audioBoard::SFX_clickSound);}},
 
                 {Kontrol::drop, [localManager](){localManager->getTombolContainerUMap()->find(SceneName::startScene)->second->click();}},
                 {Kontrol::drop, [localManager](){localManager->getAudioPlayer().playSound(audioBoard::SFX_confirm);}},
