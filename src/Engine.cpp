@@ -35,7 +35,7 @@ Engine::Engine(sf::Vector2u windowSize)
 void Engine::init(){
     // std::cout<<"ready"<<std::endl;
 
-    m_sceneManager->init(&m_font,&m_window, m_render->getTombolContainerPointer());
+    m_sceneManager->init(&m_font,&m_window, m_render->getTombolContainerPointer(), m_render->getTabContainerPointer());
     m_render->init(m_sceneManager->m_currentScene, &m_window);
     m_inputHandler->init((m_sceneManager->getCurrentScene()));
     m_sceneManager->m_syncSceneSignal.push_back([this](){this->m_render->setup();});

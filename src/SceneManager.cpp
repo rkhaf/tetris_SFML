@@ -1,5 +1,6 @@
 #include "../include/SceneManager.hpp"
 #include "../include/TombolContainer.hpp"
+#include "../include/TabContainer.hpp"
 #include <iostream>
 
 SceneManager::SceneManager()
@@ -8,12 +9,13 @@ SceneManager::SceneManager()
     
 }
 
-void SceneManager::init(sf::Font* font, sf::RenderWindow* window, std::unordered_map<SceneName, std::unique_ptr<TombolContainer>>* tombolContainerPtr){
+void SceneManager::init(sf::Font* font, sf::RenderWindow* window, std::unordered_map<SceneName, std::unique_ptr<TombolContainer>>* tombolContainerPtr, std::unordered_map<SceneName, std::unique_ptr<TabContainer>>* tabContainerPtr){
     registerScenes();
     m_window = window;
     m_font = font;
     windowCenter = sf::Vector2f(m_window->getSize().x / 2, m_window->getSize().y / 2);
     m_tombolContainer=tombolContainerPtr;
+    m_tabContainer=tabContainerPtr;
     // m_sceneDataStruct.m_window = m_window;
     // changeScene(SceneName::startScene);
     addScene(SceneName::startScene);
@@ -96,6 +98,10 @@ std::vector<sceneStruct>* SceneManager::getCurrentScene(){
 
 std::unordered_map<SceneName, std::unique_ptr<TombolContainer>>* SceneManager::getTombolContainerUMap(){
     return m_tombolContainer;
+}
+
+std::unordered_map<SceneName, std::unique_ptr<TabContainer>>* SceneManager::getTabContainerUMap(){
+    return m_tabContainer;
 }
 
 sf::Font* SceneManager::getFont(){

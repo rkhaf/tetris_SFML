@@ -12,6 +12,7 @@
 // #include "Render.hpp"
 
 class TombolContainer;
+class TabContainer;
 
 class SceneManager{
     private:
@@ -23,6 +24,7 @@ class SceneManager{
         sf::Vector2f windowCenter;
 
         std::unordered_map<SceneName, std::unique_ptr<TombolContainer>>* m_tombolContainer=nullptr;
+        std::unordered_map<SceneName, std::unique_ptr<TabContainer>>* m_tabContainer=nullptr;
         std::unordered_map<Kontrol, std::vector<std::function<void()>>>* m_currentKeybinds = nullptr;
         std::unordered_map<SceneName, std::function<sceneStruct()>> m_sceneFactoryUMap;
 
@@ -44,7 +46,9 @@ class SceneManager{
         AudioPlayer& getAudioPlayer();
         sf::RenderWindow* getRenderWindow();
         std::unordered_map<SceneName, std::unique_ptr<TombolContainer>>* getTombolContainerUMap();
-        void init(sf::Font* font, sf::RenderWindow* window, std::unordered_map<SceneName, std::unique_ptr<TombolContainer>>* tombolContainerPtr);
+        std::unordered_map<SceneName, std::unique_ptr<TabContainer>>* getTabContainerUMap();
+
+        void init(sf::Font* font, sf::RenderWindow* window, std::unordered_map<SceneName, std::unique_ptr<TombolContainer>>* tombolContainerPtr, std::unordered_map<SceneName, std::unique_ptr<TabContainer>>* tabContainerPtr);
         sceneStruct* getCurrentKeybinds();
         std::vector<sceneStruct>* getCurrentScene();
 

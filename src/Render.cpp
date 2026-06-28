@@ -2,6 +2,7 @@
 #include <iostream>
 // #include "../include/Engine.hpp"
 #include "../include/TombolContainer.hpp"
+#include "../include/TabContainer.hpp"
 
 Render::Render(sf::Font* font)
 : m_font(font)
@@ -23,6 +24,7 @@ void Render::setup(){
 
         m_komponenScene.clear();
         m_tombolContainer.clear();
+        m_tabContainer.clear();
 
     }
     for(sceneStruct& scene : *m_currentScenePointer){
@@ -71,6 +73,21 @@ void Render::setup(){
                 }
             }
 
+            //ngeiterasi tabContainer
+            if(scene.m_tabContainer.size()>0){
+                if(m_tabContainer.find(scene.m_namaScene)==m_tabContainer.end()){
+                    m_tabContainer[scene.m_namaScene] = std::make_unique<TabContainer>(*m_font, &scene.m_tabContainer.back(), sf::Vector2(UISettings::getMargin(), UISettings::getMargin()));
+                    // std::cout << "tru" << std::endl;
+                }else{
+                    m_tabContainer.find(scene.m_namaScene)->second = std::make_unique<TabContainer>(*m_font, &scene.m_tabContainer.back(), sf::Vector2(UISettings::getMargin(), UISettings::getMargin()));
+                    // std::cout << "fals" << std::endl;
+                }
+                
+                // m_tabContainer.find(scene.m_namaScene)->second->m_pivot = sf::Vector2(UISettings::getMargin(), UISettings::getMargin());
+                // auto temp = std::make_unique<TabContainer>(*m_font, scene.m_tabContainer.back());
+
+            }
+
 // std::cout << "TEST" << std::endl;
     }
 }
@@ -95,6 +112,33 @@ void Render::visualize(){
                     m_window->draw(*uniqptr);
                 }
             }
+
+            if(m_tabContainer.find(nama) != m_tabContainer.end()){
+
+                auto& kumpulanTeksOpsiTabCont = m_tabContainer.find(nama)->second->getKumpulanTeks();
+                auto& kumpulanTeksSubOpsiTabCont = m_tabContainer.find(nama)->second->getKumpulanSubOpsiTeks();
+                auto& currHoveredTabCont = m_tabContainer.find(nama)->second->getCurrentHovered();
+                
+                // kumpulanTeksSubOpsiTabCont.find(kumpulanTeksOpsiTabCont[currHoveredTabCont.x]->getString());
+                
+                // m_tabContainer.find(nama)->second->getKumpulanSubOpsiTeks().find(m_tabContainer.find(nama)->second->getKumpulanTeks()[m_tabContainer.find(nama)->second->getCurrentHovered().x])
+                // if(m_tabContainer.find(nama)->second->getKumpulanSubOpsiTeks().find(m_tabContainer->get)){
+                    for(const auto& uniqptr : m_tabContainer.find(nama)->second->getKumpulanBg()){
+                        m_window->draw(*uniqptr.get());
+                    }
+                    for(const auto& uniqptr : m_tabContainer.find(nama)->second->getKumpulanTeks()){
+                        m_window->draw(*uniqptr.get());
+                    }
+                    if(kumpulanTeksSubOpsiTabCont.find(kumpulanTeksOpsiTabCont[currHoveredTabCont.x].get()->getString().toAnsiString()) != kumpulanTeksSubOpsiTabCont.end()){
+                        for(const auto& [str, vector] : kumpulanTeksSubOpsiTabCont){
+                            for(const auto& uniqptr : vector){
+                                // std::cout << uniqptr.get()->getString().toAnsiString() << std::endl;
+                                // std::cout << kumpulanTeksOpsiTabCont[currHoveredTabCont.x].get()->getString().toAnsiString() << std::endl;
+                                m_window->draw(*uniqptr.get());
+                            }
+                        }
+                    }
+        }
         }
     }
 
@@ -104,3 +148,6 @@ std::unordered_map<SceneName, std::unique_ptr<TombolContainer>>* Render::getTomb
     return &m_tombolContainer;
 }
 
+std::unordered_map<SceneName, std::unique_ptr<TabContainer>>* Render::getTabContainerPointer(){
+    return &m_tabContainer;
+}

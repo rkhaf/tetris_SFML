@@ -11,6 +11,7 @@
 
 // class Engine;
 class TombolContainer;
+class TabContainer;
 
 class Render{
     private:
@@ -21,6 +22,7 @@ class Render{
     
         sf::Font* m_font = nullptr;
         std::unordered_map<SceneName, std::unique_ptr<TombolContainer>> m_tombolContainer;
+        std::unordered_map<SceneName, std::unique_ptr<TabContainer>> m_tabContainer;
 
         sf::RenderWindow* m_window = nullptr;
         int m_currentSceneSize = 0;
@@ -34,5 +36,6 @@ class Render{
 
         // TombolContainer& getTombolContainerPointer();
         std::unordered_map<SceneName, std::unique_ptr<TombolContainer>>* getTombolContainerPointer();
+        std::unordered_map<SceneName, std::unique_ptr<TabContainer>>* getTabContainerPointer();
         // void init();
 };

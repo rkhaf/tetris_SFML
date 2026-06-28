@@ -1,6 +1,7 @@
 #include "../../include/scenes/SettingsUI.hpp"
 #include "../../include/SceneManager.hpp"
 #include "../../include/TombolContainer.hpp"
+#include "../../include/TabContainer.hpp"
 
 // StartScene::StartScene(SceneName sceneName, SceneManager* sceneManager){
 
@@ -30,49 +31,70 @@ void SettingsUI::init(){
             sf::Vector2f setengahBtnSmall = UISettings::getButtonSizeSmall() / 2.0f;
 
             //create tombol
-            createBtn("return", tombolStruct(
-                sf::Vector2f(UISettings::getMargin() + setengahBtnSmall.x, UISettings::getMargin() + setengahBtnSmall.y), 
-                sf::Vector2f(UISettings::getButtonSizeSmall()),
-                "Kembali",
-                // [this]() { std::cout<<"keluar"<<std::endl; }
-                // [this]() { addScene(SceneName::exitConfScene);}
-                [localManager]() { localManager->changeScene(SceneName::startScene);}
-                // [this]() {std::cout << "ke exit confScene" << std::endl;;}
-                // [this]() {m_sceneDataStruct->m_sceneManagerReference->addScene(SceneName::exitConfScene);}
-            ));
+            
+            // createBtn("Audio", {
+            //     sf::Vector2f(UISettings::getMargin() + setengahBtnSmall.x + (UISettings::getButtonSizeSmall().x * 1.0f), UISettings::getMargin() + setengahBtnSmall.y ),  
+            //     sf::Vector2f{UISettings::getButtonSizeSmall()},
+            //     "Audio",
+            //     [localManager]() { std::cout<<"masuk ke menu audio"<<std::endl; }
+            // });
+            
+            // createBtn("tetromino", {
+            //     sf::Vector2f{UISettings::getMargin() + setengahBtnSmall.x + (UISettings::getButtonSizeSmall().x * 2.0f), UISettings::getMargin() + setengahBtnSmall.y}, 
+            //     sf::Vector2f{UISettings::getButtonSizeSmall()},
+            //     "tetromino"
+            //     ,
+            //     [localManager]() { std::cout<<"masuk ke menu tetromino"<<std::endl;}
+            // });
+            
+            // createBtn("return", tombolStruct(
+            //     sf::Vector2f(UISettings::getMargin() + setengahBtnSmall.x, UISettings::getMargin() + setengahBtnSmall.y), 
+            //     sf::Vector2f(UISettings::getButtonSizeSmall()),
+            //     "Kembali",
+            //     // [this]() { std::cout<<"keluar"<<std::endl; }
+            //     // [this]() { addScene(SceneName::exitConfScene);}
+            //     [localManager]() { localManager->changeScene(SceneName::startScene);}
+            //     // [this]() {std::cout << "ke exit confScene" << std::endl;;}
+            //     // [this]() {m_sceneDataStruct->m_sceneManagerReference->addScene(SceneName::exitConfScene);}
+            // ));
+            // // if (m_tombolContainer->find(SceneName::startScene) == m_tombolContainer->end()) {
+            // if (m_sceneManagerReference->getTombolContainerUMap()->find(SceneName::SettingsUI) == m_sceneManagerReference->getTombolContainerUMap()->end()) {
+            //     (*m_sceneManagerReference->getTombolContainerUMap())[SceneName::SettingsUI] = std::make_unique<TombolContainer>(*m_sceneManagerReference->getFont());
+            // }
 
-            createBtn("Audio", {
-                sf::Vector2f(UISettings::getMargin() + setengahBtnSmall.x + (UISettings::getButtonSizeSmall().x * 1.0f), UISettings::getMargin() + setengahBtnSmall.y ),  
-                sf::Vector2f{UISettings::getButtonSizeSmall()},
-                "Audio",
-                [localManager]() { std::cout<<"masuk ke menu audio"<<std::endl; }
-            });
+            tabContainerStruct newTabContainerStruct;
 
-            createBtn("tetromino", {
-                sf::Vector2f{UISettings::getMargin() + setengahBtnSmall.x + (UISettings::getButtonSizeSmall().x * 2.0f), UISettings::getMargin() + setengahBtnSmall.y}, 
-                sf::Vector2f{UISettings::getButtonSizeSmall()},
-                "tetromino"
-                ,
-                [localManager]() { std::cout<<"masuk ke menu tetromino"<<std::endl;}
-            });
+            sliderStruct sfxVolumeSlider("SFX Volume", 0, 100);
+            sliderStruct bgmVolumeSlider("BGM Volume", 0, 100);
+            
 
-            // if (m_tombolContainer->find(SceneName::startScene) == m_tombolContainer->end()) {
-            if (m_sceneManagerReference->getTombolContainerUMap()->find(SceneName::SettingsUI) == m_sceneManagerReference->getTombolContainerUMap()->end()) {
-                (*m_sceneManagerReference->getTombolContainerUMap())[SceneName::SettingsUI] = std::make_unique<TombolContainer>(*m_sceneManagerReference->getFont());
-            }
+            newTabContainerStruct.m_opsi.push_back("Audio");
+            newTabContainerStruct.m_opsi.push_back("Tetromino");
+
+            newTabContainerStruct.m_input["Audio"].push_back(sfxVolumeSlider);
+            newTabContainerStruct.m_input["Audio"].push_back(bgmVolumeSlider);
+
+            m_sceneStruct.m_tabContainer.push_back(newTabContainerStruct);
 
             // m_sceneManagerReference->getAudioPlayer()
             //setting keybinds
+
+            // localManager->getTombolContainerUMap()->find(SceneName::SettingsUI)->second->click();
+            // localManager->getTabContainerUMap()->find(SceneName::SettingsUI)->second->click();
             
             createBinds({
-                {Kontrol::kanan, [localManager](){localManager->getTombolContainerUMap()->find(SceneName::SettingsUI)->second->geser(Kontrol::kiri);}},
-                // {Kontrol::kiri, [this](){m_audioPlayer.playSound(audioBoard::SFX_clickSound);}},
+                {Kontrol::kanan, [localManager](){localManager->getTabContainerUMap()->find(SceneName::SettingsUI)->second->geser(Kontrol::kanan);}},
+                // {Kontrol::kanan, [localManager](){localManager->getTombolContainerUMap()->find(SceneName::SettingsUI)->second->geser(Kontrol::kiri);}},
                 {Kontrol::kanan, [localManager](){localManager->getAudioPlayer().playSound(audioBoard::SFX_clickSound);}},
 
-                {Kontrol::kiri, [localManager](){localManager->getTombolContainerUMap()->find(SceneName::SettingsUI)->second->geser(Kontrol::kanan);}},
+                {Kontrol::kiri, [localManager](){localManager->getTabContainerUMap()->find(SceneName::SettingsUI)->second->geser(Kontrol::kiri);}},
                 {Kontrol::kiri, [localManager](){localManager->getAudioPlayer().playSound(audioBoard::SFX_clickSound);}},
 
-                {Kontrol::drop, [localManager](){localManager->getTombolContainerUMap()->find(SceneName::SettingsUI)->second->click();}},
+                {Kontrol::bawah, [localManager](){localManager->getTabContainerUMap()->find(SceneName::SettingsUI)->second->geser(Kontrol::bawah);}},
+
+                {Kontrol::atas, [localManager](){localManager->getTabContainerUMap()->find(SceneName::SettingsUI)->second->geser(Kontrol::atas);}},
+
+                // {Kontrol::drop, [localManager](){localManager->getTabContainerUMap()->find(SceneName::SettingsUI)->second->geser(Kontrol::kanan);}},
                 {Kontrol::drop, [localManager](){localManager->getAudioPlayer().playSound(audioBoard::SFX_confirm);}},
                 
                 {Kontrol::exit, [localManager](){localManager->changeScene(SceneName::startScene);}},

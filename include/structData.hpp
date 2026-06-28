@@ -76,7 +76,30 @@ struct tombolStruct{
     m_teks(teks),
     m_action(std::move(action))
     {};
+};
 
+struct sliderStruct{
+    std::string m_label;
+    float m_min = 0.0f;
+    float m_max = 0.0f;
+
+    sliderStruct(std::string label, float min, float max)
+    :
+    m_label(label),
+    m_min(min),
+    m_max(max)
+    {}
+};
+
+struct checkButtonStruct{
+    bool m_state = false;
+};
+
+struct tabContainerStruct{
+    std::vector<std::string> m_opsi;
+    std::unordered_map<std::string, std::vector<std::variant<sliderStruct, checkButtonStruct>>> m_input;
+
+    tabContainerStruct(){};
 };
 
 struct sceneStruct{
@@ -85,6 +108,9 @@ struct sceneStruct{
     std::unordered_map<std::string, rectStruct> m_kumpulanRect;
     std::unordered_map<std::string, tombolStruct> m_kumpulanTombol;
     std::unordered_map<Kontrol, std::vector<std::function<void()>>> m_keybinds;
+    std::vector<tabContainerStruct> m_tabContainer;
+    // std::unique_ptr<tabContainerStruct> m_tabContainer;
+    // tabContainerStruct m_tabContainer;
 
     sceneStruct(SceneName namaScene) : m_namaScene(namaScene) {};
 };
