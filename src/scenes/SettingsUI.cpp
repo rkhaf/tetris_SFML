@@ -91,8 +91,10 @@ void SettingsUI::init(){
                 {Kontrol::kiri, [localManager](){localManager->getAudioPlayer().playSound(audioBoard::SFX_clickSound);}},
 
                 {Kontrol::bawah, [localManager](){localManager->getTabContainerUMap()->find(SceneName::SettingsUI)->second->geser(Kontrol::bawah);}},
+                {Kontrol::bawah, [localManager](){localManager->getAudioPlayer().playSound(audioBoard::SFX_clickSound);}},
 
                 {Kontrol::atas, [localManager](){localManager->getTabContainerUMap()->find(SceneName::SettingsUI)->second->geser(Kontrol::atas);}},
+                {Kontrol::atas, [localManager](){localManager->getAudioPlayer().playSound(audioBoard::SFX_clickSound);}},
 
                 // {Kontrol::drop, [localManager](){localManager->getTabContainerUMap()->find(SceneName::SettingsUI)->second->geser(Kontrol::kanan);}},
                 {Kontrol::drop, [localManager](){localManager->getAudioPlayer().playSound(audioBoard::SFX_confirm);}},

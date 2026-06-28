@@ -16,36 +16,66 @@ void TabContainer::click(){
 }
 
 void TabContainer::geser(Kontrol key){
-    switch (key){
-        case (Kontrol::kiri):
+    if(key==Kontrol::atas){
+        if(m_currentHovered.y>-1){
+            m_currentHovered.y--;
+        }
+    }else if(key==Kontrol::bawah){
+        if(m_tabContainerReference->m_input.find(m_tabContainerReference->m_opsi[m_currentHovered.x]) != m_tabContainerReference->m_input.end()){
+            if(m_currentHovered.y < static_cast<int>(m_tabContainerReference->m_input.find(m_tabContainerReference->m_opsi[m_currentHovered.x])->second.size()-1)){
+                m_currentHovered.y++;
+            }
+        }
+    }
+
+    if(m_currentHovered.y==-1){
+        if(key==Kontrol::kiri){
             if(m_currentHovered.x>0){
                 m_currentHovered.x--;
             }
-            break;
-        case (Kontrol::kanan):
+        }else if(key==Kontrol::kanan){
             if(m_currentHovered.x<m_tabContainerReference->m_opsi.size()-1){
                 m_currentHovered.x++;
             }
-            break;
-        case (Kontrol::atas):
-            if(m_tabContainerReference->m_input.find(m_tabContainerReference->m_opsi[m_currentHovered.x]) != m_tabContainerReference->m_input.end()){
-                if(m_currentHovered.y>0){
-                    m_currentHovered.y--;
-                }
-            }else{
-                m_currentHovered.y = 0;
-            }
-            break;
-        case (Kontrol::bawah):
-            if(m_tabContainerReference->m_input.find(m_tabContainerReference->m_opsi[m_currentHovered.x]) != m_tabContainerReference->m_input.end()){
-                if(m_currentHovered.y<m_tabContainerReference->m_input.find(m_tabContainerReference->m_opsi[m_currentHovered.x])->second.size()-1){
-                    m_currentHovered.y++;
-                }
-            }else{
-                m_currentHovered.y = 0;
-            }
-            break;
+        }
+    }else{
+        if(key==Kontrol::kiri){
+            std::cout << "changeValueLeft" << std::endl;
+        }else if(key==Kontrol::kanan){
+            std::cout << "changeValueRight" << std::endl;
+        }
     }
+
+    // switch (key){
+    //     case (Kontrol::kiri):
+    //         if(m_currentHovered.x>0){
+    //             m_currentHovered.x--;
+    //         }
+    //         break;
+    //     case (Kontrol::kanan):
+    //         if(m_currentHovered.x<m_tabContainerReference->m_opsi.size()-1){
+    //             m_currentHovered.x++;
+    //         }
+    //         break;
+    //     case (Kontrol::atas):
+    //         if(m_tabContainerReference->m_input.find(m_tabContainerReference->m_opsi[m_currentHovered.x]) != m_tabContainerReference->m_input.end()){
+    //             if(m_currentHovered.y>0){
+    //                 m_currentHovered.y--;
+    //             }
+    //         }else{
+    //             m_currentHovered.y = 0;
+    //         }
+    //         break;
+    //     case (Kontrol::bawah):
+    //         if(m_tabContainerReference->m_input.find(m_tabContainerReference->m_opsi[m_currentHovered.x]) != m_tabContainerReference->m_input.end()){
+    //             if(m_currentHovered.y<m_tabContainerReference->m_input.find(m_tabContainerReference->m_opsi[m_currentHovered.x])->second.size()-1){
+    //                 m_currentHovered.y++;
+    //             }
+    //         }else{
+    //             m_currentHovered.y = 0;
+    //         }
+    //         break;
+    // }
     updateVisual();
 }
 
@@ -143,22 +173,50 @@ void TabContainer::updateVisual(){
     if(getSize()<0){throw;}
 
     else{
+        auto test = m_opsiTeks[m_currentHovered.x].get()->getString().toAnsiString();
         for(int i=0; i<getSize(); i++){
             m_opsiBg[i]->setFillColor(globalColors::panelFill2);
             m_opsiBg[i]->setOutlineColor(globalColors::panelOutline);
         }
-        m_opsiBg[m_currentHovered.x]->setOutlineColor(globalColors::panelOutline);
-        m_opsiBg[m_currentHovered.x]->setFillColor(globalColors::buttonHovered);
-        auto test = m_opsiTeks[m_currentHovered.x].get()->getString().toAnsiString();
         if(m_subOpsiTeks.find(test) != m_subOpsiTeks.end()){
-            // std::cout << "true" << test << std::endl;
             for(const auto& uniqptr : m_subOpsiTeks.find(test)->second){
                 uniqptr.get()->setFillColor(sf::Color::White);
             }
-            m_subOpsiTeks.find(test)->second[m_currentHovered.y].get()->setFillColor(sf::Color::Green);
         }
-        // else{
-        //     std::cout << "fals" << test << std::endl;
+
+        if(m_currentHovered.y==-1){
+            // for(int i=0; i<getSize(); i++){
+            //     m_opsiBg[i]->setFillColor(globalColors::panelFill2);
+            //     m_opsiBg[i]->setOutlineColor(globalColors::panelOutline);
+            // }
+            m_opsiBg[m_currentHovered.x]->setOutlineColor(globalColors::panelOutline);
+            m_opsiBg[m_currentHovered.x]->setFillColor(globalColors::buttonHovered);
+        }else{
+            auto test = m_opsiTeks[m_currentHovered.x].get()->getString().toAnsiString();
+            if(m_subOpsiTeks.find(test) != m_subOpsiTeks.end()){
+                // std::cout << "true" << test << std::endl;
+                // for(const auto& uniqptr : m_subOpsiTeks.find(test)->second){
+                //     uniqptr.get()->setFillColor(sf::Color::White);
+                // }
+                m_subOpsiTeks.find(test)->second[m_currentHovered.y].get()->setFillColor(sf::Color::Green);
+            }
+        }
+        // std::cout << m_currentHovered.x << ", " << m_currentHovered.y << std::endl;
+
+
+        // for(int i=0; i<getSize(); i++){
+        //     m_opsiBg[i]->setFillColor(globalColors::panelFill2);
+        //     m_opsiBg[i]->setOutlineColor(globalColors::panelOutline);
+        // }
+        // m_opsiBg[m_currentHovered.x]->setOutlineColor(globalColors::panelOutline);
+        // m_opsiBg[m_currentHovered.x]->setFillColor(globalColors::buttonHovered);
+        // auto test = m_opsiTeks[m_currentHovered.x].get()->getString().toAnsiString();
+        // if(m_subOpsiTeks.find(test) != m_subOpsiTeks.end()){
+        //     // std::cout << "true" << test << std::endl;
+        //     for(const auto& uniqptr : m_subOpsiTeks.find(test)->second){
+        //         uniqptr.get()->setFillColor(sf::Color::White);
+        //     }
+        //     m_subOpsiTeks.find(test)->second[m_currentHovered.y+1].get()->setFillColor(sf::Color::Green);
         // }
     }
 
