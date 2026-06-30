@@ -45,6 +45,7 @@ class TabContainer{
         int getSize();
         void updateVisual();
         void resetContainer();
+        void modifySlider(Kontrol arah);
         sf::Vector2i& getCurrentHovered();
         std::vector<std::unique_ptr<sf::Text>>& getKumpulanTeks();
         std::vector<std::unique_ptr<sf::RectangleShape>>& getKumpulanBg();

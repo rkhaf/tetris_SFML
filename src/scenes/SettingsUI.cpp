@@ -25,7 +25,7 @@ void SettingsUI::init(){
 
             tabContainerStruct newTabContainerStruct;
 
-            sliderStruct sfxVolumeSlider("SFX Volume", 0, Settings::getAudioVolumeSFX(), 100);
+            sliderStruct sfxVolumeSlider("SFX Volume", 0, &Settings::Internal::AUDIO_VOLUME_SFX, 100);
             sliderStruct bgmVolumeSlider("BGM Volume", 0, Settings::getAudioVolumeBGM(), 100);
             
 
@@ -54,8 +54,11 @@ void SettingsUI::init(){
                 // {Kontrol::drop, [localManager](){localManager->getTabContainerUMap()->find(SceneName::SettingsUI)->second->geser(Kontrol::kanan);}},
                 {Kontrol::drop, [localManager](){localManager->getAudioPlayer().playSound(audioBoard::SFX_confirm);}},
                 
+
                 {Kontrol::exit, [localManager](){localManager->changeScene(SceneName::startScene);}},
                 {Kontrol::exit, [localManager](){localManager->getAudioPlayer().playSound(audioBoard::SFX_back);}},
+                {Kontrol::exit, [localManager](){localManager->sinkronVolumeSpeaker();}},
+
 
             });
 }

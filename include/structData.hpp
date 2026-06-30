@@ -84,6 +84,13 @@ struct sliderStruct{
     float m_val = 0.0f;
     float m_max = 0.0f;
 
+    sliderStruct(std::string label, float min,float* val, float max)
+    :
+    m_label(label),
+    m_min(min),
+    m_val(*val),
+    m_max(max)
+    {}
     sliderStruct(std::string label, float min,float val, float max)
     :
     m_label(label),

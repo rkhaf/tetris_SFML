@@ -51,5 +51,6 @@ class SceneManager{
         void init(sf::Font* font, sf::RenderWindow* window, std::unordered_map<SceneName, std::unique_ptr<TombolContainer>>* tombolContainerPtr, std::unordered_map<SceneName, std::unique_ptr<TabContainer>>* tabContainerPtr);
         sceneStruct* getCurrentKeybinds();
         std::vector<sceneStruct>* getCurrentScene();
+        void sinkronVolumeSpeaker();
 
 };

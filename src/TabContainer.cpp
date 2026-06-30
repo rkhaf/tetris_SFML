@@ -57,18 +57,20 @@ void TabContainer::geser(Kontrol key){
             // if(m_ArrowHolder.find(Kontrol::kiri) != m_ArrowHolder.end()){
             //     m_ArrowHolder
             // }
-            std::cout << "changeValueLeft" << std::endl;
+            modifySlider(key);
+            // std::cout << "changeValueLeft" << std::endl;
             
         }else if(key==Kontrol::kanan){
             // auto& uniqptr = m_subOpsiInput[teksStringOpsiTerpilih][teksStringSubOpsiTerpilih][2];
             // if(auto* arrowObj = std::get_if<Arrow>(uniqptr.get())){
-            //     arrowObj->setFillColor(sf::Color::Green);
-            // }
-            // index = 2;
-            // auto& uniqptr = m_subOpsiInput[teksStringOpsiTerpilih][teksStringSubOpsiTerpilih][2];
-            // if(m_ArrowHolder.find(Kontrol::kanan) != m_ArrowHolder.end()){
-            // }
-            std::cout << "changeValueRight" << std::endl;
+                //     arrowObj->setFillColor(sf::Color::Green);
+                // }
+                // index = 2;
+                // auto& uniqptr = m_subOpsiInput[teksStringOpsiTerpilih][teksStringSubOpsiTerpilih][2];
+                // if(m_ArrowHolder.find(Kontrol::kanan) != m_ArrowHolder.end()){
+                    // }
+            modifySlider(key);
+            // std::cout << "changeValueRight" << std::endl;
         }
 
         // if(auto* arrowObj = std::get_if<Arrow>(uniqptr.get())){
@@ -76,6 +78,38 @@ void TabContainer::geser(Kontrol key){
         // }
     }
     updateVisual();
+}
+
+void TabContainer::modifySlider(Kontrol arah){
+    // std::cout << static_cast<int>(arah) << std::endl;
+    const auto& teksStringOpsiTerpilih = m_opsiTeks[m_currentHovered.x].get()->getString().toAnsiString();
+    const auto& teksStringSubOpsiTerpilih = m_subOpsiTeks.find(teksStringOpsiTerpilih)->second[m_currentHovered.y].get()->getString().toAnsiString();
+    auto& uniqptr = m_subOpsiInput[teksStringOpsiTerpilih][teksStringSubOpsiTerpilih][0];
+
+    if(teksStringSubOpsiTerpilih == "SFX Volume"){
+        if(arah == Kontrol::kiri){
+            Settings::setAudioVolumeSFX(Settings::getAudioVolumeSFX()-1);
+        }else if(arah == Kontrol::kanan){
+            Settings::setAudioVolumeSFX(Settings::getAudioVolumeSFX()+1);
+        }
+        if(auto* textObj = std::get_if<sf::Text>(uniqptr.get())){
+            textObj->setString(std::to_string(static_cast<int>(Settings::getAudioVolumeSFX())));
+        }
+    }else if(teksStringSubOpsiTerpilih == "BGM Volume"){
+        if(arah == Kontrol::kiri){
+            Settings::setAudioVolumeBGM(Settings::getAudioVolumeBGM()-1);
+        }else if(arah == Kontrol::kanan){
+            Settings::setAudioVolumeBGM(Settings::getAudioVolumeBGM()+1);
+        }
+        if(auto* textObj = std::get_if<sf::Text>(uniqptr.get())){
+            textObj->setString(std::to_string(static_cast<int>(Settings::getAudioVolumeBGM())));
+        }
+    }
+    // std::cout << "SFX Volume : " << Settings::getAudioVolumeSFX() << std::endl;
+    // std::cout << "BGM Volume : " << Settings::getAudioVolumeBGM() << std::endl;
+    // std::cout << teksStringSubOpsiTerpilih << std::endl;
+
+
 }
 
 void TabContainer::generate(){

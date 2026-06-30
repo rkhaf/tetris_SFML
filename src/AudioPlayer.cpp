@@ -112,6 +112,12 @@ void AudioPlayer::bakeSound(){
     m_speaker_SFX.emplace(m_kumpulanLaguJadi.find(audioBoard::SFX_clickSound)->second);
     m_speaker_BGM.emplace(m_kumpulanLaguJadi.find(audioBoard::SFX_clickSound)->second);
     
+    synchronizeSpeakerVolume();
+    // m_speaker_BGM->setVolume(Settings::getAudioVolumeBGM());
+    // m_speaker_SFX->setVolume(Settings::getAudioVolumeSFX());
+}
+
+void AudioPlayer::synchronizeSpeakerVolume(){
     m_speaker_BGM->setVolume(Settings::getAudioVolumeBGM());
     m_speaker_SFX->setVolume(Settings::getAudioVolumeSFX());
 }

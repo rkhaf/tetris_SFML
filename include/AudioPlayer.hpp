@@ -75,5 +75,6 @@ class AudioPlayer{
         void playSound(audioBoard soundboard);
         void playMusic(audioBoard soundboard);
         void changeMusic(audioBoard soundboard);
+        void synchronizeSpeakerVolume();
         sf::SoundBuffer converter(const std::vector<std::pair<structNote, float>>& rentetanNot);
 };

@@ -115,3 +115,7 @@ AudioPlayer& SceneManager::getAudioPlayer(){
 sf::RenderWindow* SceneManager::getRenderWindow(){
     return m_window;
 }
+
+void SceneManager::sinkronVolumeSpeaker(){
+    m_audioPlayer.synchronizeSpeakerVolume();
+}
