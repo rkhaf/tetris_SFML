@@ -118,6 +118,7 @@ void Render::visualize(){
                 auto& kumpulanTeksOpsiTabCont = m_tabContainer.find(nama)->second->getKumpulanTeks();
                 auto& kumpulanTeksSubOpsiTabCont = m_tabContainer.find(nama)->second->getKumpulanSubOpsiTeks();
                 auto& currHoveredTabCont = m_tabContainer.find(nama)->second->getCurrentHovered();
+                auto& kumpulanInputSubOpsiTabCont = m_tabContainer.find(nama)->second->getKumpulanSubOpsiInput();
                 
                 // kumpulanTeksSubOpsiTabCont.find(kumpulanTeksOpsiTabCont[currHoveredTabCont.x]->getString());
                 
@@ -135,6 +136,23 @@ void Render::visualize(){
                                 // std::cout << uniqptr.get()->getString().toAnsiString() << std::endl;
                                 // std::cout << kumpulanTeksOpsiTabCont[currHoveredTabCont.x].get()->getString().toAnsiString() << std::endl;
                                 m_window->draw(*uniqptr.get());
+                            }
+                        }for(const auto& [strOpsiTeks, vector] : kumpulanInputSubOpsiTabCont){
+                            for(const auto& [strSubOpsiTeks, vektor] : vector){
+                                for(const auto& uniqptr : vektor){
+                                    // m_window->draw(*uniqptr.get());
+                                    std::visit([this](auto& arg){
+                                        using T = std::decay_t<decltype(arg)>;
+
+                                        if constexpr(std::is_same_v<T, Arrow>){
+                                            m_window->draw(arg);
+                                        }else if constexpr(std::is_same_v<T, sliderStruct>){
+
+                                        }else{
+                                            m_window->draw(arg);
+                                        }
+                                    }, *uniqptr);
+                                }
                             }
                         }
                     }

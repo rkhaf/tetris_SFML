@@ -4,6 +4,7 @@
 #include <functional>
 #include <algorithm>
 #include "structData.hpp"
+#include "custom_convex/Arrow.hpp"
 #include "Settings.hpp"
 
 
@@ -17,6 +18,9 @@ class TabContainer{
         std::vector<std::unique_ptr<sf::Text>> m_opsiTeks;
         std::vector<std::unique_ptr<sf::RectangleShape>> m_opsiBg;
         std::unordered_map<std::string, std::vector<std::unique_ptr<sf::Text>>> m_subOpsiTeks;
+        std::unordered_map<std::string, std::unordered_map<std::string, std::vector<std::unique_ptr<std::variant<sliderStruct, Arrow, sf::Text, sf::RectangleShape>>>>> m_subOpsiInput;
+        std::unordered_map<Kontrol, std::unique_ptr<std::variant<sliderStruct, Arrow, sf::Text, sf::RectangleShape>>*> m_ArrowHolder;
+        // std::unordered_map<std::string, std::vector<std::unique_ptr<std::variant<sliderStruct, Arrow, sf::Text, sf::RectangleShape>>>> m_subOpsiInput;
         // std::vector<std::unique_ptr<sf::Text>> m_subOpsiTeks;
         sf::Font* m_font;
 
@@ -25,6 +29,7 @@ class TabContainer{
 
         int m_characterSize = 64;
         float m_bgOutlineThickness = 2.0f;
+        float m_subOpsiComponentGap = 12.0f;
         sf::Color m_buttonBg = sf::Color::Black;
         sf::Color m_textColor = sf::Color::White;
 
@@ -44,4 +49,5 @@ class TabContainer{
         std::vector<std::unique_ptr<sf::Text>>& getKumpulanTeks();
         std::vector<std::unique_ptr<sf::RectangleShape>>& getKumpulanBg();
         std::unordered_map<std::string, std::vector<std::unique_ptr<sf::Text>>>& getKumpulanSubOpsiTeks();
+        std::unordered_map<std::string, std::unordered_map<std::string, std::vector<std::unique_ptr<std::variant<sliderStruct, Arrow, sf::Text, sf::RectangleShape>>>>>& getKumpulanSubOpsiInput();
 };

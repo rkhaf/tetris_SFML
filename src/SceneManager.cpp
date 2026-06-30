@@ -43,7 +43,7 @@ void SceneManager::registerScenes(){
 }
 
 void SceneManager::sendSyncSignal(){
-    std::cout << "SIGNAL FIRED" << std::endl;
+    // std::cout << "SIGNAL FIRED" << std::endl;
     for(const auto& lambda : m_syncSceneSignal){
         lambda();
     }

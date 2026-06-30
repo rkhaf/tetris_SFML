@@ -39,43 +39,42 @@ void TabContainer::geser(Kontrol key){
             }
         }
     }else{
+        // const auto& teksStringOpsiTerpilih = m_opsiTeks[m_currentHovered.x].get()->getString().toAnsiString();
+        // const auto& teksStringOpsiTerpilih = m_opsiTeks[m_currentHovered.x].get()->getString().toAnsiString();
+        // const auto& teksStringSubOpsiTerpilih = m_subOpsiTeks.find(teksStringOpsiTerpilih)->second[m_currentHovered.y].get()->getString().toAnsiString();
+        // int index = 0;
         if(key==Kontrol::kiri){
+            // index = 1;
+            // auto uniqptr = &m_subOpsiInput[teksStringOpsiTerpilih][teksStringSubOpsiTerpilih][1];
+            // if(auto* arrowObj = std::get_if<Arrow>(uniqptr.get())){
+            //     arrowObj->setFillColor(sf::Color::Green);
+            // }
+            // auto& test = m_ArrowHolder[Kontrol::kiri];
+
+            // m_ArrowHolder[Kontrol::kiri] = &m_subOpsiInput[teksStringOpsiTerpilih][teksStringSubOpsiTerpilih][1];
+            // auto test2 = &m_subOpsiInput[teksStringOpsiTerpilih][teksStringSubOpsiTerpilih][1];
+
+            // if(m_ArrowHolder.find(Kontrol::kiri) != m_ArrowHolder.end()){
+            //     m_ArrowHolder
+            // }
             std::cout << "changeValueLeft" << std::endl;
+            
         }else if(key==Kontrol::kanan){
+            // auto& uniqptr = m_subOpsiInput[teksStringOpsiTerpilih][teksStringSubOpsiTerpilih][2];
+            // if(auto* arrowObj = std::get_if<Arrow>(uniqptr.get())){
+            //     arrowObj->setFillColor(sf::Color::Green);
+            // }
+            // index = 2;
+            // auto& uniqptr = m_subOpsiInput[teksStringOpsiTerpilih][teksStringSubOpsiTerpilih][2];
+            // if(m_ArrowHolder.find(Kontrol::kanan) != m_ArrowHolder.end()){
+            // }
             std::cout << "changeValueRight" << std::endl;
         }
-    }
 
-    // switch (key){
-    //     case (Kontrol::kiri):
-    //         if(m_currentHovered.x>0){
-    //             m_currentHovered.x--;
-    //         }
-    //         break;
-    //     case (Kontrol::kanan):
-    //         if(m_currentHovered.x<m_tabContainerReference->m_opsi.size()-1){
-    //             m_currentHovered.x++;
-    //         }
-    //         break;
-    //     case (Kontrol::atas):
-    //         if(m_tabContainerReference->m_input.find(m_tabContainerReference->m_opsi[m_currentHovered.x]) != m_tabContainerReference->m_input.end()){
-    //             if(m_currentHovered.y>0){
-    //                 m_currentHovered.y--;
-    //             }
-    //         }else{
-    //             m_currentHovered.y = 0;
-    //         }
-    //         break;
-    //     case (Kontrol::bawah):
-    //         if(m_tabContainerReference->m_input.find(m_tabContainerReference->m_opsi[m_currentHovered.x]) != m_tabContainerReference->m_input.end()){
-    //             if(m_currentHovered.y<m_tabContainerReference->m_input.find(m_tabContainerReference->m_opsi[m_currentHovered.x])->second.size()-1){
-    //                 m_currentHovered.y++;
-    //             }
-    //         }else{
-    //             m_currentHovered.y = 0;
-    //         }
-    //         break;
-    // }
+        // if(auto* arrowObj = std::get_if<Arrow>(uniqptr.get())){
+        //     arrowObj->setFillColor(sf::Color::Green);
+        // }
+    }
     updateVisual();
 }
 
@@ -115,33 +114,94 @@ void TabContainer::generate(){
         m_opsiBg.push_back(std::move(newRect));
     }
 
-        std::cout << "sebelum" << std::endl;
+        // std::cout << "sebelum" << std::endl;
         if(m_tabContainerReference->m_input.size()>0){
             for(const auto& [nama, vectorVariant] : m_tabContainerReference->m_input){
-                std::cout << "iterated: " << nama << std::endl;
+                // std::cout << "iterated: " << nama << std::endl;
                 if(std::find(m_tabContainerReference->m_opsi.begin(), m_tabContainerReference->m_opsi.end(), nama) != m_tabContainerReference->m_opsi.end()){
                     // std::cout << "ada: " << nama << std::endl;
                     for(const auto& dataVariant : vectorVariant){
                         if(std::holds_alternative<sliderStruct>(dataVariant)){ //ngefilter sliderStruct
                             auto& slider = std::get<sliderStruct>(dataVariant);
                             auto newTextSubOpsi = std::make_unique<sf::Text>(*m_font, slider.m_label);
-                            
+                            // float sliderMinVal = slider.m_min;
+
+                            Arrow leftArrow(false, globalColors::panelFill, globalColors::panelOutline);
+                            Arrow rightArrow(true, globalColors::panelFill, globalColors::panelOutline);
+
+                            leftArrow.setOutlineThickness(m_bgOutlineThickness);
+                            rightArrow.setOutlineThickness(m_bgOutlineThickness);
+
+                            sf::Text valueLabel(*m_font, std::to_string(static_cast<int>(slider.m_val)));
+                            sf::FloatRect boundNewText = valueLabel.getLocalBounds();
+                            // sf::Vector2f test = boundNewText.size;
+
+                            // valueLabel.setOrigin(sf::Vector2f(boundNewText.position.x + (boundNewText.size.x / 2), boundNewText.position.y + (boundNewText.size.y / 2)));
+
                             // std::cout << m_opsiBg.back().get()->getSize().x << ", " << m_opsiBg.back().get()->getSize().y << std::endl;
                             if(m_subOpsiTeks.find(nama)!=m_subOpsiTeks.end()){
-                                newTextSubOpsi->setPosition(sf::Vector2f(m_pivot.x * 5, m_pivot.y + (m_opsiBg.back().get()->getSize().y * (m_subOpsiTeks.find(nama)->second.size() + 1))));
-                                // std::cout << m_subOpsiTeks.find(nama)->second.size() << std::endl;
                                 // std::cout << "iff: " << slider.m_label << std::endl;
+                                // auto leftArrBounds = leftArrow.getGlobalBounds();
+                                // auto leftArrBoundsSize = sf::Vector2f(leftArrBounds.size.x, leftArrBounds.size.y);
+                                newTextSubOpsi->setPosition(sf::Vector2f(m_pivot.x * 5, m_pivot.y + (m_opsiBg.back().get()->getSize().y * (m_subOpsiTeks.find(nama)->second.size() + 1))));
+                                valueLabel.setPosition(sf::Vector2f(360.0f, m_pivot.y + (m_opsiBg.back().get()->getSize().y * (m_subOpsiTeks.find(nama)->second.size() + 1))));
+                                leftArrow.setPosition(sf::Vector2f(valueLabel.getPosition().x - m_subOpsiComponentGap, valueLabel.getPosition().y));
+                                rightArrow.setPosition(sf::Vector2f(valueLabel.getPosition().x + m_subOpsiComponentGap, valueLabel.getPosition().y));
+                                // leftArrow.setPosition(valueLabel.getPosition());
+                                // rightArrow.setPosition(valueLabel.getPosition());
+                                // rightArrow.setPosition(sf::Vector2f(valueLabel.getPosition().x + m_subOpsiComponentGap, valueLabel.getPosition().y));
+
+                                // leftArrow.setOutlineColor(sf::Color::Green);
+                                // std::cout << "leftArrowGetPos(): " << leftArrow.getPosition().x << ", " << leftArrow.getPosition().y << std::endl;
+                                // std::cout << "leftArrowOutlineColor: Hijau" << std::endl;
+                                // std::cout << "valueLabelGetPos(): " << valueLabel.getPosition().x << ", " << valueLabel.getPosition().y << std::endl;
+                                // std::cout << m_subOpsiTeks.find(nama)->second.size() << std::endl;
+                                // leftArrow.getGlobalBounds().size().x;
+                                // (leftArrow.getGlobalBounds().size())
                             }else{
-                                std::cout << "elss: " << slider.m_label << std::endl;
+                                // std::cout << "elss: " << slider.m_label << std::endl;
                                 newTextSubOpsi->setPosition(sf::Vector2f(m_pivot.x * 5, m_pivot.y + m_opsiBg.back().get()->getSize().y));
+                                valueLabel.setPosition(sf::Vector2f(360.0f, m_pivot.y + m_opsiBg.back().get()->getSize().y));
+                                
+                                // leftArrow.setPosition(valueLabel.getPosition());
+                                leftArrow.setPosition(sf::Vector2f(valueLabel.getPosition().x - m_subOpsiComponentGap, valueLabel.getPosition().y));
+                                rightArrow.setPosition(sf::Vector2f(valueLabel.getPosition().x + m_subOpsiComponentGap, valueLabel.getPosition().y));
+                                // leftArrow.setOutlineColor(sf::Color::Blue);
+                                // std::cout << "leftArrowGetPos(): " << leftArrow.getPosition().x << ", " << leftArrow.getPosition().y << std::endl;
+                                // std::cout << "leftArrowOutlineColor: Biru" << std::endl;
+                                // std::cout << "valueLabelGetPos(): " << valueLabel.getPosition().x << ", " << valueLabel.getPosition().y << std::endl;
                                 // newTextSubOpsi->setPosition(sf::Vector2f(m_pivot.x, m_pivot.y + m_opsiBg.back().get()->getSize().y));
                             }
+                            // std::cout << "leftArrowGetPos(): " << leftArrow.getPosition().x << ", " << leftArrow.getPosition().y << std::endl;
+                            // std::cout << "valueLabelGetPos(): " << valueLabel.getPosition().x << ", " << valueLabel.getPosition().y << std::endl;
+                            // std::cout << "newTextSubOpsi.get()->getPosition(): " << newTextSubOpsi.get()->getPosition().x << ", " << newTextSubOpsi.get()->getPosition().y << std::endl;
+                            // std::cout << "valueLabel.getPosition(): " << valueLabel.getPosition().x << ", " << valueLabel.getPosition().y << std::endl;
+
+                            // std::cout << "newTextSubOpsi.get()->getOrigin(): " << newTextSubOpsi.get()->getOrigin().x << ", " << newTextSubOpsi.get()->getOrigin().y << std::endl;
+                            // std::cout << "valueLabel.getOrigin(): " << valueLabel.getOrigin().x << ", " << valueLabel.getOrigin().y << std::endl;
+                            
+                            // valueLabel.setPosition(sf::Vector2f(50.0f, m_subOpsiTeks.find(nama)->second.back().get()->getPosition().y));
+                            // sf::Text valueLabel(*m_font, slider.m_val);
+                            valueLabel.setCharacterSize(m_characterSize);
+                            valueLabel.setFillColor(sf::Color::White);
+
+                            using MyVariant = std::variant<sliderStruct, Arrow, sf::Text, sf::RectangleShape>;
+
+                            // m_subOpsiInput.find(nama)->second.push_back(std::make_unique<MyVariant>(valueLabel));
+
                             newTextSubOpsi->setFillColor(sf::Color::White);
                             newTextSubOpsi->setCharacterSize(m_characterSize);
                             
                             // if(m_subOpsiTeks.find(nama)!=m_subOpsiTeks.end()){
                                 
                             m_subOpsiTeks[nama].push_back(std::move(newTextSubOpsi));
+                            // m_subOpsiInput[nama]
+                            const auto& subOpsiTeksTerakhir = m_subOpsiTeks.find(nama)->second.back().get()->getString().toAnsiString();
+                            // m_subOpsiInput[nama][subOpsiTeksTerakhir]
+
+                            m_subOpsiInput[nama][subOpsiTeksTerakhir].push_back(std::make_unique<MyVariant>(valueLabel));
+                            m_subOpsiInput[nama][subOpsiTeksTerakhir].push_back(std::make_unique<MyVariant>(leftArrow));
+                            m_subOpsiInput[nama][subOpsiTeksTerakhir].push_back(std::make_unique<MyVariant>(rightArrow));
                             // }
                             // m_subOpsiTeks.push_back(std::move(newTextSubOpsi));
     
@@ -183,6 +243,26 @@ void TabContainer::updateVisual(){
                 uniqptr.get()->setFillColor(sf::Color::White);
             }
         }
+        for(const auto& [strOpsiTeks, vektor] : m_subOpsiInput){
+            for(const auto& [strSubOpsiTeks, vektor2] : vektor){
+                for(const auto& uniqptr : vektor2){
+                    // if(uniqptr)
+                    // if(auto* textObj = std::get_if<sf::Text>(uniqptr.get())){
+                    //     textObj->setFillColor(sf::Color::White);
+                    // // }else if(auto* teksObj = std::get_if<sf::Text>(uniqptr.get())){
+                    // //     teksObj->setFillColor(sf::Color::White);
+                    // //     if(m_subOpsiTeks.find(strOpsiTeks)->second[m_currentHovered.y].get()->getString().toAnsiString() == strSubOpsiTeks){
+                    // //         teksObj->setFillColor(sf::Color::Green);
+                    // //     }
+                    // // }
+                    // }
+                    if(auto* arrowObj = std::get_if<Arrow>(uniqptr.get())){
+                        arrowObj->setOutlineColor(globalColors::panelOutline);
+                        // arrowObj->setFillColor(globalColors::panelFill);
+                    }
+                }
+            }
+        }
 
         if(m_currentHovered.y==-1){
             // for(int i=0; i<getSize(); i++){
@@ -199,6 +279,49 @@ void TabContainer::updateVisual(){
                 //     uniqptr.get()->setFillColor(sf::Color::White);
                 // }
                 m_subOpsiTeks.find(test)->second[m_currentHovered.y].get()->setFillColor(sf::Color::Green);
+
+                // using MenuVariant = std::variant<Arrow, sf::Text>;
+                if(m_currentHovered.x>-1){
+                    const auto& teksStringSubOpsiTerpilih = m_subOpsiTeks.find(test)->second[m_currentHovered.y].get()->getString().toAnsiString();
+                    const auto& teksStringOpsiTerpilih = m_opsiTeks[m_currentHovered.x].get()->getString().toAnsiString();
+
+                    // auto& uniqptr = m_subOpsiInput[teksStringOpsiTerpilih][teksStringSubOpsiTerpilih][1];
+                    auto& vektorSubOpsiInput = m_subOpsiInput[teksStringOpsiTerpilih][teksStringSubOpsiTerpilih];
+
+                    for(const auto& komponen : vektorSubOpsiInput){
+                        if(auto* arrowObj = std::get_if<Arrow>(komponen.get())){
+                            arrowObj->setOutlineColor(sf::Color::Green);
+                        }
+                    }
+
+                    // if(auto* textObj = std::get_if<sf::Text>(uniqptr.get())){
+                    //     textObj->setFillColor(sf::Color::Green);
+                    // // }else if(auto* teksObj = std::get_if<sf::Text>(uniqptr.get())){
+                    // //     teksObj->setFillColor(sf::Color::White);
+                    // //     if(m_subOpsiTeks.find(strOpsiTeks)->second[m_currentHovered.y].get()->getString().toAnsiString() == strSubOpsiTeks){
+                    // //         teksObj->setFillColor(sf::Color::Green);
+                    // //     }
+                    // // }
+                    // }
+                    // if(auto* arrowObj = std::get_if<Arrow>(uniqptr.get())){
+                    //     arrowObj->setOutlineColor(sf::Color::Green);
+                    // }
+
+                // for(const auto& [strOpsiTeks, vektor] : m_subOpsiInput){
+                //     for(const auto& [strSubOpsiTeks, vektor2] : vektor){
+                //         for(const auto& uniqptr : vektor2){
+                //             // if(uniqptr)
+                //             if(auto* arrowObj = std::get_if<Arrow>(uniqptr.get())){
+
+                //             }else if(auto* teksObj = std::get_if<sf::Text>(uniqptr.get())){
+                //                 teksObj->setFillColor(sf::Color::White);
+                //                 if(m_subOpsiTeks.find(strOpsiTeks)->second[m_currentHovered.y].get()->getString().toAnsiString() == strSubOpsiTeks){
+                //                     teksObj->setFillColor(sf::Color::Green);
+                //                 }
+                //             }
+                //         }
+                //     }
+                // }
             }
         }
         // std::cout << m_currentHovered.x << ", " << m_currentHovered.y << std::endl;
@@ -218,6 +341,7 @@ void TabContainer::updateVisual(){
         //     }
         //     m_subOpsiTeks.find(test)->second[m_currentHovered.y+1].get()->setFillColor(sf::Color::Green);
         // }
+        }
     }
 
     // else{
@@ -241,6 +365,9 @@ std::unordered_map<std::string, std::vector<std::unique_ptr<sf::Text>>>& TabCont
 }
 sf::Vector2i& TabContainer::getCurrentHovered(){
     return m_currentHovered;
+}
+std::unordered_map<std::string, std::unordered_map<std::string, std::vector<std::unique_ptr<std::variant<sliderStruct, Arrow, sf::Text, sf::RectangleShape>>>>>& TabContainer::getKumpulanSubOpsiInput(){
+    return m_subOpsiInput;
 }
 
 void TabContainer::resetContainer(){
